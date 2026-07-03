@@ -5,16 +5,16 @@
     Author            = 'Joshua Finley'
     CompanyName       = 'Kritical Pty Ltd'
     Copyright         = '(c) 2026 Kritical Pty Ltd. All rights reserved.'
-    Description       = 'Kritical Hardening toolkit. Stands on the shoulders of HotCakeX/Harden-Windows-Security-Module, scipag/HardeningKitty, Microsoft Security Compliance Toolkit, and the DSC AuditPolicy/SecurityPolicy resources. v1.0.0 is audit-only: a single call runs every installed compliance probe and emits a Kritical-branded HTML + Excel report. Apply-side functions (Invoke-KriticalHardenApply / Restore-KriticalHardenSnapshot / Start-KriticalHardenWatcher) ship in v1.1.0 once the snapshot/rollback chain is bulletproof. Built on Krit.OmniFramework.'
+    Description       = 'Kritical Hardening toolkit. Stands on the shoulders of HotCakeX/Harden-Windows-Security-Module, scipag/HardeningKitty, Microsoft Security Compliance Toolkit, and the DSC AuditPolicy/SecurityPolicy resources. v1.0.0 is audit-only: a single call runs every installed compliance probe and emits a Kritical-branded HTML + Excel report. Apply-side functions (Invoke-KriticalHardenApply / Restore-KriticalHardenSnapshot / Start-KriticalHardenWatcher) ship in v1.1.0 once the snapshot/rollback chain is bulletproof. Built on Kritical.PS.OmniFramework.'
     PowerShellVersion = '5.1'
     CompatiblePSEditions = @('Desktop','Core')
 
-    # 1.0.1 — Krit.OmniFramework moved from RequiredModules to
+    # 1.0.1 — Kritical.PS.OmniFramework moved from RequiredModules to
     # ExternalModuleDependencies (PSData) for the same reason
-    # Krit.OmniFramework 1.0.2 removed its own RequiredModules: PowerShell
+    # Kritical.PS.OmniFramework 1.0.2 removed its own RequiredModules: PowerShell
     # hard-imports RequiredModules BEFORE the psm1 runs, so any AppDomain
     # collision (stale PSFramework loaded at an older version) cascaded into
-    # Kritical.PS.Hardening import failure. Install-Module STILL pulls Krit.OmniFramework
+    # Kritical.PS.Hardening import failure. Install-Module STILL pulls Kritical.PS.OmniFramework
     # on PSGallery install via ExternalModuleDependencies. Soft-imported at use
     # time by the consuming functions instead.
 
@@ -36,29 +36,29 @@
             LicenseUri   = 'https://kritical.net/legal/license'
             ProjectUri   = 'https://github.com/Sir-J-AU/Kritical.PS.Hardening'
             IconUri      = 'https://kritical.net/assets/horizontal_logo.png'
-            ExternalModuleDependencies = @('Krit.OmniFramework')
+            ExternalModuleDependencies = @('Kritical.PS.OmniFramework')
             ReleaseNotes = @'
-1.0.1 - Resilience fix (matches Krit.OmniFramework 1.0.2 pattern).
-  * Moved Krit.OmniFramework out of RequiredModules into
+1.0.1 - Resilience fix (matches Kritical.PS.OmniFramework 1.0.2 pattern).
+  * Moved Kritical.PS.OmniFramework out of RequiredModules into
     PSData.ExternalModuleDependencies. PowerShell hard-imports
     RequiredModules BEFORE the consuming module's psm1 runs, so any
     AppDomain collision in a transitive dep (e.g. stale PSFramework)
     used to cascade into Kritical.PS.Hardening import failure.
-    Install-Module Kritical.PS.Hardening STILL pulls Krit.OmniFramework
+    Install-Module Kritical.PS.Hardening STILL pulls Kritical.PS.OmniFramework
     transitively from PSGallery via ExternalModuleDependencies.
   * Consuming functions (New-KriticalHardenReport, etc.) soft-import
-    Krit.OmniFramework at use time and degrade gracefully when an
+    Kritical.PS.OmniFramework at use time and degrade gracefully when an
     older version is AppDomain-locked.
-  * Recommended: Update-Module Krit.OmniFramework -Force to land 1.0.2
+  * Recommended: Update-Module Kritical.PS.OmniFramework -Force to land 1.0.2
     in the same step, then restart pwsh.
 
 1.0.0 - Initial release (audit-only).
   * Test-KriticalHardenPrereqs        - 7-gate prereq check (OS / PS / admin / Defender / TPM / SecureBoot / WinRM)
   * Install-KriticalHardenModules     - wraps Install-Module for HotCakeX Harden-Windows-Security-Module + scipag HardeningKitty; honours the operator's existing module versions
   * Test-KriticalHardenCompliance     - runs every installed audit tool, normalises findings into a single PSCustomObject set + JSON
-  * New-KriticalHardenReport          - Kritical-branded HTML + Excel via Krit.OmniFramework (sister module)
+  * New-KriticalHardenReport          - Kritical-branded HTML + Excel via Kritical.PS.OmniFramework (sister module)
   * Pester unit tests, brand discipline, no destructive apply path in this version
-  * Stands on Krit.OmniFramework 1.0.1+
+  * Stands on Kritical.PS.OmniFramework 1.0.1+
   * Joshua Finley, Kritical Pty Ltd
 '@
         }

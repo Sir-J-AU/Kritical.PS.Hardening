@@ -111,7 +111,7 @@ Output:
 ## End-to-end one-shot
 
 ```powershell
-Import-Module Krit.OmniFramework -Force
+Import-Module Kritical.PS.OmniFramework -Force
 Import-Module Kritical.PS.Hardening -Force
 $pre = Test-KriticalHardenPrereqs -Quiet
 if (-not $pre.Ok) { throw "Prereqs failed - run elevated PS 7.4+" }
@@ -135,4 +135,4 @@ $report = New-KriticalHardenReport -ComplianceResult $r
 | 6 | PSDscResources | <https://www.powershellgallery.com/packages/PSDscResources> |
 | 7 | NetworkingDsc | <https://www.powershellgallery.com/packages/NetworkingDsc> |
 | 8 | PSScriptAnalyzer | <https://github.com/PowerShell/PSScriptAnalyzer> |
-| 9 | Krit.OmniFramework (foundation) | <https://github.com/Sir-J-AU/Krit.OmniFramework> |
+| 9 | Kritical.PS.OmniFramework (foundation) | <https://github.com/Sir-J-AU/Kritical.PS.OmniFramework> |

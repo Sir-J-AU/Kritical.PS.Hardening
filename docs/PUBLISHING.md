@@ -5,7 +5,7 @@ Author: Joshua Finley — Kritical Pty Ltd
 ## Pre-flight
 
 1. Pester green: `tools\Publish-KriticalHardening.ps1` runs this automatically; or `tests\Invoke-AllTests.ps1` manually.
-2. `Test-ModuleManifest src\Kritical.PS.Hardening.psd1` passes (Krit.OmniFramework must be installed locally).
+2. `Test-ModuleManifest src\Kritical.PS.Hardening.psd1` passes (Kritical.PS.OmniFramework must be installed locally).
 3. No AI-agent name leaks (Manifest.Tests.ps1 enforces).
 4. Author/Company stamp in manifest: Joshua Finley / Kritical Pty Ltd.
 5. Version bumped + ReleaseNotes added.

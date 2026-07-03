@@ -11,8 +11,8 @@ Outside contributions require a Contributor License Agreement; reach Kritical at
 
 ## Local dev
 
-- PowerShell 7.4+ required (Pester 5.5+, ImportExcel, PSWriteHTML via Krit.OmniFramework).
-- Install foundation dep first: `Install-Module Krit.OmniFramework -Scope CurrentUser -Force`
+- PowerShell 7.4+ required (Pester 5.5+, ImportExcel, PSWriteHTML via Kritical.PS.OmniFramework).
+- Install foundation dep first: `Install-Module Kritical.PS.OmniFramework -Scope CurrentUser -Force`
 - Install Pester: `Install-Module Pester -MinimumVersion 5.5.0 -Force -SkipPublisherCheck -Scope CurrentUser`
 
 ## Code standards
@@ -20,7 +20,7 @@ Outside contributions require a Contributor License Agreement; reach Kritical at
 - `Set-StrictMode -Version Latest` at the top of every file.
 - Comment-based help on every public function (`.SYNOPSIS`, `.DESCRIPTION`, `.EXAMPLE`, `.NOTES Author: Joshua Finley - Kritical Pty Ltd`).
 - Private helpers go in `src/Private/`; public in `src/Public/`; all dot-sourced by the root `.psm1`.
-- Every operator-facing path emits the Kritical banner via `Write-KriticalHardenBanner` (which delegates to Krit.OmniFramework's `Write-KritBanner` when available).
+- Every operator-facing path emits the Kritical banner via `Write-KriticalHardenBanner` (which delegates to Kritical.PS.OmniFramework's `Write-KritBanner` when available).
 - No `Claude` / `Hermes` / `Codex` / `Copilot` / `ChatGPT` / `Anthropic` / `OpenAI` strings anywhere in published output — the Manifest.Tests.ps1 brand-leak scan blocks the publish if any leak.
 - v1.0.0 is audit-only. Destructive `Invoke-KriticalHardenApply` lands in v1.1.0 only after the snapshot/rollback chain is bulletproof.
 

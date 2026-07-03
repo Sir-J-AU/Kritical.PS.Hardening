@@ -14,7 +14,7 @@ function Get-KriticalHardenBannerCanonicalPath {
 function Get-KriticalHardenBanner {
     <#
     .SYNOPSIS
-        Returns the canonical Kritical banner. Prefers Krit.OmniFramework's Get-KritBanner
+        Returns the canonical Kritical banner. Prefers Kritical.PS.OmniFramework's Get-KritBanner
         if the foundation is loaded; falls back to a local copy.
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
@@ -22,7 +22,7 @@ function Get-KriticalHardenBanner {
     [CmdletBinding()]
     [OutputType([string])]
     param([string] $Title, [switch] $Compact)
-    if (Get-Command Get-KritBanner -Module Krit.OmniFramework -ErrorAction SilentlyContinue) {
+    if (Get-Command Get-KritBanner -Module Kritical.PS.OmniFramework -ErrorAction SilentlyContinue) {
         return Get-KritBanner -Title $Title -Compact:$Compact
     }
     $path = Get-KriticalHardenBannerCanonicalPath
@@ -39,7 +39,7 @@ function Get-KriticalHardenBanner {
 function Write-KriticalHardenBanner {
     [CmdletBinding()]
     param([string] $Title, [switch] $Compact, [switch] $NoColor)
-    if (Get-Command Write-KritBanner -Module Krit.OmniFramework -ErrorAction SilentlyContinue) {
+    if (Get-Command Write-KritBanner -Module Kritical.PS.OmniFramework -ErrorAction SilentlyContinue) {
         Write-KritBanner -Title $Title -Compact:$Compact -NoColor:$NoColor
         return
     }

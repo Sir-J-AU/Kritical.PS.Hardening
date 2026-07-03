@@ -2,7 +2,7 @@ function New-KriticalHardenReport {
     <#
     .SYNOPSIS
         Renders a Kritical-branded HTML + Excel report from a Test-KriticalHardenCompliance
-        result. Uses Krit.OmniFramework's New-KritHtmlReport + New-KritExcelReport.
+        result. Uses Kritical.PS.OmniFramework's New-KritHtmlReport + New-KritExcelReport.
 
     .PARAMETER ComplianceResult
         The object returned by Test-KriticalHardenCompliance.
@@ -60,7 +60,7 @@ function New-KriticalHardenReport {
             $htmlOk = $true
         } catch { Write-Warning "HTML report failed: $($_.Exception.Message)" }
     } else {
-        Write-Warning 'Krit.OmniFramework not loaded - HTML report skipped. Import-Module Krit.OmniFramework first.'
+        Write-Warning 'Kritical.PS.OmniFramework not loaded - HTML report skipped. Import-Module Kritical.PS.OmniFramework first.'
     }
 
     if (Get-Command New-KritExcelReport -ErrorAction SilentlyContinue) {
@@ -76,7 +76,7 @@ function New-KriticalHardenReport {
             $xlsxOk = $true
         } catch { Write-Warning "Excel report failed: $($_.Exception.Message)" }
     } else {
-        Write-Warning 'Krit.OmniFramework not loaded - Excel report skipped.'
+        Write-Warning 'Kritical.PS.OmniFramework not loaded - Excel report skipped.'
     }
 
     [pscustomobject]@{

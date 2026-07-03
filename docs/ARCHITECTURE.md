@@ -13,7 +13,7 @@ flowchart TB
     COMP --> HK[HardeningKitty Invoke-HardeningKitty Audit]
     COMP --> NORM[Normalised PSCustomObject set]
     OP --> RPT[New-KriticalHardenReport]
-    RPT --> OMNI[Krit.OmniFramework]
+    RPT --> OMNI[Kritical.PS.OmniFramework]
     OMNI --> HTML[PSWriteHTML]
     OMNI --> XL[ImportExcel]
     RPT --> JSON[(JSON snapshot)]
@@ -24,8 +24,8 @@ flowchart TB
 | Layer | Files | Role |
 | --- | --- | --- |
 | Public | `src/Public/*.ps1` | 5 operator entry points. Comment-based help. Banner-emitting. |
-| Private | `src/Private/_Banner.ps1` | Banner reader that defers to Krit.OmniFramework when present. |
-| Manifest | `src/Kritical.PS.Hardening.psd1` | Author=Joshua Finley. RequiredModules pins Krit.OmniFramework ≥ 1.0.1. |
+| Private | `src/Private/_Banner.ps1` | Banner reader that defers to Kritical.PS.OmniFramework when present. |
+| Manifest | `src/Kritical.PS.Hardening.psd1` | Author=Joshua Finley. RequiredModules pins Kritical.PS.OmniFramework ≥ 1.0.1. |
 | Assets | `src/Assets/kritical-logo.txt` | Bundled brand banner fallback. |
 | Tests | `tests/Unit/` | 16 Pester unit tests (Banner / Manifest / Modules / Prereqs / Report). |
 

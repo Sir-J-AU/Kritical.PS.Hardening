@@ -8,23 +8,23 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# 1.0.1 - soft-import Krit.OmniFramework. Never fail hard at import time even
+# 1.0.1 - soft-import Kritical.PS.OmniFramework. Never fail hard at import time even
 # if Omni is missing or AppDomain-locked at an older version. Consuming
 # functions probe for OmniFramework at use time and degrade gracefully.
 function Import-KriticalHardenOmniSoft {
     [CmdletBinding()]
     param([switch] $Quiet)
-    $already = Get-Module -Name Krit.OmniFramework -ErrorAction SilentlyContinue
+    $already = Get-Module -Name Kritical.PS.OmniFramework -ErrorAction SilentlyContinue
     if ($already) { return @{ Ok=$true; Version=$already.Version; Source='already-loaded' } }
-    $have = Get-Module -ListAvailable -Name Krit.OmniFramework -ErrorAction SilentlyContinue |
+    $have = Get-Module -ListAvailable -Name Kritical.PS.OmniFramework -ErrorAction SilentlyContinue |
             Sort-Object Version -Descending | Select-Object -First 1
     if (-not $have) { return @{ Ok=$false; Version=$null; Source='not-installed' } }
     try {
-        Import-Module -Name Krit.OmniFramework -ErrorAction Stop
-        $loaded = Get-Module -Name Krit.OmniFramework | Select-Object -First 1
+        Import-Module -Name Kritical.PS.OmniFramework -ErrorAction Stop
+        $loaded = Get-Module -Name Kritical.PS.OmniFramework | Select-Object -First 1
         return @{ Ok=$true; Version=$loaded.Version; Source='imported' }
     } catch {
-        if (-not $Quiet.IsPresent) { Write-Warning ("Krit.OmniFramework soft-import failed: " + $_.Exception.Message) }
+        if (-not $Quiet.IsPresent) { Write-Warning ("Kritical.PS.OmniFramework soft-import failed: " + $_.Exception.Message) }
         return @{ Ok=$false; Version=$have.Version; Source='import-failed'; Error=$_.Exception.Message }
     }
 }

@@ -32,7 +32,7 @@
 **Author**: Joshua Finley — Kritical Pty Ltd — <https://kritical.net>
 **License**: see [LICENSE](./LICENSE)
 **Version**: 1.0.0
-**Depends on**: [Krit.OmniFramework](https://www.powershellgallery.com/packages/Krit.OmniFramework) ≥ 1.0.1
+**Depends on**: [Kritical.PS.OmniFramework](https://www.powershellgallery.com/packages/Kritical.PS.OmniFramework) ≥ 1.0.1
 
 ---
 
@@ -48,7 +48,7 @@ One PowerShell module that runs every well-known OSS Windows-hardening complianc
 | **scipag / HardeningKitty** | `Invoke-HardeningKitty -Mode Audit` — STIG + CIS + Microsoft baseline lists |
 | **AuditPolicyDsc / SecurityPolicyDsc / PSDscResources / NetworkingDsc** | DSC-side audit (LSA / Kerberos / user-rights / firewall rules) |
 | **PSScriptAnalyzer** | PS-side static analysis for any PowerShell hardening scripts |
-| **Krit.OmniFramework** | Foundation: PSFramework logging + PSSharedGoods + PSWriteHTML + ImportExcel + multi-OS detection + Kritical-branded reports |
+| **Kritical.PS.OmniFramework** | Foundation: PSFramework logging + PSSharedGoods + PSWriteHTML + ImportExcel + multi-OS detection + Kritical-branded reports |
 
 ### v1.0.0 = audit-only
 
@@ -56,7 +56,7 @@ One PowerShell module that runs every well-known OSS Windows-hardening complianc
 - ✅ `Install-KriticalHardenModules` — installs HotCakeX + HardeningKitty + DSC family (idempotent)
 - ✅ `Get-KriticalHardenModuleStatus` — read-only inventory
 - ✅ `Test-KriticalHardenCompliance` — runs every installed audit tool, returns normalised result
-- ✅ `New-KriticalHardenReport` — Kritical-branded HTML + Excel + JSON via Krit.OmniFramework
+- ✅ `New-KriticalHardenReport` — Kritical-branded HTML + Excel + JSON via Kritical.PS.OmniFramework
 
 ### v1.1.0 (deferred — destructive apply lands here once snapshot/rollback is bulletproof)
 
@@ -71,7 +71,7 @@ One PowerShell module that runs every well-known OSS Windows-hardening complianc
 ### PSGallery
 
 ```powershell
-Install-Module Krit.OmniFramework -Scope CurrentUser   # foundation dependency
+Install-Module Kritical.PS.OmniFramework -Scope CurrentUser   # foundation dependency
 Install-Module Kritical.PS.Hardening     -Scope CurrentUser
 Import-Module  Kritical.PS.Hardening -Force
 ```
@@ -123,8 +123,8 @@ Output lands at `%LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\reports\<utc>\` w
 | `Get-KriticalHardenModuleStatus` | Read-only: which OSS hardening modules are installed + loaded |
 | `Install-KriticalHardenModules` | Idempotent installer for HotCakeX + HardeningKitty + DSC family + PSScriptAnalyzer; `-OnlyCore` / `-NoInstall` |
 | `Test-KriticalHardenCompliance` | Runs every installed probe (HotCakeX `Confirm-SystemCompliance` + HardeningKitty `Invoke-HardeningKitty -Mode Audit`); normalises findings into a single PSCustomObject set with `Source / Category / Control / Outcome / Detail / Recommendation / Severity` |
-| `New-KriticalHardenReport` | Renders HTML + Excel + JSON via Krit.OmniFramework; falls back to minimal-HTML / JSON-only when OmniFramework not loaded |
-| `Get-KriticalHardenBanner` | Brand banner reader (prefers Krit.OmniFramework's Get-KritBanner) |
+| `New-KriticalHardenReport` | Renders HTML + Excel + JSON via Kritical.PS.OmniFramework; falls back to minimal-HTML / JSON-only when OmniFramework not loaded |
+| `Get-KriticalHardenBanner` | Brand banner reader (prefers Kritical.PS.OmniFramework's Get-KritBanner) |
 
 ---
 
@@ -149,8 +149,8 @@ cd "$env:USERPROFILE\OneDrive - Kritical Pty Ltd\Github\Kritical.PS.Hardening"
 
 ## Related Kritical packages
 
-- [`Krit.OmniFramework`](https://github.com/Sir-J-AU/Krit.OmniFramework) — foundation (this module's required dependency)
-- [`Krit.Pax8Mcp`](https://github.com/Sir-J-AU/Krit.Pax8Mcp) — multi-agent Pax8 MCP wiring for Claude Code / Codex / Cursor / VS Code
+- [`Kritical.PS.OmniFramework`](https://github.com/Sir-J-AU/Kritical.PS.OmniFramework) — foundation (this module's required dependency)
+- [`Kritical.Pax8Mcp`](https://github.com/Sir-J-AU/Kritical.Pax8Mcp) — multi-agent Pax8 MCP wiring for Claude Code / Codex / Cursor / VS Code
 
 ---
 
