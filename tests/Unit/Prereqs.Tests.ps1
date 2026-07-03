@@ -1,17 +1,17 @@
 #requires -Modules Pester
 BeforeAll {
-    Import-Module (Join-Path $PSScriptRoot '..\..\src\Krit.Hardening.psm1') -Force
+    Import-Module (Join-Path $PSScriptRoot '..\..\src\Kritical.PS.Hardening.psm1') -Force
 }
-Describe 'Test-KritHardenPrereqs' {
+Describe 'Test-KriticalHardenPrereqs' {
     It 'returns a structured result' {
-        $r = Test-KritHardenPrereqs -Quiet -NoBanner
+        $r = Test-KriticalHardenPrereqs -Quiet -NoBanner
         $r        | Should -Not -BeNullOrEmpty
         $r.Gates  | Should -Not -BeNullOrEmpty
         $r.Ok     | Should -BeOfType [bool]
         $r.CriticalFails | Should -BeOfType [int]
     }
     It 'reports all 7 gates' {
-        $r = Test-KritHardenPrereqs -Quiet -NoBanner
+        $r = Test-KriticalHardenPrereqs -Quiet -NoBanner
         $names = ($r.Gates | Select-Object -ExpandProperty Gate)
         $names | Should -Contain 'P1.Windows'
         $names | Should -Contain 'P2.PSVersion'
@@ -22,7 +22,7 @@ Describe 'Test-KritHardenPrereqs' {
         $names | Should -Contain 'P7.WinRM'
     }
     It 'every gate has Severity in Critical/Warning/Info' {
-        $r = Test-KritHardenPrereqs -Quiet -NoBanner
+        $r = Test-KriticalHardenPrereqs -Quiet -NoBanner
         foreach ($g in $r.Gates) {
             $g.Severity | Should -BeIn @('Critical','Warning','Info')
         }

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Krit.Hardening - Kritical Hardening toolkit (audit-only in v1.0.0).
+    Kritical.PS.Hardening - Kritical Hardening toolkit (audit-only in v1.0.0).
 .AUTHOR
     Joshua Finley - Kritical Pty Ltd - https://kritical.net
 #>
@@ -11,7 +11,7 @@ $ErrorActionPreference = 'Stop'
 # 1.0.1 - soft-import Krit.OmniFramework. Never fail hard at import time even
 # if Omni is missing or AppDomain-locked at an older version. Consuming
 # functions probe for OmniFramework at use time and degrade gracefully.
-function Import-KritHardenOmniSoft {
+function Import-KriticalHardenOmniSoft {
     [CmdletBinding()]
     param([switch] $Quiet)
     $already = Get-Module -Name Krit.OmniFramework -ErrorAction SilentlyContinue
@@ -29,7 +29,7 @@ function Import-KritHardenOmniSoft {
     }
 }
 
-try { Import-KritHardenOmniSoft -Quiet | Out-Null } catch { }
+try { Import-KriticalHardenOmniSoft -Quiet | Out-Null } catch { }
 
 $here = Split-Path -Parent $PSCommandPath
 foreach ($dir in 'Private','Public') {
@@ -42,10 +42,10 @@ foreach ($dir in 'Private','Public') {
 }
 
 Export-ModuleMember -Function @(
-    'Test-KritHardenPrereqs',
-    'Install-KritHardenModules',
-    'Get-KritHardenModuleStatus',
-    'Test-KritHardenCompliance',
-    'New-KritHardenReport',
-    'Get-KritHardenBanner'
+    'Test-KriticalHardenPrereqs',
+    'Install-KriticalHardenModules',
+    'Get-KriticalHardenModuleStatus',
+    'Test-KriticalHardenCompliance',
+    'New-KriticalHardenReport',
+    'Get-KriticalHardenBanner'
 )

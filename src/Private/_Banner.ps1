@@ -1,4 +1,4 @@
-function Get-KritHardenBannerCanonicalPath {
+function Get-KriticalHardenBannerCanonicalPath {
     [CmdletBinding()]
     [OutputType([string])]
     param()
@@ -11,7 +11,7 @@ function Get-KritHardenBannerCanonicalPath {
     return $null
 }
 
-function Get-KritHardenBanner {
+function Get-KriticalHardenBanner {
     <#
     .SYNOPSIS
         Returns the canonical Kritical banner. Prefers Krit.OmniFramework's Get-KritBanner
@@ -25,7 +25,7 @@ function Get-KritHardenBanner {
     if (Get-Command Get-KritBanner -Module Krit.OmniFramework -ErrorAction SilentlyContinue) {
         return Get-KritBanner -Title $Title -Compact:$Compact
     }
-    $path = Get-KritHardenBannerCanonicalPath
+    $path = Get-KriticalHardenBannerCanonicalPath
     if ($Compact -or -not $path -or -not (Test-Path -LiteralPath $path)) {
         $line = '[Kritical(TM)] Hardening | +61 1300 274 655 | sales at kritical dot net'
         if ($Title) { $line += " - $Title" }
@@ -36,12 +36,12 @@ function Get-KritHardenBanner {
     return $logo
 }
 
-function Write-KritHardenBanner {
+function Write-KriticalHardenBanner {
     [CmdletBinding()]
     param([string] $Title, [switch] $Compact, [switch] $NoColor)
     if (Get-Command Write-KritBanner -Module Krit.OmniFramework -ErrorAction SilentlyContinue) {
         Write-KritBanner -Title $Title -Compact:$Compact -NoColor:$NoColor
         return
     }
-    Write-Host (Get-KritHardenBanner -Title $Title -Compact:$Compact) -ForegroundColor DarkCyan
+    Write-Host (Get-KriticalHardenBanner -Title $Title -Compact:$Compact) -ForegroundColor DarkCyan
 }

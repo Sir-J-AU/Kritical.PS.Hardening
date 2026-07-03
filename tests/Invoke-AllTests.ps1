@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Krit.Hardening full test runner. Pester 5+. Output OUT of repo by default.
+    Kritical.PS.Hardening full test runner. Pester 5+. Output OUT of repo by default.
 .AUTHOR
     Joshua Finley - Kritical Pty Ltd
 #>
@@ -11,10 +11,10 @@ $ErrorActionPreference = 'Stop'
 
 $here = Split-Path -Parent $PSCommandPath
 $repo = Split-Path -Parent $here
-Import-Module (Join-Path $repo 'src\Krit.Hardening.psm1') -Force
+Import-Module (Join-Path $repo 'src\Kritical.PS.Hardening.psm1') -Force
 
 if (-not $NoBanner.IsPresent) {
-    Write-KritHardenBanner -Title 'Test Runner'
+    Write-KriticalHardenBanner -Title 'Test Runner'
 }
 
 $pester = Get-Module Pester -ListAvailable | Sort-Object Version -Descending | Select-Object -First 1
@@ -23,7 +23,7 @@ if (-not $pester -or $pester.Version.Major -lt 5) {
 }
 Import-Module Pester -MinimumVersion 5.5.0 -Force
 
-if (-not $OutputDir) { $OutputDir = Join-Path $env:LOCALAPPDATA 'Kritical\Krit.Hardening\test-output' }
+if (-not $OutputDir) { $OutputDir = Join-Path $env:LOCALAPPDATA 'Kritical\Kritical.PS.Hardening\test-output' }
 New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
 $utc = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmssZ')
 

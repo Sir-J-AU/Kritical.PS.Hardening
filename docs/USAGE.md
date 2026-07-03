@@ -1,4 +1,4 @@
-# Krit.Hardening — Detailed Usage
+# Kritical.PS.Hardening — Detailed Usage
 
 ```text
 ·· × × × ···  SirJ's Deaddrop  ··· × × × ···
@@ -13,10 +13,10 @@ Audit-only v1.0.0. Every function below is read-only against the OS; nothing in 
 
 ## Prereq probe
 
-`Test-KritHardenPrereqs` runs seven gates and returns a structured result. Use it as a hard gate before running anything else.
+`Test-KriticalHardenPrereqs` runs seven gates and returns a structured result. Use it as a hard gate before running anything else.
 
 ```powershell
-$r = Test-KritHardenPrereqs -Quiet
+$r = Test-KriticalHardenPrereqs -Quiet
 if (-not $r.Ok) {
     Write-Host "Critical prereqs failed: $($r.CriticalFails)" -ForegroundColor Red
     $r.Gates | Where-Object { -not $_.Pass } | Format-Table
@@ -42,19 +42,19 @@ Gates:
 
 ```powershell
 # Full canonical set
-Install-KritHardenModules
+Install-KriticalHardenModules
 
 # Minimal (just HotCakeX + HardeningKitty; skip DSC family)
-Install-KritHardenModules -OnlyCore
+Install-KriticalHardenModules -OnlyCore
 
 # Report-only (CI prebake; report what's missing without installing)
-Install-KritHardenModules -NoInstall
+Install-KriticalHardenModules -NoInstall
 ```
 
 Status check any time:
 
 ```powershell
-Get-KritHardenModuleStatus | Format-Table
+Get-KriticalHardenModuleStatus | Format-Table
 ```
 
 ---
@@ -62,15 +62,15 @@ Get-KritHardenModuleStatus | Format-Table
 ## Run the compliance probe
 
 ```powershell
-$r = Test-KritHardenCompliance
+$r = Test-KriticalHardenCompliance
 
 # Default: runs every installed source, 300-second per-probe timeout
 # Skip specific sources:
-$r = Test-KritHardenCompliance -SkipHotCakeX
-$r = Test-KritHardenCompliance -SkipHardeningKitty
+$r = Test-KriticalHardenCompliance -SkipHotCakeX
+$r = Test-KriticalHardenCompliance -SkipHardeningKitty
 
 # Use a specific HardeningKitty finding list:
-$r = Test-KritHardenCompliance -HardeningKittyList 'finding_list_0x6d69636b_machine.csv'
+$r = Test-KriticalHardenCompliance -HardeningKittyList 'finding_list_0x6d69636b_machine.csv'
 ```
 
 Result shape:
@@ -90,14 +90,14 @@ Platform      : @{Family=Windows; DistroId=windows; Version=10.0.26200; Architec
 ## Render branded report
 
 ```powershell
-# Default: %LOCALAPPDATA%\Kritical\Krit.Hardening\reports\<utc>\
-New-KritHardenReport -ComplianceResult $r
+# Default: %LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\reports\<utc>\
+New-KriticalHardenReport -ComplianceResult $r
 
 # Custom out:
-New-KritHardenReport -ComplianceResult $r -OutDir C:\drop\harden-2026-06
+New-KriticalHardenReport -ComplianceResult $r -OutDir C:\drop\harden-2026-06
 
 # Or pipeline:
-Test-KritHardenCompliance -Quiet | New-KritHardenReport -OutDir C:\drop\harden
+Test-KriticalHardenCompliance -Quiet | New-KriticalHardenReport -OutDir C:\drop\harden
 ```
 
 Output:
@@ -112,12 +112,12 @@ Output:
 
 ```powershell
 Import-Module Krit.OmniFramework -Force
-Import-Module Krit.Hardening -Force
-$pre = Test-KritHardenPrereqs -Quiet
+Import-Module Kritical.PS.Hardening -Force
+$pre = Test-KriticalHardenPrereqs -Quiet
 if (-not $pre.Ok) { throw "Prereqs failed - run elevated PS 7.4+" }
-Install-KritHardenModules -OnlyCore
-$r = Test-KritHardenCompliance -SkipHardeningKitty   # HotCakeX-only for speed
-$report = New-KritHardenReport -ComplianceResult $r
+Install-KriticalHardenModules -OnlyCore
+$r = Test-KriticalHardenCompliance -SkipHardeningKitty   # HotCakeX-only for speed
+$report = New-KriticalHardenReport -ComplianceResult $r
 "Report: $($report.OutDir)"
 ```
 

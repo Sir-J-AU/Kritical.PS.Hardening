@@ -1,4 +1,4 @@
-# Contributing to Krit.Hardening
+# Contributing to Kritical.PS.Hardening
 
 ```text
 ·· × × × ···  SirJ's Deaddrop  ··· × × × ···
@@ -20,9 +20,9 @@ Outside contributions require a Contributor License Agreement; reach Kritical at
 - `Set-StrictMode -Version Latest` at the top of every file.
 - Comment-based help on every public function (`.SYNOPSIS`, `.DESCRIPTION`, `.EXAMPLE`, `.NOTES Author: Joshua Finley - Kritical Pty Ltd`).
 - Private helpers go in `src/Private/`; public in `src/Public/`; all dot-sourced by the root `.psm1`.
-- Every operator-facing path emits the Kritical banner via `Write-KritHardenBanner` (which delegates to Krit.OmniFramework's `Write-KritBanner` when available).
+- Every operator-facing path emits the Kritical banner via `Write-KriticalHardenBanner` (which delegates to Krit.OmniFramework's `Write-KritBanner` when available).
 - No `Claude` / `Hermes` / `Codex` / `Copilot` / `ChatGPT` / `Anthropic` / `OpenAI` strings anywhere in published output — the Manifest.Tests.ps1 brand-leak scan blocks the publish if any leak.
-- v1.0.0 is audit-only. Destructive `Invoke-KritHardenApply` lands in v1.1.0 only after the snapshot/rollback chain is bulletproof.
+- v1.0.0 is audit-only. Destructive `Invoke-KriticalHardenApply` lands in v1.1.0 only after the snapshot/rollback chain is bulletproof.
 
 ## Tests
 
@@ -30,7 +30,7 @@ Outside contributions require a Contributor License Agreement; reach Kritical at
 .\tests\Invoke-AllTests.ps1
 ```
 
-Output to `%LOCALAPPDATA%\Kritical\Krit.Hardening\test-output\`. Exit 0 = all pass.
+Output to `%LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\test-output\`. Exit 0 = all pass.
 
 ## Publish
 

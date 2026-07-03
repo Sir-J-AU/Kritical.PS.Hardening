@@ -1,4 +1,4 @@
-# Krit.Hardening — Kritical Hardening Toolkit (audit-only v1.0.0)
+# Kritical.PS.Hardening — Kritical Hardening Toolkit (audit-only v1.0.0)
 
 ```text
 ·· × × × ···  SirJ's Deaddrop  ··· × × × ···
@@ -52,17 +52,17 @@ One PowerShell module that runs every well-known OSS Windows-hardening complianc
 
 ### v1.0.0 = audit-only
 
-- ✅ `Test-KritHardenPrereqs` — 7-gate prereq check
-- ✅ `Install-KritHardenModules` — installs HotCakeX + HardeningKitty + DSC family (idempotent)
-- ✅ `Get-KritHardenModuleStatus` — read-only inventory
-- ✅ `Test-KritHardenCompliance` — runs every installed audit tool, returns normalised result
-- ✅ `New-KritHardenReport` — Kritical-branded HTML + Excel + JSON via Krit.OmniFramework
+- ✅ `Test-KriticalHardenPrereqs` — 7-gate prereq check
+- ✅ `Install-KriticalHardenModules` — installs HotCakeX + HardeningKitty + DSC family (idempotent)
+- ✅ `Get-KriticalHardenModuleStatus` — read-only inventory
+- ✅ `Test-KriticalHardenCompliance` — runs every installed audit tool, returns normalised result
+- ✅ `New-KriticalHardenReport` — Kritical-branded HTML + Excel + JSON via Krit.OmniFramework
 
 ### v1.1.0 (deferred — destructive apply lands here once snapshot/rollback is bulletproof)
 
-- 🚧 `Invoke-KritHardenApply` — gated `-Apply -IUnderstandThisCanBreakProduction`; per-area selection
-- 🚧 `Restore-KritHardenSnapshot` — rollback to pre-apply registry + secedit + DSC state
-- 🚧 `Start-KritHardenWatcher` — scheduled-task watcher; re-runs compliance daily/weekly; alerts on drift
+- 🚧 `Invoke-KriticalHardenApply` — gated `-Apply -IUnderstandThisCanBreakProduction`; per-area selection
+- 🚧 `Restore-KriticalHardenSnapshot` — rollback to pre-apply registry + secedit + DSC state
+- 🚧 `Start-KriticalHardenWatcher` — scheduled-task watcher; re-runs compliance daily/weekly; alerts on drift
 
 ---
 
@@ -72,18 +72,18 @@ One PowerShell module that runs every well-known OSS Windows-hardening complianc
 
 ```powershell
 Install-Module Krit.OmniFramework -Scope CurrentUser   # foundation dependency
-Install-Module Krit.Hardening     -Scope CurrentUser
-Import-Module  Krit.Hardening -Force
+Install-Module Kritical.PS.Hardening     -Scope CurrentUser
+Import-Module  Kritical.PS.Hardening -Force
 ```
 
 ### GitHub release zip
 
 ```powershell
-gh release download v1.0.0 -R Sir-J-AU/Krit.Hardening -p '*.zip' -D $env:TEMP --clobber
+gh release download v1.0.0 -R Sir-J-AU/Kritical.PS.Hardening -p '*.zip' -D $env:TEMP --clobber
 $psMod = ($env:PSModulePath -split ';' | Where-Object { $_ -match 'Documents\\PowerShell\\Modules$' } | Select-Object -First 1)
-$instDir = Join-Path $psMod 'Krit.Hardening\1.0.0'
-Expand-Archive -LiteralPath "$env:TEMP\Krit.Hardening-1.0.0.zip" -DestinationPath $instDir -Force
-Import-Module Krit.Hardening -Force
+$instDir = Join-Path $psMod 'Kritical.PS.Hardening\1.0.0'
+Expand-Archive -LiteralPath "$env:TEMP\Kritical.PS.Hardening-1.0.0.zip" -DestinationPath $instDir -Force
+Import-Module Kritical.PS.Hardening -Force
 ```
 
 ---
@@ -92,23 +92,23 @@ Import-Module Krit.Hardening -Force
 
 ```powershell
 # 1. Verify the machine is ready for a compliance probe (admin / Defender / TPM / SecureBoot / etc.)
-Test-KritHardenPrereqs
+Test-KriticalHardenPrereqs
 
 # 2. Install the OSS hardening modules
-Install-KritHardenModules                # full set: HotCakeX + HardeningKitty + DSC family
-Install-KritHardenModules -OnlyCore      # smaller: HotCakeX + HardeningKitty only
+Install-KriticalHardenModules                # full set: HotCakeX + HardeningKitty + DSC family
+Install-KriticalHardenModules -OnlyCore      # smaller: HotCakeX + HardeningKitty only
 
 # 3. Read-only inventory (which giants are installed)
-Get-KritHardenModuleStatus | Format-Table
+Get-KriticalHardenModuleStatus | Format-Table
 
 # 4. Run every installed audit tool (read-only; takes a few minutes)
-$r = Test-KritHardenCompliance
+$r = Test-KriticalHardenCompliance
 
 # 5. Render Kritical-branded HTML + Excel + JSON report
-New-KritHardenReport -ComplianceResult $r
+New-KriticalHardenReport -ComplianceResult $r
 ```
 
-Output lands at `%LOCALAPPDATA%\Kritical\Krit.Hardening\reports\<utc>\` with:
+Output lands at `%LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\reports\<utc>\` with:
 - `compliance-report.html` (Kritical-branded; from PSWriteHTML)
 - `compliance-report.xlsx` (multi-sheet with Kritical banner sheet; from ImportExcel)
 - `compliance-result.json` (raw findings for any downstream consumer)
@@ -119,23 +119,23 @@ Output lands at `%LOCALAPPDATA%\Kritical\Krit.Hardening\reports\<utc>\` with:
 
 | Function | Purpose |
 | --- | --- |
-| `Test-KritHardenPrereqs` | 7-gate prereq probe (P1 Windows / P2 PSVersion ≥ 7.4 / P3 Admin / P4 Defender / P5 TPM / P6 SecureBoot / P7 WinRM) |
-| `Get-KritHardenModuleStatus` | Read-only: which OSS hardening modules are installed + loaded |
-| `Install-KritHardenModules` | Idempotent installer for HotCakeX + HardeningKitty + DSC family + PSScriptAnalyzer; `-OnlyCore` / `-NoInstall` |
-| `Test-KritHardenCompliance` | Runs every installed probe (HotCakeX `Confirm-SystemCompliance` + HardeningKitty `Invoke-HardeningKitty -Mode Audit`); normalises findings into a single PSCustomObject set with `Source / Category / Control / Outcome / Detail / Recommendation / Severity` |
-| `New-KritHardenReport` | Renders HTML + Excel + JSON via Krit.OmniFramework; falls back to minimal-HTML / JSON-only when OmniFramework not loaded |
-| `Get-KritHardenBanner` | Brand banner reader (prefers Krit.OmniFramework's Get-KritBanner) |
+| `Test-KriticalHardenPrereqs` | 7-gate prereq probe (P1 Windows / P2 PSVersion ≥ 7.4 / P3 Admin / P4 Defender / P5 TPM / P6 SecureBoot / P7 WinRM) |
+| `Get-KriticalHardenModuleStatus` | Read-only: which OSS hardening modules are installed + loaded |
+| `Install-KriticalHardenModules` | Idempotent installer for HotCakeX + HardeningKitty + DSC family + PSScriptAnalyzer; `-OnlyCore` / `-NoInstall` |
+| `Test-KriticalHardenCompliance` | Runs every installed probe (HotCakeX `Confirm-SystemCompliance` + HardeningKitty `Invoke-HardeningKitty -Mode Audit`); normalises findings into a single PSCustomObject set with `Source / Category / Control / Outcome / Detail / Recommendation / Severity` |
+| `New-KriticalHardenReport` | Renders HTML + Excel + JSON via Krit.OmniFramework; falls back to minimal-HTML / JSON-only when OmniFramework not loaded |
+| `Get-KriticalHardenBanner` | Brand banner reader (prefers Krit.OmniFramework's Get-KritBanner) |
 
 ---
 
 ## Tests
 
 ```powershell
-cd "$env:USERPROFILE\OneDrive - Kritical Pty Ltd\Github\Krit.Hardening"
+cd "$env:USERPROFILE\OneDrive - Kritical Pty Ltd\Github\Kritical.PS.Hardening"
 .\tests\Invoke-AllTests.ps1
 ```
 
-16 Pester unit tests across Banner / Manifest / Modules / Prereqs / Report. Test artefacts to `%LOCALAPPDATA%\Kritical\Krit.Hardening\test-output\` (out of repo).
+16 Pester unit tests across Banner / Manifest / Modules / Prereqs / Report. Test artefacts to `%LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\test-output\` (out of repo).
 
 ---
 

@@ -1,21 +1,21 @@
-function New-KritHardenReport {
+function New-KriticalHardenReport {
     <#
     .SYNOPSIS
-        Renders a Kritical-branded HTML + Excel report from a Test-KritHardenCompliance
+        Renders a Kritical-branded HTML + Excel report from a Test-KriticalHardenCompliance
         result. Uses Krit.OmniFramework's New-KritHtmlReport + New-KritExcelReport.
 
     .PARAMETER ComplianceResult
-        The object returned by Test-KritHardenCompliance.
+        The object returned by Test-KriticalHardenCompliance.
 
     .PARAMETER OutDir
-        Where to drop the two files. Default: %LOCALAPPDATA%\Kritical\Krit.Hardening\reports\<utc>\
+        Where to drop the two files. Default: %LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\reports\<utc>\
 
     .EXAMPLE
-        $r = Test-KritHardenCompliance -Quiet
-        New-KritHardenReport -ComplianceResult $r
+        $r = Test-KriticalHardenCompliance -Quiet
+        New-KriticalHardenReport -ComplianceResult $r
 
     .EXAMPLE
-        Test-KritHardenCompliance -Quiet | New-KritHardenReport -OutDir C:\drop\harden
+        Test-KriticalHardenCompliance -Quiet | New-KriticalHardenReport -OutDir C:\drop\harden
 
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
@@ -29,11 +29,11 @@ function New-KritHardenReport {
         [switch] $NoOpen,
         [switch] $NoBanner
     )
-    if (-not $NoBanner.IsPresent) { Write-KritHardenBanner -Title 'Render Compliance Report' -Compact }
+    if (-not $NoBanner.IsPresent) { Write-KriticalHardenBanner -Title 'Render Compliance Report' -Compact }
 
     if (-not $OutDir) {
         $utc = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmssZ')
-        $OutDir = Join-Path $env:LOCALAPPDATA "Kritical\Krit.Hardening\reports\$utc"
+        $OutDir = Join-Path $env:LOCALAPPDATA "Kritical\Kritical.PS.Hardening\reports\$utc"
     }
     New-Item -ItemType Directory -Path $OutDir -Force | Out-Null
 
@@ -49,7 +49,7 @@ function New-KritHardenReport {
     if (Get-Command New-KritHtmlReport -ErrorAction SilentlyContinue) {
         try {
             New-KritHtmlReport `
-                -Title 'Krit.Hardening - Compliance Probe' `
+                -Title 'Kritical.PS.Hardening - Compliance Probe' `
                 -Subtitle ("Captured " + $ComplianceResult.Timestamp + ", " + $ComplianceResult.FindingCount + " findings") `
                 -Section @{
                     'Source summary'        = $ComplianceResult.SourceSummary
@@ -66,7 +66,7 @@ function New-KritHardenReport {
     if (Get-Command New-KritExcelReport -ErrorAction SilentlyContinue) {
         try {
             New-KritExcelReport `
-                -Title 'Krit.Hardening - Compliance Probe' `
+                -Title 'Kritical.PS.Hardening - Compliance Probe' `
                 -Sheet @{
                     'SourceSummary' = $ComplianceResult.SourceSummary
                     'OutcomeCounts' = $ComplianceResult.ByOutcome

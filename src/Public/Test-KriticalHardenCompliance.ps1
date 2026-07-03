@@ -1,4 +1,4 @@
-function Test-KritHardenCompliance {
+function Test-KriticalHardenCompliance {
     <#
     .SYNOPSIS
         Runs every installed compliance probe (HotCakeX Confirm-SystemCompliance + scipag
@@ -25,9 +25,9 @@ function Test-KritHardenCompliance {
         Pass 'all' to run every shipped list (much longer).
 
     .EXAMPLE
-        Test-KritHardenCompliance
-        $r = Test-KritHardenCompliance -Quiet
-        New-KritHardenReport -ComplianceResult $r -OutDir C:\drop\harden
+        Test-KriticalHardenCompliance
+        $r = Test-KriticalHardenCompliance -Quiet
+        New-KriticalHardenReport -ComplianceResult $r -OutDir C:\drop\harden
 
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
@@ -44,7 +44,7 @@ function Test-KritHardenCompliance {
         [switch] $NoBanner
     )
     if (-not $NoBanner.IsPresent -and -not $Quiet.IsPresent) {
-        Write-KritHardenBanner -Title 'Compliance Probe (audit-only)' -Compact
+        Write-KriticalHardenBanner -Title 'Compliance Probe (audit-only)' -Compact
     }
 
     $findings = [System.Collections.Generic.List[pscustomobject]]::new()
@@ -97,7 +97,7 @@ function Test-KritHardenCompliance {
                 $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Status='ERROR'; Note=$_.Exception.Message })
             }
         } else {
-            $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Status='NOT-INSTALLED'; Note='Install-KritHardenModules to install' })
+            $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Status='NOT-INSTALLED'; Note='Install-KriticalHardenModules to install' })
         }
     }
 
@@ -156,7 +156,7 @@ function Test-KritHardenCompliance {
                 $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Status='ERROR'; Note=$_.Exception.Message })
             }
         } else {
-            $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Status='NOT-INSTALLED'; Note='Install-KritHardenModules to install' })
+            $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Status='NOT-INSTALLED'; Note='Install-KriticalHardenModules to install' })
         }
     }
 

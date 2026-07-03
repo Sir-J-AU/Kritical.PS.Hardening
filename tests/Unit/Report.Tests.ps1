@@ -1,6 +1,6 @@
 #requires -Modules Pester
 BeforeAll {
-    Import-Module (Join-Path $PSScriptRoot '..\..\src\Krit.Hardening.psm1') -Force
+    Import-Module (Join-Path $PSScriptRoot '..\..\src\Kritical.PS.Hardening.psm1') -Force
     $script:Tmp = Join-Path ([System.IO.Path]::GetTempPath()) ("krit-harden-rpt-" + [guid]::NewGuid())
     New-Item -ItemType Directory -Path $script:Tmp | Out-Null
     # Synthetic compliance result for report rendering
@@ -20,14 +20,14 @@ AfterAll {
     Remove-Item -LiteralPath $script:Tmp -Recurse -Force -ErrorAction SilentlyContinue
 }
 
-Describe 'New-KritHardenReport' {
+Describe 'New-KriticalHardenReport' {
     It 'always writes a JSON snapshot of the compliance result' {
-        $r = New-KritHardenReport -ComplianceResult $script:Synth -OutDir $script:Tmp -NoOpen -NoBanner
+        $r = New-KriticalHardenReport -ComplianceResult $script:Synth -OutDir $script:Tmp -NoOpen -NoBanner
         Test-Path -LiteralPath $r.JsonPath | Should -BeTrue
         (Get-Content -LiteralPath $r.JsonPath -Raw) | Should -Match 'RealTimeProtection'
     }
     It 'returns an object with OutDir/JsonPath/HtmlPath/XlsxPath' {
-        $r = New-KritHardenReport -ComplianceResult $script:Synth -OutDir $script:Tmp -NoOpen -NoBanner
+        $r = New-KriticalHardenReport -ComplianceResult $script:Synth -OutDir $script:Tmp -NoOpen -NoBanner
         $r          | Should -Not -BeNullOrEmpty
         $r.OutDir   | Should -Be $script:Tmp
         $r.JsonPath | Should -Not -BeNullOrEmpty

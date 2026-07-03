@@ -1,10 +1,10 @@
 #requires -Modules Pester
 BeforeAll {
-    Import-Module (Join-Path $PSScriptRoot '..\..\src\Krit.Hardening.psm1') -Force
+    Import-Module (Join-Path $PSScriptRoot '..\..\src\Kritical.PS.Hardening.psm1') -Force
 }
-Describe 'Get-KritHardenModuleStatus' {
+Describe 'Get-KriticalHardenModuleStatus' {
     It 'reports the canonical hardening module set' {
-        $r = Get-KritHardenModuleStatus
+        $r = Get-KriticalHardenModuleStatus
         $names = $r.Modules | Select-Object -ExpandProperty Module
         $names | Should -Contain 'Harden-Windows-Security-Module'
         $names | Should -Contain 'HardeningKitty'
@@ -15,23 +15,23 @@ Describe 'Get-KritHardenModuleStatus' {
         $names | Should -Contain 'PSScriptAnalyzer'
     }
     It 'rows have Installed (bool) and Version' {
-        $r = Get-KritHardenModuleStatus
+        $r = Get-KriticalHardenModuleStatus
         foreach ($m in $r.Modules) {
             $m.Installed | Should -BeOfType [bool]
         }
     }
 }
 
-Describe 'Install-KritHardenModules -NoInstall' {
+Describe 'Install-KriticalHardenModules -NoInstall' {
     It 'returns a status object without throwing' {
-        $r = Install-KritHardenModules -NoInstall -Quiet -NoBanner
+        $r = Install-KriticalHardenModules -NoInstall -Quiet -NoBanner
         $r           | Should -Not -BeNullOrEmpty
         $r.Ok        | Should -BeOfType [bool]
         $r.Failures  | Should -BeOfType [int]
         $r.Modules   | Should -Not -BeNullOrEmpty
     }
     It '-OnlyCore restricts to HotCakeX + HardeningKitty' {
-        $r = Install-KritHardenModules -OnlyCore -NoInstall -Quiet -NoBanner
+        $r = Install-KriticalHardenModules -OnlyCore -NoInstall -Quiet -NoBanner
         $names = $r.Modules | Select-Object -ExpandProperty Module
         $names | Should -Contain 'Harden-Windows-Security-Module'
         $names | Should -Contain 'HardeningKitty'

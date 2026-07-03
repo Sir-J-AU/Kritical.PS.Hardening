@@ -1,4 +1,4 @@
-function Test-KritHardenPrereqs {
+function Test-KriticalHardenPrereqs {
     <#
     .SYNOPSIS
         7-gate prereq check for the Kritical Hardening toolkit. Read-only.
@@ -17,10 +17,10 @@ function Test-KritHardenPrereqs {
         can branch on .Ok and per-gate detail.
 
     .EXAMPLE
-        Test-KritHardenPrereqs
+        Test-KriticalHardenPrereqs
 
     .EXAMPLE
-        $r = Test-KritHardenPrereqs -Quiet
+        $r = Test-KriticalHardenPrereqs -Quiet
         if (-not $r.Ok) { throw "Hardening prereqs failed" }
 
     .NOTES
@@ -31,7 +31,7 @@ function Test-KritHardenPrereqs {
     param([switch] $Quiet, [switch] $NoBanner)
 
     if (-not $NoBanner.IsPresent -and -not $Quiet.IsPresent) {
-        Write-KritHardenBanner -Title 'Hardening Prereq Probe' -Compact
+        Write-KriticalHardenBanner -Title 'Hardening Prereq Probe' -Compact
     }
 
     $gates = [System.Collections.Generic.List[pscustomobject]]::new()

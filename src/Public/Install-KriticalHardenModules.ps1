@@ -1,7 +1,7 @@
-function Get-KritHardenModuleStatus {
+function Get-KriticalHardenModuleStatus {
     <#
     .SYNOPSIS
-        Read-only inventory of the OSS hardening modules Krit.Hardening orchestrates.
+        Read-only inventory of the OSS hardening modules Kritical.PS.Hardening orchestrates.
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
     #>
@@ -30,10 +30,10 @@ function Get-KritHardenModuleStatus {
     [pscustomobject]@{ Modules = @($rows); Timestamp = (Get-Date).ToUniversalTime() }
 }
 
-function Install-KritHardenModules {
+function Install-KriticalHardenModules {
     <#
     .SYNOPSIS
-        Idempotent installer for the OSS hardening giants that Krit.Hardening orchestrates.
+        Idempotent installer for the OSS hardening giants that Kritical.PS.Hardening orchestrates.
 
     .DESCRIPTION
         Installs (CurrentUser scope) any missing module from the canonical hardening set:
@@ -45,9 +45,9 @@ function Install-KritHardenModules {
         skip DSC family for minimal install).
 
     .EXAMPLE
-        Install-KritHardenModules                           # full set
-        Install-KritHardenModules -OnlyCore                 # just HotCakeX + HardeningKitty
-        Install-KritHardenModules -NoInstall                # report-only
+        Install-KriticalHardenModules                           # full set
+        Install-KriticalHardenModules -OnlyCore                 # just HotCakeX + HardeningKitty
+        Install-KriticalHardenModules -NoInstall                # report-only
 
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
@@ -61,7 +61,7 @@ function Install-KritHardenModules {
         [switch] $Quiet
     )
     if (-not $NoBanner.IsPresent -and -not $Quiet.IsPresent) {
-        Write-KritHardenBanner -Title 'Install-KritHardenModules' -Compact
+        Write-KriticalHardenBanner -Title 'Install-KriticalHardenModules' -Compact
     }
 
     $core = @('Harden-Windows-Security-Module','HardeningKitty')

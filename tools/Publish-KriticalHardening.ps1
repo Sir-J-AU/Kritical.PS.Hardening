@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Publish Krit.Hardening to PSGallery with gated tests + doc check + manifest validation.
+    Publish Kritical.PS.Hardening to PSGallery with gated tests + doc check + manifest validation.
 .NOTES
     Author: Joshua Finley - Kritical Pty Ltd
 #>
@@ -8,7 +8,7 @@
 [OutputType([pscustomobject])]
 param(
     [string] $ApiKeyFile,
-    [string] $ModuleName = 'Krit.Hardening',
+    [string] $ModuleName = 'Kritical.PS.Hardening',
     [string] $RepoRoot,
     [switch] $SkipManifestTest,
     [switch] $SkipTests,
