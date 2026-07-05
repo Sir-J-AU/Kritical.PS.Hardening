@@ -64,7 +64,10 @@ function Test-KriticalHardenCompliance {
                         Confirm-SystemCompliance -ExportToCSV -DetailedDisplay 2>&1
                     }
                     if (Wait-Job -Job $job -Timeout $MaxProbeSeconds) {
-                        Receive-Job -Job $job | Out-Null
+                        # .5231 (lens-hunt): capture job output instead of discarding to Out-Null so
+                        # probe warnings/errors survive in the audit trail (surfaced via -Verbose).
+                        $jobOutput = Receive-Job -Job $job -ErrorAction SilentlyContinue 2>&1
+                        if ($jobOutput) { $jobOutput | ForEach-Object { Write-Verbose "HotCakeX job: $_" } }
                         # HotCakeX writes a CSV alongside; parse if present
                         $csv = Get-ChildItem -LiteralPath (Get-Location) -Filter 'Compliance-Check-*.csv' -ErrorAction SilentlyContinue |
                                Sort-Object LastWriteTime -Descending | Select-Object -First 1
@@ -118,7 +121,10 @@ function Test-KriticalHardenCompliance {
                         Invoke-HardeningKitty @a
                     }
                     if (Wait-Job -Job $job -Timeout $MaxProbeSeconds) {
-                        Receive-Job -Job $job | Out-Null
+                        # .5231 (lens-hunt): capture job output instead of discarding to Out-Null so
+                        # HardeningKitty warnings/errors survive in the audit trail (surfaced via -Verbose).
+                        $jobOutput = Receive-Job -Job $job -ErrorAction SilentlyContinue 2>&1
+                        if ($jobOutput) { $jobOutput | ForEach-Object { Write-Verbose "HardeningKitty job: $_" } }
                         # HardeningKitty writes a CSV report alongside; parse newest
                         $csv = Get-ChildItem -LiteralPath (Get-Location) -Filter 'hardeningkitty_report_*.csv' -ErrorAction SilentlyContinue |
                                Sort-Object LastWriteTime -Descending | Select-Object -First 1

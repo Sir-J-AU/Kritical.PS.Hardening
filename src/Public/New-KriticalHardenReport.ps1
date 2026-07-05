@@ -42,7 +42,14 @@ function New-KriticalHardenReport {
     $jsonOut  = Join-Path $OutDir 'compliance-result.json'
 
     # Always emit the JSON regardless of whether OmniFramework is loaded
-    $ComplianceResult | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $jsonOut -Encoding UTF8
+    # .5231 (lens-hunt): guard serialization/write so a ConvertTo-Json failure (deep/circular
+    # object) or a write error doesn't abort the whole report before HTML/Excel are attempted.
+    try {
+        $ComplianceResult | ConvertTo-Json -Depth 10 -ErrorAction Stop | Set-Content -LiteralPath $jsonOut -Encoding UTF8 -ErrorAction Stop
+    } catch {
+        Write-Warning "JSON report failed: $($_.Exception.Message)"
+        $jsonOut = $null
+    }
 
     $htmlOk = $false
     $xlsxOk = $false
