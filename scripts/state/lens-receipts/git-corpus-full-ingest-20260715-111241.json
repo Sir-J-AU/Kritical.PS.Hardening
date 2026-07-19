@@ -1,0 +1,37 @@
+{
+  "tool": "Invoke-KritLensGitCorpusFullIngest",
+  "wave": "WAVE-5148-FULL-CORPUS-INGEST",
+  "utc": "2026-07-15T11:12:41.8903812Z",
+  "newVersionRows": 1,
+  "newBlobs": 0,
+  "totals": {
+    "distinctLanguages": 20,
+    "distinctPaths": 135428,
+    "distinctCommits": 7400,
+    "distinctBlobs": 77984,
+    "distinctWaveTags": 1431,
+    "versionRows": 366246
+  },
+  "languageBreakdown": {
+    "YAML": 185,
+    "AL": 18263,
+    "Log": 235,
+    "TypeScript": 27,
+    "Markdown": 27824,
+    "JSON": 105938,
+    "JavaScript": 8419,
+    "Other": 11425,
+    "Liquid": 30944,
+    "HTML": 3145,
+    "Python": 125,
+    "TOML": 34,
+    "XML": 99,
+    "CSS": 13219,
+    "CSV": 5899,
+    "PowerShell": 138186,
+    "Shell": 20,
+    "Text": 1711,
+    "JSONL": 391,
+    "SQL": 157
+  }
+}
