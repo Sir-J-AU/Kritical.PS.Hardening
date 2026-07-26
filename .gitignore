@@ -26,3 +26,11 @@ dist/
 
 # Pester run artifact
 testResults.xml
+
+# --- Generated Lens/tool artefacts (added 20260726, commit-green lane) ---
+# Regenerable machine output: timestamped Lens sweep runs (json/md only, zero source).
+# Hand-authored docs/ findings and scripts/*.ps1 are deliberately NOT ignored.
+scripts/output/
+
+# Kritical repo lane-lease (see Kritical.PS.GitHub Enter-KritRepoLease) -- never commit
+.kritical-lane-lock.json
