@@ -12,7 +12,7 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
-<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=d6c382954b2a — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=f0eda4287118 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
 # 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
 
 > This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
@@ -93,6 +93,42 @@ work, which is worse than unfinished work because it looks done.
 **"Built" does not mean "safe".** Persist and push before the next step: tonight a whole component
 had no git, ten docs were untracked, a 623-insertion commit was stranded on a detached HEAD, and
 1,492 agent results lived only inside journal files.
+
+## 🔴 FAN-OUT RULES — the shape of a swarm (operator directives, 2026-08-01)
+
+**ONE SWARM AT A TIME. Keep it alive by APPENDING PHASES, never by launching a second.** Each new
+`Workflow` call costs the operator an approval; editing the script file and resuming with
+`{scriptPath, resumeFromRunId}` costs nothing and replays completed agents from cache free. Four
+parallel workflows were run early on 2026-08-01 and that was the mistake — it is what forced the
+operator to keep approving instead of sleeping.
+
+**MODEL MIX — assign it explicitly. Inheritance is silent and it drifts.** Measured 2026-08-01:
+**50 of 53 tracks were running on OPUS** purely because tracks inherit the session model when
+`model` is unset — including pure mechanical scanning. Slower and far more expensive for no
+accuracy gain.
+
+| Tier | Work |
+|---|---|
+| **Haiku** | bulk and mechanical — scanning, inventorying, applying known fixes, collecting output |
+| **Sonnet** | everything interpretive, and EVERY adversarial refutation (pin it, high effort) |
+| **Opus** | the orchestrator: steer, verify, decide. Reserve for a track only where the reasoning genuinely warrants it, set EXPLICITLY — never by default |
+
+**EVERY CLAIM GETS AN ADVERSARIAL REFUTER**, briefed to REFUTE and to default to refuted when
+uncertain — never one verifier, never a self-report accepted. This layer earns its cost: on
+2026-08-01 refuters REFUTED a trust-ledger round with 3 hard defects, caught a real false-green,
+and caught the orchestrator breaking HEAD twice.
+
+🔴 **GATE AGENTS RUN LAST, SO A SESSION LIMIT STRIPS THE VERIFICATION LAYER OFF EVERY WORKFLOW
+WHILE THE PRODUCTION LAYER COMPLETES.** Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs
+6/7 ✓ then gates 0/14 ✗ at **zero tokens**. The estate therefore accumulates
+**finished-but-unverified** work, which is worse than unfinished work because it looks done. Assume
+this has happened and check for it.
+
+**Width:** up to 75 concurrent is pre-authorised, but the harness caps concurrency near 16 and
+phases run sequentially, so real width is ~10. Do not chase width — chase *not losing* what runs.
+
+**Never leave a swarm to die quietly.** Put a final task at the bottom you expect to keep it open,
+append the next phase into it, and close it deliberately when the work is genuinely done.
 
 <!-- END KRITICAL-SWARM-TRACKING -->
 
