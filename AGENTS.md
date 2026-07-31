@@ -12,6 +12,90 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=d6c382954b2a — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+# 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
+
+> This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
+> top of `C:\Users\joshl\.claude\CLAUDE.md`. Anything you change here is overwritten on the next run.
+> Re-propagate: `pwsh "<Github>/Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1"` · Drift check (exits non-zero): `-Check`
+
+## 🔴 The three commands — run them from disk, never from memory
+
+```
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
+```
+
+🔴 **RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION
+LIMIT — BEFORE RE-RUNNING ANY LANE.** The ledger says whether an agent returned; **forensics
+says what a dead agent actually WROTE.**
+
+**WHY — a missing result is NOT a missing outcome.** A `StructuredOutput` failure and a
+session-limit kill both emit **no result line whatsoever**, so in the journal a lost report is
+**indistinguishable from an agent still thinking**. The agent almost certainly DID the work.
+Measured 2026-08-01: **1,670 agents, 173 never returned, and 36 of those HAD WRITTEN REAL
+FILES** — test suites and deploy scripts sitting on disk while every status surface reported
+them incomplete. Re-running a lane on the assumption *it never finished so nothing happened*
+is how work gets duplicated or silently clobbered. Check `git status` and the agent's
+`agent-<id>.jsonl` transcript before re-running anything.
+
+## RULE ZERO — one line
+
+**RULE ZERO in one line: READ THE INDEX AND THE DOCS BEFORE YOU CLAIM A THING DOES NOT EXIST.** You do not get to say a thing does not exist — only that you looked, where, and what you found. 4 false absence-claims in one session: *"No PowerShell semantic Lens ingester exists anywhere in th...* · *`UNDECLARED` read as "not built".* · *"`.github/workflows/` DOES NOT EXIST."* · *`Kritical.Lens.QAArsenal`.*.
+
+---
+
+## Verbatim source — RULE ZERO-B
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴 RULE ZERO-B — NEVER SPAWN AN AGENT THAT IS NOT PROGRAMMATICALLY TRACKED (HARD RULE)
+
+**Operator directive 2026-08-01, after ~176 agents across ~7 concurrent swarms died with nobody
+able to say what they had done, written, or left half-finished.**
+
+**Before dispatching ANY agent or swarm, and at the END of every turn that ran one, run the
+ledger — never your memory:**
+
+```
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
+```
+
+🔴 **RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION
+LIMIT — BEFORE RE-RUNNING ANY LANE.** It is the only thing that tells you **what a dead agent
+actually WROTE**. The ledger says whether an agent returned; forensics says what it left on disk.
+Measured 2026-08-01: **1,670 agents, 173 never returned, and 36 of those had written real files** —
+including test suites and deploy scripts sitting on disk while every status surface reported them
+incomplete. Re-running a lane on the assumption "it never finished so nothing happened" is how work
+gets duplicated or silently clobbered.
+
+Memory is not tracking. A remembered swarm count was measured **wrong by 4×** (believed ~15
+running; actually 4 of 57, with 153 agents started and never returned).
+
+**For every agent you must be able to answer, from disk and not from recall:** is it still
+running · what was it asked to do · which files did it WRITE · which did it NOT · did it commit ·
+did it return a result at all.
+
+**🔴 A MISSING RESULT IS NOT A MISSING OUTCOME.** A `StructuredOutput` failure and a session-limit
+kill both emit **no result line whatsoever** — verified on `wf_731e7b0d-ecc` (harness reported
+`agents_empty_result=1`; journal held 15 `started`, 14 `result`). So in the journal a lost report
+is indistinguishable from an agent still thinking. **The agent almost certainly DID the work.**
+Check `git status` and its `agent-<id>.jsonl` transcript before re-running anything.
+
+**Gate agents run LAST, so a session limit strips the VERIFICATION layer off every workflow while
+the production layer completes.** Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs 6/7 ✓
+then gates 0/14 ✗ at **zero tokens**. The estate therefore accumulates **finished-but-unverified**
+work, which is worse than unfinished work because it looks done.
+
+**"Built" does not mean "safe".** Persist and push before the next step: tonight a whole component
+had no git, ten docs were untracked, a 623-insertion commit was stranded on a detached HEAD, and
+1,492 agent results lived only inside journal files.
+
+<!-- END KRITICAL-SWARM-TRACKING -->
+
 # family #1 — the six PowerShell analyzers (PSGraph / SqlMiner / CompareAndBounce /
 #              CodeGraph / ALDependencyMatrix / SchemaCompleteness)
 Invoke-KriticalLensSweep -Root 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.PS.Hardening'
