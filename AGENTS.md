@@ -12,7 +12,7 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
-<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=f0eda4287118 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=7ff07fe55ec5 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
 # 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
 
 > This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
@@ -43,6 +43,189 @@ is how work gets duplicated or silently clobbered. Check `git status` and the ag
 ## RULE ZERO — one line
 
 **RULE ZERO in one line: READ THE INDEX AND THE DOCS BEFORE YOU CLAIM A THING DOES NOT EXIST.** You do not get to say a thing does not exist — only that you looked, where, and what you found. 4 false absence-claims in one session: *"No PowerShell semantic Lens ingester exists anywhere in th...* · *`UNDECLARED` read as "not built".* · *"`.github/workflows/` DOES NOT EXIST."* · *`Kritical.Lens.QAArsenal`.*.
+
+---
+
+## Verbatim source — THE API MAPPER ALREADY EXISTS
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴 THE API MAPPER ALREADY EXISTS — REST **AND** GRAPHQL. NEVER HAND-ROLL AN API CLIENT, DIFF OR VALIDATOR AGAIN.
+
+**Operator directive 2026-08-01, after an assistant spent a session hand-diagnosing a Shopify API
+version drift while a complete, tested, documented toolkit for exactly that sat unused in Lens —
+and then wrongly told the operator REST coverage did not exist.**
+
+**Location (ONE folder, everything is here):**
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\components\data-infra\Kritical.Lens.Toolkit\api-mapper\`
+Its own docs: `README-API-MAPPER.md` in that folder. **READ IT BEFORE TOUCHING ANY API.**
+
+| Capability | Tool |
+|---|---|
+| Detect whether an API is REST or GraphQL | `krit-api-kind-detect.mjs` |
+| GraphQL: version-to-version schema diff, BREAKING/DEPRECATION/ADDITIVE | `krit-graphql-schema-diff.mjs` |
+| GraphQL: validate one real query against a schema, field by field | `krit-graphql-query-validate.mjs` |
+| GraphQL: generate a PowerShell client from a schema | `krit-graphql-to-psclient.mjs` |
+| REST: OpenAPI spec-to-spec diff | `krit-openapi-spec-diff.mjs` |
+| REST: validate a real call against a spec | `krit-openapi-call-validate.mjs` |
+| REST: convert a Google-style Discovery doc to OpenAPI | `krit-discovery-to-openapi.mjs` |
+| **Propose the actual remediation changes programmatically** | `krit-remediation-proposer.mjs` |
+| Validate transforms | `krit-transform-validate.mjs` |
+| Service registry + PowerShell wrapper | `krit-api-registry.json`, `Kritical.Lens.ApiMapper.psm1` |
+
+**Every tool has a `.test.mjs` beside it and `fixtures/` carries baseline / safe / breaking pairs —
+they are PROVEN to go both RED and GREEN.** `krit-graphql-schema-diff.mjs` and
+`krit-openapi-spec-diff.mjs` both run FULLY OFFLINE against saved introspection/spec JSON and both
+support `--fail-on-breaking` (exit 1) — so they are real GATES, not reports. Wire them.
+
+🔴 **THIS APPLIES TO EVERY API, FOREVER — Shopify, Pax8, D365 BC, Microsoft Graph, and every new one.**
+Before writing a single hand-rolled API client, version check, schema comparison, call validator, or
+"what changed between versions" script: **this folder already does it.** EXTEND and REGISTER a new
+service (`Register-KritApiService` / `New-KritApiClient -Service <name>`); do not re-derive.
+
+🔴 **VERSION DRIFT IS A MEASURED, RECURRING DEFECT CLASS, NOT A HYPOTHETICAL.** Measured 2026-08-01
+in Kritical-ShopifyVault (`F-APIVER-001`): `app/shopify.app.toml` declared `2026-01` while **25**
+hardcoded literals in live JS said `2026-04`, and the PowerShell engine tracked a third value —
+three sources of truth, none agreeing, none gated. **Any product talking to a versioned API needs
+ONE source of truth for its version plus a committed gate that fails when the declared version and
+the used version disagree.** Absence of that gate is a finding, not a style preference.
+
+**Known limit, stated honestly:** these tools diff SPECS and SCHEMAS. A *dynamic live-route prober*
+for a REST service that publishes no spec is a separate, un-built capability (tracked 🔴 in
+`Kritical-ShopifyVault\docs\OPERATOR-REQUIREMENTS-TRACEABILITY-20260729.md`). Do not claim probe
+coverage you do not have — but equally, do not claim REST is uncovered: OpenAPI diff/validate/
+generate all exist and are tested.
+
+---
+
+## Verbatim source — THE TURN CONTRACT
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴 THE TURN CONTRACT — run these, every turn, in this order. Verified to exist 2026-08-01.
+
+`$L = "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens"`
+
+## START of every turn
+
+🔴 **STEP ZERO — RE-READ THE RULES BEFORE YOU DO ANYTHING ELSE. EVERY TURN, NOT JUST AT SESSION START.** Re-read `C:\Users\joshl\.claude\CLAUDE.md` AND the current repo's own `CLAUDE.md` / `AGENTS.md` at the START of every single turn. Loading them once at session start is NOT compliance — context drifts, turns compact, and rules that were read hours ago stop being applied. Measured 2026-08-01: an assistant with both files fully in context still failed to run the commands below unprompted, and violated LAW 4 in nearly every reply of a long session. **Having read it is not the same as following it. Re-read, then act.**
+
+🔴 **LAW 4 IS THE MOST-BROKEN RULE IN THIS ESTATE. THE OPERATOR IS NOT IN A REPO.** A relative path like `docs/FOO.md` or ``[bar](app/lib/bar.js)`` **does not open and does not display for him — it is meaningless.** Every file reference in every reply must be a FULL ABSOLUTE PATH, copy-pasteable into Explorer or an editor, e.g. `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\docs\MASTER-STATUS.md`. This OVERRIDES any harness default that asks for workspace-relative markdown links — this file wins. Before sending any reply that names a file: check every path in it is absolute. If you are quoting a document, ALSO give the fully-qualified path to it, not just its name.
+
+🔴 **ALWAYS CHECK THE SHOPIFY DOCUMENTATION. NO MATTER WHAT YOU THINK YOU KNOW.** Operator directive, 2026-08-02, his words verbatim: *"no matter what you think you know, always chec kthe fucknig shopify documentaton for app dev for latest details on whatever the fuck it is u are trying to do"*. Use the `shopify-mcp` docs tools — `learn_shopify_api` first (it returns the `conversationId` every other Shopify tool requires), then `search_docs_chunks`. **Earned 2026-08-02:** every merchant tab in the embedded app was dead for a full session because `app-bridge.js` carried `defer`. Reasoning from first principles got the mechanism roughly right and the confidence badly wrong; the docs search is what grounded it — four official pages, all showing the plain tag with NEITHER `defer` NOR `async`. 🔴 **But hold the line on what docs actually prove:** they showed the canonical form; **no page forbids `defer` in words**, and claiming otherwise was an overreach that had to be retracted mid-fix. Docs tell you the sanctioned shape, not always the prohibition. Cite the page, quote the form, and mark the mechanism INFERRED if that is what it is.
+
+```
+node "$L\scripts\Get-KritSwarmLedger.mjs"                  # what is running / stalled — never from memory
+node "$L\scripts\Get-KritAgentForensics.mjs" --unreturned   # what dead agents WROTE. Run FIRST after any restart
+node "$L\scripts\Get-KritGitLossLedger.mjs"                 # uncommitted / unpushed / detached / no-remote
+pwsh "$L\scripts\Build-KritLensComponentIndex.ps1"          # regenerate before quoting ANY count
+```
+
+## DURING — before building or claiming absence
+
+Read the index and the repo's own `docs/`, `README*`, `AGENTS.md`, `CLAUDE.md`. See RULE ZERO.
+Fan out per the FAN-OUT RULES below: one swarm, appended phases, Haiku bulk / Sonnet gate+refute /
+Opus steer, an adversarial refuter on every claim.
+
+## END of every turn that touched code
+
+```
+pwsh "$L\scripts\Invoke-KritLensFullPipeline.ps1"           # the real pipeline (7 stages)
+pwsh "$L\scripts\Invoke-KritEndOfTurnGate.ps1"              # GATE1/2/3 + JSON verdict — FAIL CLOSED
+pwsh "$L\scripts\Test-KritLensCorpusFreshness.ps1"          # raw corpus vs HEAD, exits non-zero on staleness
+pwsh "$L\scripts\Test-KritLensSemanticGraphFreshness.ps1"   # the semantic graph, separately
+pwsh "$L\scripts\Invoke-KritLens3Gate.ps1"                  # verified exit contract
+```
+
+Deep mining + SQL: `Invoke-KritShopifyVaultDeepMine.ps1`, `Import-KritProvenanceIndexToSql.ps1`,
+and the `Kritical.Lens.SqlMiner` component (`components/data-infra/`).
+
+🔴 **ANALYZER OUTPUT THAT NEVER REACHES SQL IS NOT INGESTION.** A sweep once ran green while
+writing **zero rows to all 179 tables**. Confirm rows landed in `KriticalBrain` (`lens.*`) and in
+`KritLens_<repo>` for the raw corpus. **Scope every query by repo + `status='ok'`, NEVER by
+`MAX(run_id)`** — that silently answers about a different repo, and once read a class of 3 as 31.
+Semantic tables carry no commit column; provenance is in `lens.v_ingestion_run_current` /
+`lens.v_repo_health`, so join through those or you do not know which commit you are describing.
+
+🔴 **THESE ARE NOT GATES — they have ZERO exit statements and report success unconditionally:**
+`Invoke-KritEstateWideLensSweep` · `Invoke-KritAstSweepEstate` · `Test-KritAstSweepRecall`.
+Never wire them where failure must propagate; never cite their green.
+
+🔴 **THE LENS LOOP IS NOT RUNNING — CORRECTED 2026-08-01.** `sc query KriticalLensLoop` →
+**the service EXISTS and IS REGISTERED, STATE=STOPPED** (re-verified live this turn: `STATE : 1
+STOPPED`, `WIN32_EXIT_CODE: 1077` = never started since boot). The prior line in this file
+("service does not exist") was WRONG — re-checked and refuted twice independently the same day
+(once by a README-currency audit, once by this turn) — do not repeat that claim. `Invoke-
+KritLensLoopService.ps1` and `Install-KritLensLoopService.ps1` exist in `$L\scripts\`, the service
+IS installed via the latter, but it has never been started — so **nothing is keeping Lens fresh
+automatically** and every "Lens is current" assumption is unfounded until the end-of-turn gate is
+actually run by hand. Starting it needs the operator's typed ack + a rehearsal (never Automatic
+without both) — see `Kritical.Lens\docs\LENS-LOOP-SERVICE-DECISION-20260801.md` for the decision
+this is currently parked on (cost, concurrency-lock gap, what starting it would actually do).
+
+**Propagating these rules:** `$L\scripts\Update-KritRepoSwarmTrackingBlock.ps1` and
+`Update-KritRepoAgentsLensSection.ps1` inject/refresh the block across every repo. Run them after
+changing anything here, or the repos silently drift from this file.
+
+**LENS: NOT RUN — <reason>** must appear in the same breath as any result where the above did not
+run. Silence reads as "it was checked".
+
+---
+
+## Verbatim source — THE DELEGATION CONTRACT
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴 THE DELEGATION CONTRACT — TEST FIRST, WRITTEN BY HAIKU, PROVEN BY SONNET, GATED BY OPUS
+# (HARD RULE. Operator directive 2026-08-01. Applies to EVERY swarm, no exceptions.)
+
+**The orchestrator does not do the work. The orchestrator gates the work.** If you are writing bulk
+text, applying a known fix, or grinding through a list, you are doing a Haiku's job on an Opus
+budget — and doing it *worse*, because nothing independent then checks it.
+
+## The pipeline — in this order, every track
+
+| # | Who | Does | Must be true before the next step |
+|---|---|---|---|
+| **1** | **Haiku** | **Writes the CHECK/TEST FIRST — before any implementation.** Delivers it as the first artefact of the track, not the last. | The test exists and is runnable |
+| **2** | **Sonnet** | **Owns whether that check is CORRECT.** Verifies it actually tests the claimed thing and **proves it goes RED on a planted defect**. | The test is proven to fail when it should |
+| **3** | **Haiku** | The bulk grind — all manual/mechanical work, all bulk text, applying the now-specified fix | The work is done and the test passes |
+| **4** | **Sonnet** | **Adversarial refutation**, pinned, high effort, briefed to REFUTE and default to refuted when uncertain | Independent attack survived |
+| **5** | **Opus** | **Gates.** Reads the diff, re-runs the gate, decides. Owns correctness of the whole. | — |
+
+**Step 1 before step 3 is the whole point.** A test written after the implementation is written to
+pass it. A test written first, and independently proven RED by a different tier, is the only kind
+that means anything. This estate has shipped: a 4/4 green suite that never loaded the module under
+test; a suite reporting 18/0 that was really 18 passed / 3 silently skipped; and a
+`vault-dispatch.ps1` fix with literally zero test files referencing it.
+
+**Sonnet is ACCOUNTABLE for the checks, not just a reviewer of them.** If a check was wrong, that
+is Sonnet's failure, not Haiku's. That accountability is what stops step 2 becoming a rubber stamp.
+
+## Tier assignment — EXPLICIT on every track, never inherited
+
+| Tier | Work |
+|---|---|
+| **Haiku** | ALL manual grind. Bulk text. Scanning, inventorying, collecting output, applying a known fix with a known shape, **and writing the tests/checks first** |
+| **Sonnet** | Correctness of the checks · all interpretation · EVERY adversarial refutation (pinned, `effort: 'high'`) |
+| **Opus** | Orchestrate, steer, GATE, decide. Never bulk work |
+| **Local (LM Studio)** | Haiku-tier substitute ONLY. **Never** a gate verdict, **never** a refutation |
+
+**Inheritance is silent and it drifts** — measured 2026-08-01: **50 of 53 tracks ran on OPUS**
+purely because `model` was unset, including pure mechanical scanning. Set `model` on every track.
+
+## Non-negotiables that make it mean something
+
+- **Adversarial by default.** Never one verifier. Never a self-report accepted. Refuters have
+  already caught a real false-green and two broken HEADs on this program.
+- **A gate never shown to go RED is decoration.** Every check ships with its negative test.
+- **A low detector count means the detector missed it**, not that the thing is absent.
+- **Every finding gets a stable ID + version stamp** in the repo's `docs/FINDINGS-REGISTER.md`
+  (`F-<WAVE>-<nnn>`, first-seen version, `OPEN|FIXED|REJECTED|REGRESSED`, fixed-in version). Rows
+  are never deleted — so a reappearance reads as a **REGRESSION of a known ID**, not a new find.
+- **Comment provenance.** Hand-derived context written into code is prefixed
+  `USER/CONTEXT DOCUMENTATION - NOT GENERATED BY LENS`. Lens-derived facts cite their query.
+  An unlabelled comment reads as machine-verified when it is not.
 
 ---
 
@@ -131,6 +314,25 @@ phases run sequentially, so real width is ~10. Do not chase width — chase *not
 append the next phase into it, and close it deliberately when the work is genuinely done.
 
 <!-- END KRITICAL-SWARM-TRACKING -->
+
+<!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=4c5fbe8fe533 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
+# 🔴 DOCUMENT INDEX for this repo (propagated — generated, do not hand-edit)
+
+**Authoritative documents for `Kritical.PS.Hardening`** — generated, never hand-edited.
+
+Selection rule v1 (see `Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs` header for the full text): root `README/CLAUDE/AGENTS.md` + docs named by the repo's OWN root CLAUDE.md/AGENTS.md + `docs/*.md` top-level named DESIGN/ARCHITECTURE/SPEC/CONTRACT/RFC/MASTER-STATUS/MASTER-COMPLETION-PLAN/FINDINGS-REGISTER + canonical status files + anything referenced by a `*Gate*` script. **Excludes** `docs/status/archive/`, `docs/lanes/`, any `archive/_attic/snapshot/backup/deprecated` path, and everything not at `docs/` top level unless gate-referenced, self-declared, or a canonical status file — those are NOT indexed here.
+
+| Document | Purpose | Last modified | Rule | Supersession |
+|---|---|---|---|---|
+| `AGENTS.md` | Kritical.PS.Hardening — AGENTS.md | 2026-08-01 | R1-root-entry | — |
+| `README.md` | Kritical.PS.Hardening — Kritical Hardening Toolkit (audit-only v1.0.0) | 2026-07-03 | R1-root-entry | — |
+| `docs/ARCHITECTURE.md` | Kritical.PS.Hardening — Architecture | 2026-07-03 | R2-design-named | — |
+
+Known contradictions/resolutions: none declared (add to `docs/DOC-INDEX-NOTES.md` if two docs disagree and one has been resolved as authoritative).
+
+Regenerate: `node "<Github>/Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs" --repo <this-repo> --markdown` (embedded automatically by `Update-KritRepoSwarmTrackingBlock.ps1`).
+<!-- END KRITICAL-DOC-INDEX -->
+
 
 # family #1 — the six PowerShell analyzers (PSGraph / SqlMiner / CompareAndBounce /
 #              CodeGraph / ALDependencyMatrix / SchemaCompleteness)
