@@ -12,7 +12,7 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
-<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=7ff07fe55ec5 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=d162207ca8b6 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
 # 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
 
 > This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
@@ -114,6 +114,37 @@ generate all exist and are tested.
 
 🔴 **ALWAYS CHECK THE SHOPIFY DOCUMENTATION. NO MATTER WHAT YOU THINK YOU KNOW.** Operator directive, 2026-08-02, his words verbatim: *"no matter what you think you know, always chec kthe fucknig shopify documentaton for app dev for latest details on whatever the fuck it is u are trying to do"*. Use the `shopify-mcp` docs tools — `learn_shopify_api` first (it returns the `conversationId` every other Shopify tool requires), then `search_docs_chunks`. **Earned 2026-08-02:** every merchant tab in the embedded app was dead for a full session because `app-bridge.js` carried `defer`. Reasoning from first principles got the mechanism roughly right and the confidence badly wrong; the docs search is what grounded it — four official pages, all showing the plain tag with NEITHER `defer` NOR `async`. 🔴 **But hold the line on what docs actually prove:** they showed the canonical form; **no page forbids `defer` in words**, and claiming otherwise was an overreach that had to be retracted mid-fix. Docs tell you the sanctioned shape, not always the prohibition. Cite the page, quote the form, and mark the mechanism INFERRED if that is what it is.
 
+🔴 **IF THE RULES FROM THE SHOPIFY.DEV SITE SAY IT, IT IS LAW.** Operator directive, 2026-08-03, his words verbatim: *"IF THE RULES FROM THE SHOPIFY.DEV SITE SAY IT IT IS LAW"*. **This outranks your reasoning, your priors, your architecture preferences, and any lane's opinion — including mine.** A shopify.dev requirement is not an input to weigh; it is the answer. Do not argue with it, do not look for an exception, do not "balance" it against a design you like better. Find what the site says, quote it, obey it. **The only honest reply to "is this allowed?" is the sentence shopify.dev uses.**
+- **Applies to the App Store requirements, the API docs, and the changelog alike.** `learn_shopify_api` → `search_docs_chunks` is the route to them; `shopify doc fetch --url <page>` is the route to the App Store self-review requirement list (Shopify forbids fetching that page any other way).
+- **Corollary — this does NOT turn silence into prohibition, and that is not a loosening of the rule.** What the site SAYS is law. What it does not mention is simply unaddressed, and must be marked `INFERRED`, never asserted as a rule. Conflating the two is what produced the `app-bridge.js` `defer` overreach that had to be retracted mid-fix: four official pages showed the plain tag with neither `defer` nor `async`, and that canonical FORM was real — but claiming a page *forbade* `defer` in words was false. Quote what it says; label the rest as inference.
+- **Measured 2026-08-03, the rule working correctly:** requirement 2.3.1 states verbatim *"Your app must not request the manual entry of a myshopify.com URL or a shop's domain during the installation or configuration flow"* (`https://shopify.dev/docs/apps/launch/shopify-app-store/app-store-requirements`). That is a prohibition IN WORDS — law, no inference — and it is why the manual install form was removed and PROD redeployed.
+
+🔴 **THE SHOPIFY REFERENCE SET IS STANDING, NOT A LOOKUP. REFERENCE IT WHEN DESIGNING ANY PART OF ANY SHOPIFY CODEBASE — EVERY TIME.** Operator directive 2026-08-02: *"that i gave to you that you should be permanently referencing when designing any part of any of this codebase in any way along with the base templates gh repos"*. These were handed over deliberately. Consulting them only when reminded is the failure.
+
+**1 — THE SKILLS** (`C:\Users\joshl\.claude\skills\`). Load the relevant one BEFORE acting, not after:
+| Skill | Load before |
+|---|---|
+| `kritical-vault-deploy-order` | 🔴 **ANY** deploy/republish/"push to test"/"push to prod". It encodes the strict **dev → test → prod** order and the gates that must be GREEN before prod. **Measured 2026-08-02: a test deploy was run ad-hoc without loading this — exactly what it exists to prevent.** |
+| `kritical-vault-deploy` | any deploy/rollback/"app is down" on `func-kritical-app`. Hard rule: **never hand-roll a SAS** — from a real 2026-07-29 production outage |
+| `shopify-cli-auth-bumper` | any `shopify` CLI command that hits an interactive prompt. Hard rule: **never run `shopify auth logout`** |
+| `shopify-preview-store-lifecycle` | needing a real disposable dev store. Real flags, and the honest limit that **no store can be deleted programmatically** |
+
+**2 — THE DOCS, via the `shopify-mcp` plugin** (`claude-plugins-official/shopify`, installed):
+`learn_shopify_api` **FIRST** — it returns the `conversationId` every other Shopify tool requires — then `search_docs_chunks`, `validate_graphql_codeblocks`, `validate_component_codeblocks`, `validate_theme`.
+
+**3 — THE BASE TEMPLATES.** ONE repo holds all three, vendored:
+`https://github.com/Sir-J-AU/Kritical.Shopify.AppTemplate.git`
+| Template | Path | Status |
+|---|---|---|
+| **React Router** | `templates\react-router-template` | **Shopify's CURRENT recommendation** — React Router v7, TS, Prisma |
+| Remix | `templates\remix-template` | previous generation |
+| Node/Express | `templates\node-template` | framework-light JS |
+🔴 **DO NOT EDIT THE VENDORED COPIES.** Its README says to run `npm init @shopify/app@latest -- --template <name>` instead.
+🔴 **KNOWN GAP, DO NOT ASSUME CURRENCY:** the repo records **NO upstream URL and NO upstream commit SHA** for any of the three, and has no `.gitmodules`. **There is therefore no mechanical way to answer "is our vendored template behind Shopify's?"** Treat template currency as UNKNOWN until that provenance is captured — never as fresh.
+Full map + its recheck triggers: `Kritical-ShopifyVault\docs\APP-TEMPLATE-AND-BROWSER-TOOLING-MAP-20260731.md`
+
+**Before designing ANY Shopify surface — auth, webhooks, billing, embedding, session tokens — check what the template already does and what the docs sanction. Reasoning from first principles in this area has been wrong here before** (the `defer` on `app-bridge.js` killed every merchant tab for a full session).
+
 ```
 node "$L\scripts\Get-KritSwarmLedger.mjs"                  # what is running / stalled — never from memory
 node "$L\scripts\Get-KritAgentForensics.mjs" --unreturned   # what dead agents WROTE. Run FIRST after any restart
@@ -150,6 +181,30 @@ Semantic tables carry no commit column; provenance is in `lens.v_ingestion_run_c
 🔴 **THESE ARE NOT GATES — they have ZERO exit statements and report success unconditionally:**
 `Invoke-KritEstateWideLensSweep` · `Invoke-KritAstSweepEstate` · `Test-KritAstSweepRecall`.
 Never wire them where failure must propagate; never cite their green.
+
+🔴 **RE-VERIFIED + EXTENDED 2026-08-02 17:55 AEST (+10:00), VERIFIED-BY-EXECUTION** (grep for
+`exit` / `throw` / `$LASTEXITCODE` / `[Environment]::Exit` across all six, plus `git log
+--diff-filter=A` for lineage). The claim above HOLDS, but it was **incomplete in both directions**:
+
+- **They are PREDECESSORS, not successors.** All three were added **2026-07-26** and never touched
+  since. `scripts\Invoke-KriticalLensEstateSweep.ps1` was added **2026-08-01** — five days LATER —
+  and IS a real gate: `exit 1` at lines 117 and 120, self-described as *"THE canonical Lens entry
+  point, as a script/gate (fail-closed exit code)"*, a thin shim whose own header explains why the
+  module function must not call `exit` in a caller's runspace, with its own test file exercising
+  the exit-code contract. So the newer, near-identically-named script already supersedes the older
+  `Invoke-KritEstateWideLensSweep`. **Do not "fix" the 2026-07-26 trio — prefer the 2026-08-01 shim.**
+- 🔴 **`Invoke-KritLensFullPipeline.ps1` BELONGS IN THE SAME CATEGORY AND NOBODY NOTICED.** It has
+  **ZERO `exit` statements** and exactly ONE `throw` (line 430, a narrow "splitter not found"
+  setup guard). Its own header says the verdict receipt's `.Ok` is `$false` if any stage FAILED —
+  but **that verdict never reaches the process exit code**, so `pwsh -File Invoke-KritLensFullPipeline.ps1`
+  exits 0 even when `.Ok` is false. **Its receipt is the contract; its exit code is not.** Anything
+  wiring it as a pass/fail gate on exit status is a false green. Read
+  `<OutputDir>\full-pipeline-verdict-<utc>.json` and check `.Ok`.
+- **Genuinely fail-closed:** `Import-KritProvenanceIndexToSql.ps1` — 7+ `throw "FAIL-CLOSED: …"`
+  guards (uncaught `throw` under `pwsh -File` does yield exit 1).
+- **Spread of the stale reference:** `Invoke-KritEstateWideLensSweep` is still named in the
+  propagated block across **10+ `AGENTS.md`/`CLAUDE.md` files** (every component repo). Those are
+  generated from THIS file, so correct it here and re-propagate — never hand-edit the copies.
 
 🔴 **THE LENS LOOP IS NOT RUNNING — CORRECTED 2026-08-01.** `sc query KriticalLensLoop` →
 **the service EXISTS and IS REGISTERED, STATE=STOPPED** (re-verified live this turn: `STATE : 1
@@ -315,7 +370,7 @@ append the next phase into it, and close it deliberately when the work is genuin
 
 <!-- END KRITICAL-SWARM-TRACKING -->
 
-<!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=4c5fbe8fe533 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
+<!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=e9cf44663147 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
 # 🔴 DOCUMENT INDEX for this repo (propagated — generated, do not hand-edit)
 
 **Authoritative documents for `Kritical.PS.Hardening`** — generated, never hand-edited.
@@ -324,7 +379,7 @@ Selection rule v1 (see `Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs` header
 
 | Document | Purpose | Last modified | Rule | Supersession |
 |---|---|---|---|---|
-| `AGENTS.md` | Kritical.PS.Hardening — AGENTS.md | 2026-08-01 | R1-root-entry | — |
+| `AGENTS.md` | Kritical.PS.Hardening — AGENTS.md | 2026-08-02 | R1-root-entry | — |
 | `README.md` | Kritical.PS.Hardening — Kritical Hardening Toolkit (audit-only v1.0.0) | 2026-07-03 | R1-root-entry | — |
 | `docs/ARCHITECTURE.md` | Kritical.PS.Hardening — Architecture | 2026-07-03 | R2-design-named | — |
 
