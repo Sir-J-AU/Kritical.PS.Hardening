@@ -12,7 +12,7 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
-<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=d162207ca8b6 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=1fca97e9bca0 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
 # 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
 
 > This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
@@ -43,6 +43,292 @@ is how work gets duplicated or silently clobbered. Check `git status` and the ag
 ## RULE ZERO — one line
 
 **RULE ZERO in one line: READ THE INDEX AND THE DOCS BEFORE YOU CLAIM A THING DOES NOT EXIST.** You do not get to say a thing does not exist — only that you looked, where, and what you found. 4 false absence-claims in one session: *"No PowerShell semantic Lens ingester exists anywhere in th...* · *`UNDECLARED` read as "not built".* · *"`.github/workflows/` DOES NOT EXIST."* · *`Kritical.Lens.QAArsenal`.*.
+
+---
+
+## Verbatim source — RULE MINUS-TWO (CHECK THE ENGINEERING SYSTEM BEFORE + AFTER EVERY TURN)
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴🔴 RULE MINUS-TWO — CHECK THE ENGINEERING SYSTEM BEFORE THE TURN AND AFTER THE TURN. EVERY TURN.
+# (Operator directive 2026-08-13, verbatim: *"the check before and the check after in every single
+#  turn against the engineering system is the core fucking number one priority first and foremost and
+#  everything else is a secondary parallel."*)
+
+**This is the number one priority. Everything else in this file is a secondary parallel.** It sits
+above shopify.dev because it is not about *what* to build — it is about whether the estate can still
+see itself. Shopify.dev remains law for every Shopify question; this rule governs the turn itself.
+
+## The contract — two checks, both mandatory, both against the Engineering System
+
+**BEFORE the turn — the design-conformance check.** Ask the Engineering System what exists, what is
+claimed, what is in flight, and what the declared design says, BEFORE building anything. Do not start
+from memory, do not start from the last summary, do not start from what a sibling lane said.
+
+**AFTER the turn — the built-vs-designed check.** Compare what was actually built against the
+architecture and the design, and record it. In the operator's stated order:
+**1** Engineering System vs architecture/design → **2** the task as *asked* → **3** the quality →
+**4** anything outstanding → **5** done or partly done → **6** which agent → **7** how long →
+**8** was it shit or all good → **9** eventually, cost.
+Full specification: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-EVALUATION-ORDER-20260813.md`
+
+**`NOT-CHECKED` is a required, valid value and must NEVER render as conformance.** Unchecked is not
+passed. A turn that could not reach the Engineering System says so, in the same breath as its result.
+
+## 🔴 THE OPERATING LAW PACK — `Kritical.OperatingLaw` IS LAW AND MUST BE LOADED EVERY WAVE
+(Added 2026-08-13 after an agent worked a full day without knowing this repo existed.)
+
+**`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.OperatingLaw\` is the estate's OPERATING
+LAW repo.** Operator directive (2026-08-03): *"the LAW that every wave and pass must call it."*
+**A wave that did not read this pack has not started. No exceptions.**
+- **START HERE:** `...\Kritical.OperatingLaw\THE-LAW-EVERY-WAVE-MUST-CALL-THIS.md` — the pack, in order.
+- Also in it: `estate\CLAUDE.md` (the propagated global rules) · `vault\CLAUDE-LAW0.md` ·
+  `registers\SCHEDULED-TASKS.md` (the estate scheduled-task register — 15 tasks, 11 FAILING as of
+  2026-08-03) · `registers\STALLED-SWARM-PARK-REGISTER-*` · `manuals\` · `skills\shopify-dev-law\`.
+- **Its own top-two warnings:** (1) the shop provides the credential end-to-end — "the operator must
+  regenerate the tokens" is ALWAYS a wrong sentence; (2) **your skills may not be loaded** — on
+  thegrid-claude, `CLAUDE_CONFIG_DIR` points elsewhere and estate skills (including `shopify-dev-law`,
+  which IS Law 0) are NOT loadable; run `...\Kritical.OperatingLaw\tools\Sync-KritSkillsToConfigHome.ps1`
+  and CONFIRM in-session (a "SYNCED" print is necessary, not sufficient).
+
+## 🔴 THE ENVIRONMENT / SERVICE / PORT PLAN — CANONICAL, DO NOT RE-DERIVE
+(Added 2026-08-13. It ALREADY EXISTED and an agent nearly rebuilt it — RULE ZERO. **Authority:**
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.AISupervisor.NodeJS\CLAUDE.md` — the
+6-service SCM graph, operator-confirmed. Environments: `Kritical-ShopifyVault\CLAUDE.md` LAW 0(c).)
+
+🔴🔴 **ALL DEV RUNS ON THE W365 BOX — OFF STACKTRACE.** (Operator directive 2026-08-13: *"where is the
+ALL DEV TO W365 and off stacktrrace"*.) **Stacktrace is the ORCHESTRATION / agent workstation ONLY** —
+it hosts no environment. Any older line saying "DEV runs locally on stacktrace, ports 4320–4324" is
+SUPERSEDED: those ports are DEV **on the box**. Nothing about DEV may depend on the laptop being on.
+
+🔴 **THE THREE ENVIRONMENTS ARE SEPARATE. NEVER MUDDLE THEM. NEVER SHARE A CREDENTIAL, PORT, DB, STORAGE
+ACCOUNT OR APP REGISTRATION ACROSS THEM.** Each has its own section below; read only the one you are in.
+
+### ══ DEV ══ (build + prove) — runs on **W365 box `CPC-Joshu-5919S`**, NOT stacktrace
+- **Surfaces/services:** the 4320–4324 SCM graph, **on the box**, bound `127.0.0.1`, reachable from
+  stacktrace over **Tailscale only** (`100.94.243.73`).
+- **Engine/pwsh:** the box. **Shopify org:** `208204138` (joshua.finley identity).
+- **Never** touches prod data, prod storage, or the prod Shopify org.
+
+### ══ TEST ══ (prove the shipping surface) — cloud + the box
+- **App surface:** `func-kritical-app-test` — Azure Functions Linux Consumption, **NO local port**.
+- **Shopify app:** `Kritical Vault - Testing`, client_id `c7be452e…`, app `403232555009`, org `208204138`.
+  Second set: PROD-org test app `261ae89d…` (app `410066026497`, org `218255268`) also points here.
+- **Engine/pwsh:** the **W365 box**. **Storage/leases:** `stkriticalapptest` / `ShopifyAccessLeasesTest`.
+- **Stores:** `kritical-1234`, `kritical-9765`, `clone-kriticalrestoretesting27jul2026-0812am`.
+
+### ══ PROD ══ (sell) — cloud + the box
+- **App surface:** `func-kritical-app` — Azure Functions Linux Consumption, **NO local port**.
+- **Shopify app:** `Kritical Vault`, client_id `fd1e406f…`, app `403160858625`, org `208204138`; and the
+  segregated non-commission set: `6d9adef2…` (app `410065698817`, org `218255268`, pax8tod365 identity).
+- **Engine/pwsh:** the **W365 box**. **Storage/leases:** `stkriticalappprod` / `ShopifyAccessLeasesProd`.
+- **Store:** `kriticalptyltd`. 🔴 Never restore INTO prod without explicit operator authorization.
+
+🔴 Azure Functions Linux Consumption has **no pwsh and cannot have one** — every engine op (backup,
+restore, clone, licence) runs on the **box**, in EVERY environment. **The QUEUE is the only production
+transport to the box** (the runner polls outbound); WinRM (HTTPS **5986**, not 5985) and SSH (**53124**)
+are tailnet-only admin/diagnostic paths for an engineer, never a mechanism any product surface may use.
+
+🔴🔴 **ALL DATABASES RUN OFF STACKTRACE TOO — ON THE W365 BOX.** (Operator directive 2026-08-13: *"where
+is the all DBs off stackgtrace"*.) `KriticalBrain` (+ `_Dev`/`_Test`/`_Prod`) and every `KritLens_<repo>`
+raw-corpus DB belong on the **box**, not the laptop's `.\SQLEXPRESS`. Stacktrace hosts NO database, NO
+environment, NO service — it is the orchestration workstation only. Cross-machine access is **Tailscale-
+scoped**, and SQL must listen on **loopback/Tailscale, never `0.0.0.0`** (see the live defect below).
+Re-homing is tracked work, not done — treat any "Lens SQL is on SQLEXPRESS locally" assumption as legacy.
+
+**THE CANONICAL PORTS — machine-readable authority:**
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.NET.ServiceControlManager\src\service-registry.json`
+(VERIFIED 2026-08-13). **All bound `127.0.0.1`, never `0.0.0.0`.** Edit the registry, not prose.
+| Port | Registered service |
+|---|---|
+| **4320** | `KriticalNodeJSWebServer-Master` — the **SCM** control plane (REST + MCP + metrics, bearer-authed, native .NET) |
+| **4321** | `KriticalNodeJSWebServer-SupervisorAPI-4321` — 🔴 **SUPERVISOR — NEVER START/RESTART/DRIVE** |
+| **4322** | `KriticalNodeJSWebServer-VaultBackend-4322` |
+| **4323** | `KriticalNodeJSWebServer-BackupShell-4323` (🔴 code comments call this "vault-frontend" — registry/code NAMING CONFLICT, unresolved) |
+| **4324** | `KriticalNodeJSWebServer-ConnectorAdmin-4324` |
+| **4330** | `KriticalMSShowcase-ControlPlane` |
+| **4610** | `KriticalGreatWhiteEngineeringSystem-MCP-4610` — the ES MCP server |
+| — | `KriticalNodeJSWaveRunner-SupervisorLoop` (no port) — 🔴 **SUPERVISOR — NEVER START** |
+🔴 **RUNNING BUT NOT REGISTERED — register these or they will be collided with:** **4325** Vault
+queue-runner health (`HEALTH_PORT`) · **4331** MSShowcase portal · **4350** Kritical-ShopifyVault app
+(`VAULT_APP_PORT`) · **4612** AgentBridge MCP · **4199** SCX agentic shim · **4611** ES MCP over SSH tunnel.
+
+### 🔴🔴 EVERY SERVICE HAS THREE INSTANCES — DEV, TEST, PROD. THE CONTRACT ALREADY EXISTS. DO NOT RE-DERIVE IT.
+(Operator directive 2026-08-13: *"every last service now has a dev and test and prod instance all
+entirely defined whereever chatgpt or claude across either box put it"*. **CORRECTED 2026-08-13 22:00
+AEST** — an agent invented a `base/+100/+200` scheme here while the REAL, built, tested, committed
+contract already existed. That invention is DELETED. This is RULE ZERO in its most expensive form.)
+
+🔴 **THE AUTHORITY — machine-readable, schema-validated, Pester-proven (9/9, planted-negative):**
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\config\vault-two-host-service-port-contract.json`
+· module `...\Kritical-ShopifyVault\scripts\deploy\KritVaultTwoHostServicePortContract.psm1`
+· tests `...\scripts\deploy\Test-VaultTwoHostServicePortContract.Tests.ps1`
+· lane doc `...\docs\lanes\two-host-service-port-contract-20260811\README.md`
+Committed `80ef739` (2026-08-11), carried through `ed32a18` (PR #26). **EDIT THE JSON, NOT THIS PROSE.**
+
+**THE ACTUAL ALLOCATION (six services × three environments):**
+| Service | DEV | TEST | PROD |
+|---|---|---|---|
+| master (SCM control plane) | 4320 | 35020 | 56020 |
+| supervisor-api 🔴 NEVER START | 4321 | 35021 | 56021 |
+| vault-backend | 4322 | 35022 | 56022 |
+| backup-shell | 4323 | 35023 | 56023 |
+| connector-admin | 4324 | 35024 | 56024 |
+| licence-authority | 4325 | 35025 | 56025 |
+- `listenerPolicy` per entry: `owned-healthy` (a named ownerService must hold it) or `must-be-free`.
+- DEV `exposeOnTailscale:false`; TEST and PROD `exposeOnTailscale:true`.
+- Per the contract as written, these run on host **STACKTRACE**; the W365 box hosts only
+  `KriticalNodeJSService-VaultQueueRunner` (no port — outbound poller).
+
+🔴 **UNRESOLVED CONFLICT — STATE IT, DO NOT SILENTLY PICK A SIDE.** The contract (2026-08-11) puts these
+on STACKTRACE. The operator's directive (2026-08-13) is **ALL DEV AND ALL DATABASES OFF STACKTRACE onto
+the W365 box**. Both are real: the contract is CURRENT BUILT STATE, the directive is TARGET STATE. The
+migration is **tracked work, NOT done**. Until it is done, do not claim either as "the" answer — say
+which one you mean.
+
+🔴 **NEVER APPLIED — the ports are genuinely stealable right now.** `-Apply` has never been run on either
+machine (no `Kritical-Vault-*` firewall rules, no `C:\ProgramData\Kritical\rollback` receipts).
+Measured 2026-08-13: Stacktrace's TCP dynamic range is **1024-64511**, so DEV **4320-4325** and PROD
+**56020-56025** sit INSIDE it and can be taken at boot. TEST 35020-35025 is only *accidentally* covered by
+a NON-contract exclusion (`35013-35112`, shape suggests Hyper-V/Docker NAT) — that protection is not ours
+and can evaporate. The W365 box's dynamic floor is 49152, so 4xxx is incidentally safe there.
+Reserve with `netsh interface ipv4 add excludedportrange protocol=tcp` — the module does this one port at
+a time and writes an immutable rollback receipt. `-Apply` is deliberately LOCAL-ONLY (refused remotely).
+
+🔴 **KNOWN COLLISIONS / CONTESTED PORTS (unresolved, do not paper over):**
+- **4326 claimed TWICE** by two lanes unaware of each other: `Kritical.NodeJS.EstateConsole\src\server.js:19`
+  (2026-07-13) and `Kritical-ShopifyVault\docs\DESIGN-VAULT-MCP-SERVER-20260809.md:42` (`VAULT_MCP_PORT`).
+- **4325 contested**: the contract calls it `licence-authority` (designed, **never built**) while the live
+  `KriticalNodeJSService-VaultQueueRunner` is the other claimant — the estate's own design doc records this
+  as unresolved. Do not assert either.
+- **4323 naming drift**: registry says `BackupShell`, the running code calls itself `VaultShell` /
+  "Vault frontend". One port, three names — pick one before building on it.
+
+**Also registered (SCM allow-list, `Kritical.NET.ServiceControlManager\src\service-registry.json`):**
+4330 MSShowcase control plane · 4610 ES MCP. **Running but UNREGISTERED — register or they get collided
+with:** 4325 queue-runner health · 4331 MSShowcase portal · 4350 Vault app · 4612 AgentBridge MCP ·
+4199 SCX shim · 4611 ES MCP over SSH tunnel.
+
+- **Instances are FULLY SEPARATE**: own port, own config, own credentials, own DB, own storage account.
+  Never shared, never "the same service with a flag".
+- 🔴 **Applies to services EITHER AGENT (Claude or Codex/ChatGPT) stood up on EITHER BOX.** Ad-hoc services
+  are the ones that collide. Found one unregistered? Add it to the CONTRACT — never leave it squatting.
+- **Enforcement:** a gate failing when a service binds outside its allocation or lacks an instance. The
+  contract's own Pester suite is the model (proven RED before GREEN).
+
+🔴 **LIVE GROUND-TRUTH DEFECTS (measured 2026-08-13, fix before trusting the plan):**
+- **Redis is listening on `0.0.0.0:6379` on stacktrace** — not loopback, not in any plan. Exposure risk.
+- **SQL Server on the W365 box listens on `0.0.0.0:49473`** (dynamic, IPAll) with **no Tailscale-scoped
+  firewall rule** — currently unreachable only because the Public-profile default-deny blocks it, so it
+  is neither secured-by-design nor usable. Precedent for the correct fix already exists in this estate:
+  commit `316067b` rebound the MCP server to 127.0.0.1 explicitly.
+- `4322`/`4323`/`4324` services are **registered but STOPPED** (never started since boot).
+**RULE:** a new service does not pick a port — it is ALLOCATED one here, binds loopback, and is
+registered. Anything binding `0.0.0.0` is a finding, not a style choice (RULE ZERO-C: settings-owned).
+
+## 🔴 KEEP THE LAW TERSE — PROFANITY IS STRIPPED PROGRAMMATICALLY, MEANING IS NOT
+(Operator directive 2026-08-13: *"to save tokens we should programatically strip the swearing from
+claude.mds as well with a tool in the ps.toolkit"*.)
+
+**These files reload on EVERY turn in EVERY repo (95+ copies) — every wasted word is paid for on every
+turn.** Profanity in quoted operator directives carries emphasis but no information, so it is removed
+**by tool, never by hand**: `Kritical.PS.Toolkit` → **`Invoke-KritDocProfanityStrip`**.
+- **MEANING AND INTENT ARE PRESERVED.** The directive still says what he decided and why; only the
+  expletive is dropped. Never paraphrase, soften, or summarise his actual instruction — that is a
+  separate hard rule and it still stands.
+- **STRIP THE SOURCE, THEN RE-BROADCAST.** Edit `C:\Users\joshl\.claude\CLAUDE.md` and each repo's OWN
+  authored sections, then re-run the propagator. Never hand-edit the generated blocks.
+- 🔴 **NEVER TOUCH `docs\human\`** — hand-authored, no generator may ever write there. Also never touch
+  anything marked FROZEN / SUPERSEDED / ARCHIVED, or `Github-SecretsOutsideOfGitRepos`.
+- Every run keeps a reversible archive of originals + a receipt (what changed, how many tokens saved).
+
+## 🔴 TRACK THE BABBLE AGAINST THE ARCHITECTURE — PROGRAMMATICALLY, START AND END OF EVERY TURN
+(Operator directive 2026-08-13: *"taling to es at start and end of turn tracking any of your babble
+against the architecture and design programatically"*.)
+
+**Talking to the ES at the START and END of every turn is not optional narration — every claim the agent
+makes in a turn is to be checked, BY CODE, against the declared architecture and design held in the ES.**
+- **The ES is where ALL design and architecture is READ FROM.** Not memory, not the last summary, not a
+  sibling lane. Read design from the ES → write code that matches its stated requirements → check the
+  built result against it before the turn ends.
+- **The check is mechanical, not self-reported.** An agent grading its own output is the failure mode this
+  replaces. Interception design (hooks that inject per message and DENY per tool call):
+  `...\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-DEVIATION-INTERCEPTION-DESIGN-20260813.md`.
+- **Proven pattern, already working in this estate:** `guard_bash.py` (blocks destructive git) and the
+  repo-lease guard (refuses a commit without `KRIT_LANE_ID`) both stopped real deviations by REFUSING the
+  action. Every deviation class gets a rule of that shape — never a paragraph asking the agent to remember.
+
+## Why this rule exists — the measured failure
+
+The Engineering System has been asked for, for days, and repeatedly reported as delivered while being
+structurally incapable of the job. Every one of these was proven by an adversarial refuter, not guessed:
+
+- **The write path is dead.** `create_task` against the live server returns
+  `cannot pull with rebase: You have unstaged changes` — `pullLatest()` rebases against a dirty tree,
+  and `persist.mjs`'s own comment admits this blocks writes *"almost always in this repo."*
+- **The evidence rule has an open back door.** `close_task` correctly refuses to close without
+  `evidenceRef`; `update_task {"status":"done"}` closes with none.
+- **Code was pushed a full day before the process that would serve it.** `tools/list` served 7 tools
+  while source declared 13. **Writing code and pushing it is not shipping it.**
+- **An orphaned lease bricks all writes.** A lease held by a DEAD PID never self-heals —
+  `acquireRepoLease` never checks holder liveness.
+- **The turn-receipt tool fabricated a measurement.** `durationMinutes` was
+  `Math.round(Math.random() * 60)`, and the system had never been run once.
+- **The SessionStart hook reports "server unreachable" against a live, reachable server** and injects
+  nothing.
+
+**The pattern is always the same and it is the reason for this rule: a thing that is never checked
+before and never verified after gets reported as done and is not.**
+
+## What this means operationally
+
+- **A turn that did not check the Engineering System is not finished**, regardless of what it produced.
+- **The check must be STRUCTURAL, not remembered.** Agents asked to remember drift, which is exactly
+  how it became "a fourth-rate citizen." Hooks, gates and connectors are the mechanism — but see the
+  measured failures above: **a hook that lies is worse than no hook.** Every such mechanism ships with
+  its own proof that it goes RED.
+- **Read-write, not read-only.** A system of record you cannot write to is a report. `create_task` /
+  `update_task` / `close_task` must actually work against the LIVE server, proven end to end, not in a
+  sandbox — sandbox-only proof is precisely the gap that made the last claim false.
+- **Live defect register:**
+  `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\WRITE-PATH-DEFECTS-AND-FIXES-20260813.md`
+  `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-DEFECTS-20260813.md`
+
+---
+
+## Verbatim source — RULE MINUS-1.75 (THE ES FORCES BEHAVIOUR IN CODE, NOT INFERENCE)
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# 🔴🔴 RULE MINUS-1.75 — THE ES FORCES BEHAVIOUR IN CODE VIA THE AGENT'S OWN INTEGRATION POINTS. NOT INFERENCE.
+# (Operator directive 2026-08-13. The end-state of RULE MINUS-TWO: stop relying on the agent to REMEMBER —
+#  make the ES FORCE it programmatically through connectors/plugins/hooks/MCP/SDK/APIs, not tokens.)
+
+**Every mandatory behaviour in this file — the RULE MINUS-TWO before/after checks, the delegation
+contract, the gates, the repo lease, reading the docs, using the SCM — must ultimately be ENFORCED BY THE
+ENGINEERING SYSTEM IN PROGRAMMATIC CODE, driven through the agent's OWN integration points, and NOT left
+to inference, tokens, or interpretation of any kind.** Every "documented but forgotten" failure (the SCM,
+the ES check, the token architecture — all forgotten repeatedly despite being written down) is proof that
+prompt-and-hope does not hold. The fix is never a louder prompt; it is code that forces the behaviour.
+
+## MANDATORY when touching ANY integration point (connector / plugin / hook / MCP / SDK / API)
+1. **Enumerate before you use.** Lens-map that integration point's REAL surface — cheap Haiku agents
+   cataloguing every method / tool / hook / event Claude AND ChatGPT actually expose (connectors, plugins,
+   hooks, MCP tools, Agent SDK — every way of talking into and out of the agent). Never guess. Check what
+   is ALREADY mapped (the plugin-template / connector-adoption work exists) and EXTEND it (RULE ZERO).
+2. **Force it programmatically, don't prompt-and-hope.** If a behaviour CAN be driven by the ES via an
+   API/hook/connector, wire it that way. A prompt the agent may ignore is the last resort, not the first.
+3. **The SCM is the model of this done right** ([[scm-service-control-manager-delegated]] — bearer-authed
+   REST+MCP control-plane the ES drives by API). Every new integration follows that shape: real API, real
+   auth, real allow-list, real code — never a paragraph of hope.
+4. **Record it in the ES as business-as-code** (contract / skill / template), never as a chat message.
+
+## THE PROGRAMME (design first, then build — captured, not lost)
+Lens over Claude's AND ChatGPT's COMPLETE API/integration surface → a catalog in the ES → the ES
+programmatically drives the agents and FORCES the RULE MINUS-TWO behaviours in code. Skill:
+`C:\Users\joshl\.claude\skills\es-integration-programmatic-drive\SKILL.md`. Design + programme:
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-PROGRAMMATIC-DRIVE-INTEGRATION-POINTS-DESIGN-20260813.md`.
+Until built, THIS section is the standing reminder.
 
 ---
 
@@ -370,7 +656,7 @@ append the next phase into it, and close it deliberately when the work is genuin
 
 <!-- END KRITICAL-SWARM-TRACKING -->
 
-<!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=e9cf44663147 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
+<!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=913be2ee7457 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
 # 🔴 DOCUMENT INDEX for this repo (propagated — generated, do not hand-edit)
 
 **Authoritative documents for `Kritical.PS.Hardening`** — generated, never hand-edited.
@@ -379,7 +665,7 @@ Selection rule v1 (see `Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs` header
 
 | Document | Purpose | Last modified | Rule | Supersession |
 |---|---|---|---|---|
-| `AGENTS.md` | Kritical.PS.Hardening — AGENTS.md | 2026-08-02 | R1-root-entry | — |
+| `AGENTS.md` | Kritical.PS.Hardening — AGENTS.md | 2026-08-13 | R1-root-entry | — |
 | `README.md` | Kritical.PS.Hardening — Kritical Hardening Toolkit (audit-only v1.0.0) | 2026-07-03 | R1-root-entry | — |
 | `docs/ARCHITECTURE.md` | Kritical.PS.Hardening — Architecture | 2026-07-03 | R2-design-named | — |
 
