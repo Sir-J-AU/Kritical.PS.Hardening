@@ -47,5 +47,9 @@ Export-ModuleMember -Function @(
     'Get-KriticalHardenModuleStatus',
     'Test-KriticalHardenCompliance',
     'New-KriticalHardenReport',
-    'Get-KriticalHardenBanner'
+    'Get-KriticalHardenBanner',
+    'Set-KritCredential',
+    'Get-KritCredential',
+    'Remove-KritCredential',
+    'Get-KritCredentialList'
 )
