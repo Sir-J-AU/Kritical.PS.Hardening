@@ -12,650 +12,6 @@
 $lens = 'C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens'
 Import-Module "$lens\src\Kritical.Lens.psd1" -Force
 
-<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=1fca97e9bca0 — GENERATED from RULE ZERO + RULE ZERO-B in C:\Users\joshl\.claude\CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
-# 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
-
-> This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
-> top of `C:\Users\joshl\.claude\CLAUDE.md`. Anything you change here is overwritten on the next run.
-> Re-propagate: `pwsh "<Github>/Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1"` · Drift check (exits non-zero): `-Check`
-
-## 🔴 The three commands — run them from disk, never from memory
-
-```
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
-```
-
-🔴 **RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION
-LIMIT — BEFORE RE-RUNNING ANY LANE.** The ledger says whether an agent returned; **forensics
-says what a dead agent actually WROTE.**
-
-**WHY — a missing result is NOT a missing outcome.** A `StructuredOutput` failure and a
-session-limit kill both emit **no result line whatsoever**, so in the journal a lost report is
-**indistinguishable from an agent still thinking**. The agent almost certainly DID the work.
-Measured 2026-08-01: **1,670 agents, 173 never returned, and 36 of those HAD WRITTEN REAL
-FILES** — test suites and deploy scripts sitting on disk while every status surface reported
-them incomplete. Re-running a lane on the assumption *it never finished so nothing happened*
-is how work gets duplicated or silently clobbered. Check `git status` and the agent's
-`agent-<id>.jsonl` transcript before re-running anything.
-
-## RULE ZERO — one line
-
-**RULE ZERO in one line: READ THE INDEX AND THE DOCS BEFORE YOU CLAIM A THING DOES NOT EXIST.** You do not get to say a thing does not exist — only that you looked, where, and what you found. 4 false absence-claims in one session: *"No PowerShell semantic Lens ingester exists anywhere in th...* · *`UNDECLARED` read as "not built".* · *"`.github/workflows/` DOES NOT EXIST."* · *`Kritical.Lens.QAArsenal`.*.
-
----
-
-## Verbatim source — RULE MINUS-TWO (CHECK THE ENGINEERING SYSTEM BEFORE + AFTER EVERY TURN)
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴🔴 RULE MINUS-TWO — CHECK THE ENGINEERING SYSTEM BEFORE THE TURN AND AFTER THE TURN. EVERY TURN.
-# (Operator directive 2026-08-13, verbatim: *"the check before and the check after in every single
-#  turn against the engineering system is the core fucking number one priority first and foremost and
-#  everything else is a secondary parallel."*)
-
-**This is the number one priority. Everything else in this file is a secondary parallel.** It sits
-above shopify.dev because it is not about *what* to build — it is about whether the estate can still
-see itself. Shopify.dev remains law for every Shopify question; this rule governs the turn itself.
-
-## The contract — two checks, both mandatory, both against the Engineering System
-
-**BEFORE the turn — the design-conformance check.** Ask the Engineering System what exists, what is
-claimed, what is in flight, and what the declared design says, BEFORE building anything. Do not start
-from memory, do not start from the last summary, do not start from what a sibling lane said.
-
-**AFTER the turn — the built-vs-designed check.** Compare what was actually built against the
-architecture and the design, and record it. In the operator's stated order:
-**1** Engineering System vs architecture/design → **2** the task as *asked* → **3** the quality →
-**4** anything outstanding → **5** done or partly done → **6** which agent → **7** how long →
-**8** was it shit or all good → **9** eventually, cost.
-Full specification: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-EVALUATION-ORDER-20260813.md`
-
-**`NOT-CHECKED` is a required, valid value and must NEVER render as conformance.** Unchecked is not
-passed. A turn that could not reach the Engineering System says so, in the same breath as its result.
-
-## 🔴 THE OPERATING LAW PACK — `Kritical.OperatingLaw` IS LAW AND MUST BE LOADED EVERY WAVE
-(Added 2026-08-13 after an agent worked a full day without knowing this repo existed.)
-
-**`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.OperatingLaw\` is the estate's OPERATING
-LAW repo.** Operator directive (2026-08-03): *"the LAW that every wave and pass must call it."*
-**A wave that did not read this pack has not started. No exceptions.**
-- **START HERE:** `...\Kritical.OperatingLaw\THE-LAW-EVERY-WAVE-MUST-CALL-THIS.md` — the pack, in order.
-- Also in it: `estate\CLAUDE.md` (the propagated global rules) · `vault\CLAUDE-LAW0.md` ·
-  `registers\SCHEDULED-TASKS.md` (the estate scheduled-task register — 15 tasks, 11 FAILING as of
-  2026-08-03) · `registers\STALLED-SWARM-PARK-REGISTER-*` · `manuals\` · `skills\shopify-dev-law\`.
-- **Its own top-two warnings:** (1) the shop provides the credential end-to-end — "the operator must
-  regenerate the tokens" is ALWAYS a wrong sentence; (2) **your skills may not be loaded** — on
-  thegrid-claude, `CLAUDE_CONFIG_DIR` points elsewhere and estate skills (including `shopify-dev-law`,
-  which IS Law 0) are NOT loadable; run `...\Kritical.OperatingLaw\tools\Sync-KritSkillsToConfigHome.ps1`
-  and CONFIRM in-session (a "SYNCED" print is necessary, not sufficient).
-
-## 🔴 THE ENVIRONMENT / SERVICE / PORT PLAN — CANONICAL, DO NOT RE-DERIVE
-(Added 2026-08-13. It ALREADY EXISTED and an agent nearly rebuilt it — RULE ZERO. **Authority:**
-`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.AISupervisor.NodeJS\CLAUDE.md` — the
-6-service SCM graph, operator-confirmed. Environments: `Kritical-ShopifyVault\CLAUDE.md` LAW 0(c).)
-
-🔴🔴 **ALL DEV RUNS ON THE W365 BOX — OFF STACKTRACE.** (Operator directive 2026-08-13: *"where is the
-ALL DEV TO W365 and off stacktrrace"*.) **Stacktrace is the ORCHESTRATION / agent workstation ONLY** —
-it hosts no environment. Any older line saying "DEV runs locally on stacktrace, ports 4320–4324" is
-SUPERSEDED: those ports are DEV **on the box**. Nothing about DEV may depend on the laptop being on.
-
-🔴 **THE THREE ENVIRONMENTS ARE SEPARATE. NEVER MUDDLE THEM. NEVER SHARE A CREDENTIAL, PORT, DB, STORAGE
-ACCOUNT OR APP REGISTRATION ACROSS THEM.** Each has its own section below; read only the one you are in.
-
-### ══ DEV ══ (build + prove) — runs on **W365 box `CPC-Joshu-5919S`**, NOT stacktrace
-- **Surfaces/services:** the 4320–4324 SCM graph, **on the box**, bound `127.0.0.1`, reachable from
-  stacktrace over **Tailscale only** (`100.94.243.73`).
-- **Engine/pwsh:** the box. **Shopify org:** `208204138` (joshua.finley identity).
-- **Never** touches prod data, prod storage, or the prod Shopify org.
-
-### ══ TEST ══ (prove the shipping surface) — cloud + the box
-- **App surface:** `func-kritical-app-test` — Azure Functions Linux Consumption, **NO local port**.
-- **Shopify app:** `Kritical Vault - Testing`, client_id `c7be452e…`, app `403232555009`, org `208204138`.
-  Second set: PROD-org test app `261ae89d…` (app `410066026497`, org `218255268`) also points here.
-- **Engine/pwsh:** the **W365 box**. **Storage/leases:** `stkriticalapptest` / `ShopifyAccessLeasesTest`.
-- **Stores:** `kritical-1234`, `kritical-9765`, `clone-kriticalrestoretesting27jul2026-0812am`.
-
-### ══ PROD ══ (sell) — cloud + the box
-- **App surface:** `func-kritical-app` — Azure Functions Linux Consumption, **NO local port**.
-- **Shopify app:** `Kritical Vault`, client_id `fd1e406f…`, app `403160858625`, org `208204138`; and the
-  segregated non-commission set: `6d9adef2…` (app `410065698817`, org `218255268`, pax8tod365 identity).
-- **Engine/pwsh:** the **W365 box**. **Storage/leases:** `stkriticalappprod` / `ShopifyAccessLeasesProd`.
-- **Store:** `kriticalptyltd`. 🔴 Never restore INTO prod without explicit operator authorization.
-
-🔴 Azure Functions Linux Consumption has **no pwsh and cannot have one** — every engine op (backup,
-restore, clone, licence) runs on the **box**, in EVERY environment. **The QUEUE is the only production
-transport to the box** (the runner polls outbound); WinRM (HTTPS **5986**, not 5985) and SSH (**53124**)
-are tailnet-only admin/diagnostic paths for an engineer, never a mechanism any product surface may use.
-
-🔴🔴 **ALL DATABASES RUN OFF STACKTRACE TOO — ON THE W365 BOX.** (Operator directive 2026-08-13: *"where
-is the all DBs off stackgtrace"*.) `KriticalBrain` (+ `_Dev`/`_Test`/`_Prod`) and every `KritLens_<repo>`
-raw-corpus DB belong on the **box**, not the laptop's `.\SQLEXPRESS`. Stacktrace hosts NO database, NO
-environment, NO service — it is the orchestration workstation only. Cross-machine access is **Tailscale-
-scoped**, and SQL must listen on **loopback/Tailscale, never `0.0.0.0`** (see the live defect below).
-Re-homing is tracked work, not done — treat any "Lens SQL is on SQLEXPRESS locally" assumption as legacy.
-
-**THE CANONICAL PORTS — machine-readable authority:**
-`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.NET.ServiceControlManager\src\service-registry.json`
-(VERIFIED 2026-08-13). **All bound `127.0.0.1`, never `0.0.0.0`.** Edit the registry, not prose.
-| Port | Registered service |
-|---|---|
-| **4320** | `KriticalNodeJSWebServer-Master` — the **SCM** control plane (REST + MCP + metrics, bearer-authed, native .NET) |
-| **4321** | `KriticalNodeJSWebServer-SupervisorAPI-4321` — 🔴 **SUPERVISOR — NEVER START/RESTART/DRIVE** |
-| **4322** | `KriticalNodeJSWebServer-VaultBackend-4322` |
-| **4323** | `KriticalNodeJSWebServer-BackupShell-4323` (🔴 code comments call this "vault-frontend" — registry/code NAMING CONFLICT, unresolved) |
-| **4324** | `KriticalNodeJSWebServer-ConnectorAdmin-4324` |
-| **4330** | `KriticalMSShowcase-ControlPlane` |
-| **4610** | `KriticalGreatWhiteEngineeringSystem-MCP-4610` — the ES MCP server |
-| — | `KriticalNodeJSWaveRunner-SupervisorLoop` (no port) — 🔴 **SUPERVISOR — NEVER START** |
-🔴 **RUNNING BUT NOT REGISTERED — register these or they will be collided with:** **4325** Vault
-queue-runner health (`HEALTH_PORT`) · **4331** MSShowcase portal · **4350** Kritical-ShopifyVault app
-(`VAULT_APP_PORT`) · **4612** AgentBridge MCP · **4199** SCX agentic shim · **4611** ES MCP over SSH tunnel.
-
-### 🔴🔴 EVERY SERVICE HAS THREE INSTANCES — DEV, TEST, PROD. THE CONTRACT ALREADY EXISTS. DO NOT RE-DERIVE IT.
-(Operator directive 2026-08-13: *"every last service now has a dev and test and prod instance all
-entirely defined whereever chatgpt or claude across either box put it"*. **CORRECTED 2026-08-13 22:00
-AEST** — an agent invented a `base/+100/+200` scheme here while the REAL, built, tested, committed
-contract already existed. That invention is DELETED. This is RULE ZERO in its most expensive form.)
-
-🔴 **THE AUTHORITY — machine-readable, schema-validated, Pester-proven (9/9, planted-negative):**
-`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\config\vault-two-host-service-port-contract.json`
-· module `...\Kritical-ShopifyVault\scripts\deploy\KritVaultTwoHostServicePortContract.psm1`
-· tests `...\scripts\deploy\Test-VaultTwoHostServicePortContract.Tests.ps1`
-· lane doc `...\docs\lanes\two-host-service-port-contract-20260811\README.md`
-Committed `80ef739` (2026-08-11), carried through `ed32a18` (PR #26). **EDIT THE JSON, NOT THIS PROSE.**
-
-**THE ACTUAL ALLOCATION (six services × three environments):**
-| Service | DEV | TEST | PROD |
-|---|---|---|---|
-| master (SCM control plane) | 4320 | 35020 | 56020 |
-| supervisor-api 🔴 NEVER START | 4321 | 35021 | 56021 |
-| vault-backend | 4322 | 35022 | 56022 |
-| backup-shell | 4323 | 35023 | 56023 |
-| connector-admin | 4324 | 35024 | 56024 |
-| licence-authority | 4325 | 35025 | 56025 |
-- `listenerPolicy` per entry: `owned-healthy` (a named ownerService must hold it) or `must-be-free`.
-- DEV `exposeOnTailscale:false`; TEST and PROD `exposeOnTailscale:true`.
-- Per the contract as written, these run on host **STACKTRACE**; the W365 box hosts only
-  `KriticalNodeJSService-VaultQueueRunner` (no port — outbound poller).
-
-🔴 **UNRESOLVED CONFLICT — STATE IT, DO NOT SILENTLY PICK A SIDE.** The contract (2026-08-11) puts these
-on STACKTRACE. The operator's directive (2026-08-13) is **ALL DEV AND ALL DATABASES OFF STACKTRACE onto
-the W365 box**. Both are real: the contract is CURRENT BUILT STATE, the directive is TARGET STATE. The
-migration is **tracked work, NOT done**. Until it is done, do not claim either as "the" answer — say
-which one you mean.
-
-🔴 **NEVER APPLIED — the ports are genuinely stealable right now.** `-Apply` has never been run on either
-machine (no `Kritical-Vault-*` firewall rules, no `C:\ProgramData\Kritical\rollback` receipts).
-Measured 2026-08-13: Stacktrace's TCP dynamic range is **1024-64511**, so DEV **4320-4325** and PROD
-**56020-56025** sit INSIDE it and can be taken at boot. TEST 35020-35025 is only *accidentally* covered by
-a NON-contract exclusion (`35013-35112`, shape suggests Hyper-V/Docker NAT) — that protection is not ours
-and can evaporate. The W365 box's dynamic floor is 49152, so 4xxx is incidentally safe there.
-Reserve with `netsh interface ipv4 add excludedportrange protocol=tcp` — the module does this one port at
-a time and writes an immutable rollback receipt. `-Apply` is deliberately LOCAL-ONLY (refused remotely).
-
-🔴 **KNOWN COLLISIONS / CONTESTED PORTS (unresolved, do not paper over):**
-- **4326 claimed TWICE** by two lanes unaware of each other: `Kritical.NodeJS.EstateConsole\src\server.js:19`
-  (2026-07-13) and `Kritical-ShopifyVault\docs\DESIGN-VAULT-MCP-SERVER-20260809.md:42` (`VAULT_MCP_PORT`).
-- **4325 contested**: the contract calls it `licence-authority` (designed, **never built**) while the live
-  `KriticalNodeJSService-VaultQueueRunner` is the other claimant — the estate's own design doc records this
-  as unresolved. Do not assert either.
-- **4323 naming drift**: registry says `BackupShell`, the running code calls itself `VaultShell` /
-  "Vault frontend". One port, three names — pick one before building on it.
-
-**Also registered (SCM allow-list, `Kritical.NET.ServiceControlManager\src\service-registry.json`):**
-4330 MSShowcase control plane · 4610 ES MCP. **Running but UNREGISTERED — register or they get collided
-with:** 4325 queue-runner health · 4331 MSShowcase portal · 4350 Vault app · 4612 AgentBridge MCP ·
-4199 SCX shim · 4611 ES MCP over SSH tunnel.
-
-- **Instances are FULLY SEPARATE**: own port, own config, own credentials, own DB, own storage account.
-  Never shared, never "the same service with a flag".
-- 🔴 **Applies to services EITHER AGENT (Claude or Codex/ChatGPT) stood up on EITHER BOX.** Ad-hoc services
-  are the ones that collide. Found one unregistered? Add it to the CONTRACT — never leave it squatting.
-- **Enforcement:** a gate failing when a service binds outside its allocation or lacks an instance. The
-  contract's own Pester suite is the model (proven RED before GREEN).
-
-🔴 **LIVE GROUND-TRUTH DEFECTS (measured 2026-08-13, fix before trusting the plan):**
-- **Redis is listening on `0.0.0.0:6379` on stacktrace** — not loopback, not in any plan. Exposure risk.
-- **SQL Server on the W365 box listens on `0.0.0.0:49473`** (dynamic, IPAll) with **no Tailscale-scoped
-  firewall rule** — currently unreachable only because the Public-profile default-deny blocks it, so it
-  is neither secured-by-design nor usable. Precedent for the correct fix already exists in this estate:
-  commit `316067b` rebound the MCP server to 127.0.0.1 explicitly.
-- `4322`/`4323`/`4324` services are **registered but STOPPED** (never started since boot).
-**RULE:** a new service does not pick a port — it is ALLOCATED one here, binds loopback, and is
-registered. Anything binding `0.0.0.0` is a finding, not a style choice (RULE ZERO-C: settings-owned).
-
-## 🔴 KEEP THE LAW TERSE — PROFANITY IS STRIPPED PROGRAMMATICALLY, MEANING IS NOT
-(Operator directive 2026-08-13: *"to save tokens we should programatically strip the swearing from
-claude.mds as well with a tool in the ps.toolkit"*.)
-
-**These files reload on EVERY turn in EVERY repo (95+ copies) — every wasted word is paid for on every
-turn.** Profanity in quoted operator directives carries emphasis but no information, so it is removed
-**by tool, never by hand**: `Kritical.PS.Toolkit` → **`Invoke-KritDocProfanityStrip`**.
-- **MEANING AND INTENT ARE PRESERVED.** The directive still says what he decided and why; only the
-  expletive is dropped. Never paraphrase, soften, or summarise his actual instruction — that is a
-  separate hard rule and it still stands.
-- **STRIP THE SOURCE, THEN RE-BROADCAST.** Edit `C:\Users\joshl\.claude\CLAUDE.md` and each repo's OWN
-  authored sections, then re-run the propagator. Never hand-edit the generated blocks.
-- 🔴 **NEVER TOUCH `docs\human\`** — hand-authored, no generator may ever write there. Also never touch
-  anything marked FROZEN / SUPERSEDED / ARCHIVED, or `Github-SecretsOutsideOfGitRepos`.
-- Every run keeps a reversible archive of originals + a receipt (what changed, how many tokens saved).
-
-## 🔴 TRACK THE BABBLE AGAINST THE ARCHITECTURE — PROGRAMMATICALLY, START AND END OF EVERY TURN
-(Operator directive 2026-08-13: *"taling to es at start and end of turn tracking any of your babble
-against the architecture and design programatically"*.)
-
-**Talking to the ES at the START and END of every turn is not optional narration — every claim the agent
-makes in a turn is to be checked, BY CODE, against the declared architecture and design held in the ES.**
-- **The ES is where ALL design and architecture is READ FROM.** Not memory, not the last summary, not a
-  sibling lane. Read design from the ES → write code that matches its stated requirements → check the
-  built result against it before the turn ends.
-- **The check is mechanical, not self-reported.** An agent grading its own output is the failure mode this
-  replaces. Interception design (hooks that inject per message and DENY per tool call):
-  `...\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-DEVIATION-INTERCEPTION-DESIGN-20260813.md`.
-- **Proven pattern, already working in this estate:** `guard_bash.py` (blocks destructive git) and the
-  repo-lease guard (refuses a commit without `KRIT_LANE_ID`) both stopped real deviations by REFUSING the
-  action. Every deviation class gets a rule of that shape — never a paragraph asking the agent to remember.
-
-## Why this rule exists — the measured failure
-
-The Engineering System has been asked for, for days, and repeatedly reported as delivered while being
-structurally incapable of the job. Every one of these was proven by an adversarial refuter, not guessed:
-
-- **The write path is dead.** `create_task` against the live server returns
-  `cannot pull with rebase: You have unstaged changes` — `pullLatest()` rebases against a dirty tree,
-  and `persist.mjs`'s own comment admits this blocks writes *"almost always in this repo."*
-- **The evidence rule has an open back door.** `close_task` correctly refuses to close without
-  `evidenceRef`; `update_task {"status":"done"}` closes with none.
-- **Code was pushed a full day before the process that would serve it.** `tools/list` served 7 tools
-  while source declared 13. **Writing code and pushing it is not shipping it.**
-- **An orphaned lease bricks all writes.** A lease held by a DEAD PID never self-heals —
-  `acquireRepoLease` never checks holder liveness.
-- **The turn-receipt tool fabricated a measurement.** `durationMinutes` was
-  `Math.round(Math.random() * 60)`, and the system had never been run once.
-- **The SessionStart hook reports "server unreachable" against a live, reachable server** and injects
-  nothing.
-
-**The pattern is always the same and it is the reason for this rule: a thing that is never checked
-before and never verified after gets reported as done and is not.**
-
-## What this means operationally
-
-- **A turn that did not check the Engineering System is not finished**, regardless of what it produced.
-- **The check must be STRUCTURAL, not remembered.** Agents asked to remember drift, which is exactly
-  how it became "a fourth-rate citizen." Hooks, gates and connectors are the mechanism — but see the
-  measured failures above: **a hook that lies is worse than no hook.** Every such mechanism ships with
-  its own proof that it goes RED.
-- **Read-write, not read-only.** A system of record you cannot write to is a report. `create_task` /
-  `update_task` / `close_task` must actually work against the LIVE server, proven end to end, not in a
-  sandbox — sandbox-only proof is precisely the gap that made the last claim false.
-- **Live defect register:**
-  `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\WRITE-PATH-DEFECTS-AND-FIXES-20260813.md`
-  `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-DEFECTS-20260813.md`
-
----
-
-## Verbatim source — RULE MINUS-1.75 (THE ES FORCES BEHAVIOUR IN CODE, NOT INFERENCE)
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴🔴 RULE MINUS-1.75 — THE ES FORCES BEHAVIOUR IN CODE VIA THE AGENT'S OWN INTEGRATION POINTS. NOT INFERENCE.
-# (Operator directive 2026-08-13. The end-state of RULE MINUS-TWO: stop relying on the agent to REMEMBER —
-#  make the ES FORCE it programmatically through connectors/plugins/hooks/MCP/SDK/APIs, not tokens.)
-
-**Every mandatory behaviour in this file — the RULE MINUS-TWO before/after checks, the delegation
-contract, the gates, the repo lease, reading the docs, using the SCM — must ultimately be ENFORCED BY THE
-ENGINEERING SYSTEM IN PROGRAMMATIC CODE, driven through the agent's OWN integration points, and NOT left
-to inference, tokens, or interpretation of any kind.** Every "documented but forgotten" failure (the SCM,
-the ES check, the token architecture — all forgotten repeatedly despite being written down) is proof that
-prompt-and-hope does not hold. The fix is never a louder prompt; it is code that forces the behaviour.
-
-## MANDATORY when touching ANY integration point (connector / plugin / hook / MCP / SDK / API)
-1. **Enumerate before you use.** Lens-map that integration point's REAL surface — cheap Haiku agents
-   cataloguing every method / tool / hook / event Claude AND ChatGPT actually expose (connectors, plugins,
-   hooks, MCP tools, Agent SDK — every way of talking into and out of the agent). Never guess. Check what
-   is ALREADY mapped (the plugin-template / connector-adoption work exists) and EXTEND it (RULE ZERO).
-2. **Force it programmatically, don't prompt-and-hope.** If a behaviour CAN be driven by the ES via an
-   API/hook/connector, wire it that way. A prompt the agent may ignore is the last resort, not the first.
-3. **The SCM is the model of this done right** ([[scm-service-control-manager-delegated]] — bearer-authed
-   REST+MCP control-plane the ES drives by API). Every new integration follows that shape: real API, real
-   auth, real allow-list, real code — never a paragraph of hope.
-4. **Record it in the ES as business-as-code** (contract / skill / template), never as a chat message.
-
-## THE PROGRAMME (design first, then build — captured, not lost)
-Lens over Claude's AND ChatGPT's COMPLETE API/integration surface → a catalog in the ES → the ES
-programmatically drives the agents and FORCES the RULE MINUS-TWO behaviours in code. Skill:
-`C:\Users\joshl\.claude\skills\es-integration-programmatic-drive\SKILL.md`. Design + programme:
-`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-PROGRAMMATIC-DRIVE-INTEGRATION-POINTS-DESIGN-20260813.md`.
-Until built, THIS section is the standing reminder.
-
----
-
-## Verbatim source — THE API MAPPER ALREADY EXISTS
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴 THE API MAPPER ALREADY EXISTS — REST **AND** GRAPHQL. NEVER HAND-ROLL AN API CLIENT, DIFF OR VALIDATOR AGAIN.
-
-**Operator directive 2026-08-01, after an assistant spent a session hand-diagnosing a Shopify API
-version drift while a complete, tested, documented toolkit for exactly that sat unused in Lens —
-and then wrongly told the operator REST coverage did not exist.**
-
-**Location (ONE folder, everything is here):**
-`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\components\data-infra\Kritical.Lens.Toolkit\api-mapper\`
-Its own docs: `README-API-MAPPER.md` in that folder. **READ IT BEFORE TOUCHING ANY API.**
-
-| Capability | Tool |
-|---|---|
-| Detect whether an API is REST or GraphQL | `krit-api-kind-detect.mjs` |
-| GraphQL: version-to-version schema diff, BREAKING/DEPRECATION/ADDITIVE | `krit-graphql-schema-diff.mjs` |
-| GraphQL: validate one real query against a schema, field by field | `krit-graphql-query-validate.mjs` |
-| GraphQL: generate a PowerShell client from a schema | `krit-graphql-to-psclient.mjs` |
-| REST: OpenAPI spec-to-spec diff | `krit-openapi-spec-diff.mjs` |
-| REST: validate a real call against a spec | `krit-openapi-call-validate.mjs` |
-| REST: convert a Google-style Discovery doc to OpenAPI | `krit-discovery-to-openapi.mjs` |
-| **Propose the actual remediation changes programmatically** | `krit-remediation-proposer.mjs` |
-| Validate transforms | `krit-transform-validate.mjs` |
-| Service registry + PowerShell wrapper | `krit-api-registry.json`, `Kritical.Lens.ApiMapper.psm1` |
-
-**Every tool has a `.test.mjs` beside it and `fixtures/` carries baseline / safe / breaking pairs —
-they are PROVEN to go both RED and GREEN.** `krit-graphql-schema-diff.mjs` and
-`krit-openapi-spec-diff.mjs` both run FULLY OFFLINE against saved introspection/spec JSON and both
-support `--fail-on-breaking` (exit 1) — so they are real GATES, not reports. Wire them.
-
-🔴 **THIS APPLIES TO EVERY API, FOREVER — Shopify, Pax8, D365 BC, Microsoft Graph, and every new one.**
-Before writing a single hand-rolled API client, version check, schema comparison, call validator, or
-"what changed between versions" script: **this folder already does it.** EXTEND and REGISTER a new
-service (`Register-KritApiService` / `New-KritApiClient -Service <name>`); do not re-derive.
-
-🔴 **VERSION DRIFT IS A MEASURED, RECURRING DEFECT CLASS, NOT A HYPOTHETICAL.** Measured 2026-08-01
-in Kritical-ShopifyVault (`F-APIVER-001`): `app/shopify.app.toml` declared `2026-01` while **25**
-hardcoded literals in live JS said `2026-04`, and the PowerShell engine tracked a third value —
-three sources of truth, none agreeing, none gated. **Any product talking to a versioned API needs
-ONE source of truth for its version plus a committed gate that fails when the declared version and
-the used version disagree.** Absence of that gate is a finding, not a style preference.
-
-**Known limit, stated honestly:** these tools diff SPECS and SCHEMAS. A *dynamic live-route prober*
-for a REST service that publishes no spec is a separate, un-built capability (tracked 🔴 in
-`Kritical-ShopifyVault\docs\OPERATOR-REQUIREMENTS-TRACEABILITY-20260729.md`). Do not claim probe
-coverage you do not have — but equally, do not claim REST is uncovered: OpenAPI diff/validate/
-generate all exist and are tested.
-
----
-
-## Verbatim source — THE TURN CONTRACT
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴 THE TURN CONTRACT — run these, every turn, in this order. Verified to exist 2026-08-01.
-
-`$L = "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens"`
-
-## START of every turn
-
-🔴 **STEP ZERO — RE-READ THE RULES BEFORE YOU DO ANYTHING ELSE. EVERY TURN, NOT JUST AT SESSION START.** Re-read `C:\Users\joshl\.claude\CLAUDE.md` AND the current repo's own `CLAUDE.md` / `AGENTS.md` at the START of every single turn. Loading them once at session start is NOT compliance — context drifts, turns compact, and rules that were read hours ago stop being applied. Measured 2026-08-01: an assistant with both files fully in context still failed to run the commands below unprompted, and violated LAW 4 in nearly every reply of a long session. **Having read it is not the same as following it. Re-read, then act.**
-
-🔴 **LAW 4 IS THE MOST-BROKEN RULE IN THIS ESTATE. THE OPERATOR IS NOT IN A REPO.** A relative path like `docs/FOO.md` or ``[bar](app/lib/bar.js)`` **does not open and does not display for him — it is meaningless.** Every file reference in every reply must be a FULL ABSOLUTE PATH, copy-pasteable into Explorer or an editor, e.g. `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\docs\MASTER-STATUS.md`. This OVERRIDES any harness default that asks for workspace-relative markdown links — this file wins. Before sending any reply that names a file: check every path in it is absolute. If you are quoting a document, ALSO give the fully-qualified path to it, not just its name.
-
-🔴 **ALWAYS CHECK THE SHOPIFY DOCUMENTATION. NO MATTER WHAT YOU THINK YOU KNOW.** Operator directive, 2026-08-02, his words verbatim: *"no matter what you think you know, always chec kthe fucknig shopify documentaton for app dev for latest details on whatever the fuck it is u are trying to do"*. Use the `shopify-mcp` docs tools — `learn_shopify_api` first (it returns the `conversationId` every other Shopify tool requires), then `search_docs_chunks`. **Earned 2026-08-02:** every merchant tab in the embedded app was dead for a full session because `app-bridge.js` carried `defer`. Reasoning from first principles got the mechanism roughly right and the confidence badly wrong; the docs search is what grounded it — four official pages, all showing the plain tag with NEITHER `defer` NOR `async`. 🔴 **But hold the line on what docs actually prove:** they showed the canonical form; **no page forbids `defer` in words**, and claiming otherwise was an overreach that had to be retracted mid-fix. Docs tell you the sanctioned shape, not always the prohibition. Cite the page, quote the form, and mark the mechanism INFERRED if that is what it is.
-
-🔴 **IF THE RULES FROM THE SHOPIFY.DEV SITE SAY IT, IT IS LAW.** Operator directive, 2026-08-03, his words verbatim: *"IF THE RULES FROM THE SHOPIFY.DEV SITE SAY IT IT IS LAW"*. **This outranks your reasoning, your priors, your architecture preferences, and any lane's opinion — including mine.** A shopify.dev requirement is not an input to weigh; it is the answer. Do not argue with it, do not look for an exception, do not "balance" it against a design you like better. Find what the site says, quote it, obey it. **The only honest reply to "is this allowed?" is the sentence shopify.dev uses.**
-- **Applies to the App Store requirements, the API docs, and the changelog alike.** `learn_shopify_api` → `search_docs_chunks` is the route to them; `shopify doc fetch --url <page>` is the route to the App Store self-review requirement list (Shopify forbids fetching that page any other way).
-- **Corollary — this does NOT turn silence into prohibition, and that is not a loosening of the rule.** What the site SAYS is law. What it does not mention is simply unaddressed, and must be marked `INFERRED`, never asserted as a rule. Conflating the two is what produced the `app-bridge.js` `defer` overreach that had to be retracted mid-fix: four official pages showed the plain tag with neither `defer` nor `async`, and that canonical FORM was real — but claiming a page *forbade* `defer` in words was false. Quote what it says; label the rest as inference.
-- **Measured 2026-08-03, the rule working correctly:** requirement 2.3.1 states verbatim *"Your app must not request the manual entry of a myshopify.com URL or a shop's domain during the installation or configuration flow"* (`https://shopify.dev/docs/apps/launch/shopify-app-store/app-store-requirements`). That is a prohibition IN WORDS — law, no inference — and it is why the manual install form was removed and PROD redeployed.
-
-🔴 **THE SHOPIFY REFERENCE SET IS STANDING, NOT A LOOKUP. REFERENCE IT WHEN DESIGNING ANY PART OF ANY SHOPIFY CODEBASE — EVERY TIME.** Operator directive 2026-08-02: *"that i gave to you that you should be permanently referencing when designing any part of any of this codebase in any way along with the base templates gh repos"*. These were handed over deliberately. Consulting them only when reminded is the failure.
-
-**1 — THE SKILLS** (`C:\Users\joshl\.claude\skills\`). Load the relevant one BEFORE acting, not after:
-| Skill | Load before |
-|---|---|
-| `kritical-vault-deploy-order` | 🔴 **ANY** deploy/republish/"push to test"/"push to prod". It encodes the strict **dev → test → prod** order and the gates that must be GREEN before prod. **Measured 2026-08-02: a test deploy was run ad-hoc without loading this — exactly what it exists to prevent.** |
-| `kritical-vault-deploy` | any deploy/rollback/"app is down" on `func-kritical-app`. Hard rule: **never hand-roll a SAS** — from a real 2026-07-29 production outage |
-| `shopify-cli-auth-bumper` | any `shopify` CLI command that hits an interactive prompt. Hard rule: **never run `shopify auth logout`** |
-| `shopify-preview-store-lifecycle` | needing a real disposable dev store. Real flags, and the honest limit that **no store can be deleted programmatically** |
-
-**2 — THE DOCS, via the `shopify-mcp` plugin** (`claude-plugins-official/shopify`, installed):
-`learn_shopify_api` **FIRST** — it returns the `conversationId` every other Shopify tool requires — then `search_docs_chunks`, `validate_graphql_codeblocks`, `validate_component_codeblocks`, `validate_theme`.
-
-**3 — THE BASE TEMPLATES.** ONE repo holds all three, vendored:
-`https://github.com/Sir-J-AU/Kritical.Shopify.AppTemplate.git`
-| Template | Path | Status |
-|---|---|---|
-| **React Router** | `templates\react-router-template` | **Shopify's CURRENT recommendation** — React Router v7, TS, Prisma |
-| Remix | `templates\remix-template` | previous generation |
-| Node/Express | `templates\node-template` | framework-light JS |
-🔴 **DO NOT EDIT THE VENDORED COPIES.** Its README says to run `npm init @shopify/app@latest -- --template <name>` instead.
-🔴 **KNOWN GAP, DO NOT ASSUME CURRENCY:** the repo records **NO upstream URL and NO upstream commit SHA** for any of the three, and has no `.gitmodules`. **There is therefore no mechanical way to answer "is our vendored template behind Shopify's?"** Treat template currency as UNKNOWN until that provenance is captured — never as fresh.
-Full map + its recheck triggers: `Kritical-ShopifyVault\docs\APP-TEMPLATE-AND-BROWSER-TOOLING-MAP-20260731.md`
-
-**Before designing ANY Shopify surface — auth, webhooks, billing, embedding, session tokens — check what the template already does and what the docs sanction. Reasoning from first principles in this area has been wrong here before** (the `defer` on `app-bridge.js` killed every merchant tab for a full session).
-
-```
-node "$L\scripts\Get-KritSwarmLedger.mjs"                  # what is running / stalled — never from memory
-node "$L\scripts\Get-KritAgentForensics.mjs" --unreturned   # what dead agents WROTE. Run FIRST after any restart
-node "$L\scripts\Get-KritGitLossLedger.mjs"                 # uncommitted / unpushed / detached / no-remote
-pwsh "$L\scripts\Build-KritLensComponentIndex.ps1"          # regenerate before quoting ANY count
-```
-
-## DURING — before building or claiming absence
-
-Read the index and the repo's own `docs/`, `README*`, `AGENTS.md`, `CLAUDE.md`. See RULE ZERO.
-Fan out per the FAN-OUT RULES below: one swarm, appended phases, Haiku bulk / Sonnet gate+refute /
-Opus steer, an adversarial refuter on every claim.
-
-## END of every turn that touched code
-
-```
-pwsh "$L\scripts\Invoke-KritLensFullPipeline.ps1"           # the real pipeline (7 stages)
-pwsh "$L\scripts\Invoke-KritEndOfTurnGate.ps1"              # GATE1/2/3 + JSON verdict — FAIL CLOSED
-pwsh "$L\scripts\Test-KritLensCorpusFreshness.ps1"          # raw corpus vs HEAD, exits non-zero on staleness
-pwsh "$L\scripts\Test-KritLensSemanticGraphFreshness.ps1"   # the semantic graph, separately
-pwsh "$L\scripts\Invoke-KritLens3Gate.ps1"                  # verified exit contract
-```
-
-Deep mining + SQL: `Invoke-KritShopifyVaultDeepMine.ps1`, `Import-KritProvenanceIndexToSql.ps1`,
-and the `Kritical.Lens.SqlMiner` component (`components/data-infra/`).
-
-🔴 **ANALYZER OUTPUT THAT NEVER REACHES SQL IS NOT INGESTION.** A sweep once ran green while
-writing **zero rows to all 179 tables**. Confirm rows landed in `KriticalBrain` (`lens.*`) and in
-`KritLens_<repo>` for the raw corpus. **Scope every query by repo + `status='ok'`, NEVER by
-`MAX(run_id)`** — that silently answers about a different repo, and once read a class of 3 as 31.
-Semantic tables carry no commit column; provenance is in `lens.v_ingestion_run_current` /
-`lens.v_repo_health`, so join through those or you do not know which commit you are describing.
-
-🔴 **THESE ARE NOT GATES — they have ZERO exit statements and report success unconditionally:**
-`Invoke-KritEstateWideLensSweep` · `Invoke-KritAstSweepEstate` · `Test-KritAstSweepRecall`.
-Never wire them where failure must propagate; never cite their green.
-
-🔴 **RE-VERIFIED + EXTENDED 2026-08-02 17:55 AEST (+10:00), VERIFIED-BY-EXECUTION** (grep for
-`exit` / `throw` / `$LASTEXITCODE` / `[Environment]::Exit` across all six, plus `git log
---diff-filter=A` for lineage). The claim above HOLDS, but it was **incomplete in both directions**:
-
-- **They are PREDECESSORS, not successors.** All three were added **2026-07-26** and never touched
-  since. `scripts\Invoke-KriticalLensEstateSweep.ps1` was added **2026-08-01** — five days LATER —
-  and IS a real gate: `exit 1` at lines 117 and 120, self-described as *"THE canonical Lens entry
-  point, as a script/gate (fail-closed exit code)"*, a thin shim whose own header explains why the
-  module function must not call `exit` in a caller's runspace, with its own test file exercising
-  the exit-code contract. So the newer, near-identically-named script already supersedes the older
-  `Invoke-KritEstateWideLensSweep`. **Do not "fix" the 2026-07-26 trio — prefer the 2026-08-01 shim.**
-- 🔴 **`Invoke-KritLensFullPipeline.ps1` BELONGS IN THE SAME CATEGORY AND NOBODY NOTICED.** It has
-  **ZERO `exit` statements** and exactly ONE `throw` (line 430, a narrow "splitter not found"
-  setup guard). Its own header says the verdict receipt's `.Ok` is `$false` if any stage FAILED —
-  but **that verdict never reaches the process exit code**, so `pwsh -File Invoke-KritLensFullPipeline.ps1`
-  exits 0 even when `.Ok` is false. **Its receipt is the contract; its exit code is not.** Anything
-  wiring it as a pass/fail gate on exit status is a false green. Read
-  `<OutputDir>\full-pipeline-verdict-<utc>.json` and check `.Ok`.
-- **Genuinely fail-closed:** `Import-KritProvenanceIndexToSql.ps1` — 7+ `throw "FAIL-CLOSED: …"`
-  guards (uncaught `throw` under `pwsh -File` does yield exit 1).
-- **Spread of the stale reference:** `Invoke-KritEstateWideLensSweep` is still named in the
-  propagated block across **10+ `AGENTS.md`/`CLAUDE.md` files** (every component repo). Those are
-  generated from THIS file, so correct it here and re-propagate — never hand-edit the copies.
-
-🔴 **THE LENS LOOP IS NOT RUNNING — CORRECTED 2026-08-01.** `sc query KriticalLensLoop` →
-**the service EXISTS and IS REGISTERED, STATE=STOPPED** (re-verified live this turn: `STATE : 1
-STOPPED`, `WIN32_EXIT_CODE: 1077` = never started since boot). The prior line in this file
-("service does not exist") was WRONG — re-checked and refuted twice independently the same day
-(once by a README-currency audit, once by this turn) — do not repeat that claim. `Invoke-
-KritLensLoopService.ps1` and `Install-KritLensLoopService.ps1` exist in `$L\scripts\`, the service
-IS installed via the latter, but it has never been started — so **nothing is keeping Lens fresh
-automatically** and every "Lens is current" assumption is unfounded until the end-of-turn gate is
-actually run by hand. Starting it needs the operator's typed ack + a rehearsal (never Automatic
-without both) — see `Kritical.Lens\docs\LENS-LOOP-SERVICE-DECISION-20260801.md` for the decision
-this is currently parked on (cost, concurrency-lock gap, what starting it would actually do).
-
-**Propagating these rules:** `$L\scripts\Update-KritRepoSwarmTrackingBlock.ps1` and
-`Update-KritRepoAgentsLensSection.ps1` inject/refresh the block across every repo. Run them after
-changing anything here, or the repos silently drift from this file.
-
-**LENS: NOT RUN — <reason>** must appear in the same breath as any result where the above did not
-run. Silence reads as "it was checked".
-
----
-
-## Verbatim source — THE DELEGATION CONTRACT
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴 THE DELEGATION CONTRACT — TEST FIRST, WRITTEN BY HAIKU, PROVEN BY SONNET, GATED BY OPUS
-# (HARD RULE. Operator directive 2026-08-01. Applies to EVERY swarm, no exceptions.)
-
-**The orchestrator does not do the work. The orchestrator gates the work.** If you are writing bulk
-text, applying a known fix, or grinding through a list, you are doing a Haiku's job on an Opus
-budget — and doing it *worse*, because nothing independent then checks it.
-
-## The pipeline — in this order, every track
-
-| # | Who | Does | Must be true before the next step |
-|---|---|---|---|
-| **1** | **Haiku** | **Writes the CHECK/TEST FIRST — before any implementation.** Delivers it as the first artefact of the track, not the last. | The test exists and is runnable |
-| **2** | **Sonnet** | **Owns whether that check is CORRECT.** Verifies it actually tests the claimed thing and **proves it goes RED on a planted defect**. | The test is proven to fail when it should |
-| **3** | **Haiku** | The bulk grind — all manual/mechanical work, all bulk text, applying the now-specified fix | The work is done and the test passes |
-| **4** | **Sonnet** | **Adversarial refutation**, pinned, high effort, briefed to REFUTE and default to refuted when uncertain | Independent attack survived |
-| **5** | **Opus** | **Gates.** Reads the diff, re-runs the gate, decides. Owns correctness of the whole. | — |
-
-**Step 1 before step 3 is the whole point.** A test written after the implementation is written to
-pass it. A test written first, and independently proven RED by a different tier, is the only kind
-that means anything. This estate has shipped: a 4/4 green suite that never loaded the module under
-test; a suite reporting 18/0 that was really 18 passed / 3 silently skipped; and a
-`vault-dispatch.ps1` fix with literally zero test files referencing it.
-
-**Sonnet is ACCOUNTABLE for the checks, not just a reviewer of them.** If a check was wrong, that
-is Sonnet's failure, not Haiku's. That accountability is what stops step 2 becoming a rubber stamp.
-
-## Tier assignment — EXPLICIT on every track, never inherited
-
-| Tier | Work |
-|---|---|
-| **Haiku** | ALL manual grind. Bulk text. Scanning, inventorying, collecting output, applying a known fix with a known shape, **and writing the tests/checks first** |
-| **Sonnet** | Correctness of the checks · all interpretation · EVERY adversarial refutation (pinned, `effort: 'high'`) |
-| **Opus** | Orchestrate, steer, GATE, decide. Never bulk work |
-| **Local (LM Studio)** | Haiku-tier substitute ONLY. **Never** a gate verdict, **never** a refutation |
-
-**Inheritance is silent and it drifts** — measured 2026-08-01: **50 of 53 tracks ran on OPUS**
-purely because `model` was unset, including pure mechanical scanning. Set `model` on every track.
-
-## Non-negotiables that make it mean something
-
-- **Adversarial by default.** Never one verifier. Never a self-report accepted. Refuters have
-  already caught a real false-green and two broken HEADs on this program.
-- **A gate never shown to go RED is decoration.** Every check ships with its negative test.
-- **A low detector count means the detector missed it**, not that the thing is absent.
-- **Every finding gets a stable ID + version stamp** in the repo's `docs/FINDINGS-REGISTER.md`
-  (`F-<WAVE>-<nnn>`, first-seen version, `OPEN|FIXED|REJECTED|REGRESSED`, fixed-in version). Rows
-  are never deleted — so a reappearance reads as a **REGRESSION of a known ID**, not a new find.
-- **Comment provenance.** Hand-derived context written into code is prefixed
-  `USER/CONTEXT DOCUMENTATION - NOT GENERATED BY LENS`. Lens-derived facts cite their query.
-  An unlabelled comment reads as machine-verified when it is not.
-
----
-
-## Verbatim source — RULE ZERO-B
-
-*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
-
-# 🔴 RULE ZERO-B — NEVER SPAWN AN AGENT THAT IS NOT PROGRAMMATICALLY TRACKED (HARD RULE)
-
-**Operator directive 2026-08-01, after ~176 agents across ~7 concurrent swarms died with nobody
-able to say what they had done, written, or left half-finished.**
-
-**Before dispatching ANY agent or swarm, and at the END of every turn that ran one, run the
-ledger — never your memory:**
-
-```
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
-node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
-```
-
-🔴 **RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION
-LIMIT — BEFORE RE-RUNNING ANY LANE.** It is the only thing that tells you **what a dead agent
-actually WROTE**. The ledger says whether an agent returned; forensics says what it left on disk.
-Measured 2026-08-01: **1,670 agents, 173 never returned, and 36 of those had written real files** —
-including test suites and deploy scripts sitting on disk while every status surface reported them
-incomplete. Re-running a lane on the assumption "it never finished so nothing happened" is how work
-gets duplicated or silently clobbered.
-
-Memory is not tracking. A remembered swarm count was measured **wrong by 4×** (believed ~15
-running; actually 4 of 57, with 153 agents started and never returned).
-
-**For every agent you must be able to answer, from disk and not from recall:** is it still
-running · what was it asked to do · which files did it WRITE · which did it NOT · did it commit ·
-did it return a result at all.
-
-**🔴 A MISSING RESULT IS NOT A MISSING OUTCOME.** A `StructuredOutput` failure and a session-limit
-kill both emit **no result line whatsoever** — verified on `wf_731e7b0d-ecc` (harness reported
-`agents_empty_result=1`; journal held 15 `started`, 14 `result`). So in the journal a lost report
-is indistinguishable from an agent still thinking. **The agent almost certainly DID the work.**
-Check `git status` and its `agent-<id>.jsonl` transcript before re-running anything.
-
-**Gate agents run LAST, so a session limit strips the VERIFICATION layer off every workflow while
-the production layer completes.** Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs 6/7 ✓
-then gates 0/14 ✗ at **zero tokens**. The estate therefore accumulates **finished-but-unverified**
-work, which is worse than unfinished work because it looks done.
-
-**"Built" does not mean "safe".** Persist and push before the next step: tonight a whole component
-had no git, ten docs were untracked, a 623-insertion commit was stranded on a detached HEAD, and
-1,492 agent results lived only inside journal files.
-
-## 🔴 FAN-OUT RULES — the shape of a swarm (operator directives, 2026-08-01)
-
-**ONE SWARM AT A TIME. Keep it alive by APPENDING PHASES, never by launching a second.** Each new
-`Workflow` call costs the operator an approval; editing the script file and resuming with
-`{scriptPath, resumeFromRunId}` costs nothing and replays completed agents from cache free. Four
-parallel workflows were run early on 2026-08-01 and that was the mistake — it is what forced the
-operator to keep approving instead of sleeping.
-
-**MODEL MIX — assign it explicitly. Inheritance is silent and it drifts.** Measured 2026-08-01:
-**50 of 53 tracks were running on OPUS** purely because tracks inherit the session model when
-`model` is unset — including pure mechanical scanning. Slower and far more expensive for no
-accuracy gain.
-
-| Tier | Work |
-|---|---|
-| **Haiku** | bulk and mechanical — scanning, inventorying, applying known fixes, collecting output |
-| **Sonnet** | everything interpretive, and EVERY adversarial refutation (pin it, high effort) |
-| **Opus** | the orchestrator: steer, verify, decide. Reserve for a track only where the reasoning genuinely warrants it, set EXPLICITLY — never by default |
-
-**EVERY CLAIM GETS AN ADVERSARIAL REFUTER**, briefed to REFUTE and to default to refuted when
-uncertain — never one verifier, never a self-report accepted. This layer earns its cost: on
-2026-08-01 refuters REFUTED a trust-ledger round with 3 hard defects, caught a real false-green,
-and caught the orchestrator breaking HEAD twice.
-
-🔴 **GATE AGENTS RUN LAST, SO A SESSION LIMIT STRIPS THE VERIFICATION LAYER OFF EVERY WORKFLOW
-WHILE THE PRODUCTION LAYER COMPLETES.** Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs
-6/7 ✓ then gates 0/14 ✗ at **zero tokens**. The estate therefore accumulates
-**finished-but-unverified** work, which is worse than unfinished work because it looks done. Assume
-this has happened and check for it.
-
-**Width:** up to 75 concurrent is pre-authorised, but the harness caps concurrency near 16 and
-phases run sequentially, so real width is ~10. Do not chase width — chase *not losing* what runs.
-
-**Never leave a swarm to die quietly.** Put a final task at the bottom you expect to keep it open,
-append the next phase into it, and close it deliberately when the work is genuinely done.
-
-<!-- END KRITICAL-SWARM-TRACKING -->
-
 <!-- BEGIN KRITICAL-DOC-INDEX v1 repo=Kritical.PS.Hardening hash=913be2ee7457 — GENERATED by Kritical.Lens/scripts/Build-KritRepoDocIndex.mjs, embedded by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT: fix the generator (or add docs/DOC-INDEX-NOTES.md for known contradictions) and re-run the propagator. -->
 # 🔴 DOCUMENT INDEX for this repo (propagated — generated, do not hand-edit)
 
@@ -773,3 +129,427 @@ Documents in `docs/`:
   which artifacts are built vs planned. Marked UNKNOWN until they exist.
 
 <!-- END KRITICAL-LENS-INDICES -->
+
+<!-- BEGIN KRITICAL-SWARM-TRACKING v1 src=a195aab7ac7a — GENERATED from RULE ZERO + RULE ZERO-B in C:\temp\krit-prop\AUTHORITY-CLAUDE.md by Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1. DO NOT HAND-EDIT INSIDE THESE MARKERS: edit the source file and re-run the propagator. -->
+# 🔴 SWARM TRACKING + RULE ZERO (propagated — one authority, do not hand-edit)
+
+> This section is **generated**. The single authority is `RULE ZERO` + `RULE ZERO-B` at the
+> top of `C:\temp\krit-prop\AUTHORITY-CLAUDE.md`. Anything you change here is overwritten on the next run.
+> Re-propagate: `pwsh "<Github>/Kritical.Lens/scripts/Update-KritRepoSwarmTrackingBlock.ps1"` · Drift check (exits non-zero): `-Check`
+
+## 🔴 The three commands — run them from disk, never from memory
+
+```
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
+```
+
+🔴 **RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION
+LIMIT — BEFORE RE-RUNNING ANY LANE.** The ledger says whether an agent returned; **forensics
+says what a dead agent actually WROTE.**
+
+**WHY — a missing result is NOT a missing outcome.** A `StructuredOutput` failure and a
+session-limit kill both emit **no result line whatsoever**, so in the journal a lost report is
+**indistinguishable from an agent still thinking**. The agent almost certainly DID the work.
+Measured 2026-08-01: **1,670 agents, 173 never returned, and 36 of those HAD WRITTEN REAL
+FILES** — test suites and deploy scripts sitting on disk while every status surface reported
+them incomplete. Re-running a lane on the assumption *it never finished so nothing happened*
+is how work gets duplicated or silently clobbered. Check `git status` and the agent's
+`agent-<id>.jsonl` transcript before re-running anything.
+
+## RULE ZERO — one line
+
+**RULE ZERO in one line: READ THE INDEX AND THE DOCS BEFORE YOU CLAIM A THING DOES NOT EXIST.** You do not get to say a thing does not exist — only that you looked, where, and what you found. 4 false absence-claims in one session: *"No PowerShell semantic Lens ingester exists anywhere in th...* · *`UNDECLARED` read as "not built."* · *"`.github/workflows/` DOES NOT EXIST."* · *`Kritical.Lens.QAArsenal`.*.
+
+---
+
+## Verbatim source — RULE MINUS-TWO (CHECK THE ENGINEERING SYSTEM BEFORE + AFTER EVERY TURN)
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# RULE MINUS-TWO — CHECK THE ENGINEERING SYSTEM BEFORE AND AFTER THE TURN. EVERY TURN.
+(Operator 2026-08-13: "the check before and after in every single turn against the engineering system is the number one priority ... everything else is a secondary parallel.")
+
+Number one priority — everything else in this file is secondary. Sits above shopify.dev because it governs whether the estate can see itself, not what to build. Shopify.dev remains law for Shopify questions; this rule governs the turn itself.
+
+## The contract — two checks, both mandatory, both against the ES
+
+BEFORE the turn — design-conformance check: ask the ES what exists, what is claimed, what is in flight, and what the declared design says, before building anything. Do not start from memory, the last summary, or a sibling lane.
+
+AFTER the turn — built-vs-designed check: compare what was built against the architecture and design, and record it. Operator's stated order: 1 ES vs architecture/design → 2 the task as asked → 3 quality → 4 anything outstanding → 5 done/partly done → 6 which agent → 7 how long → 8 was it good → 9 cost.
+Full spec: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-EVALUATION-ORDER-20260813.md`
+
+`NOT-CHECKED` is a required, valid value and must NEVER render as conformance. Unchecked ≠ passed. A turn that could not reach the ES says so, in the same breath as its result.
+
+## THE OPERATING LAW PACK — `Kritical.OperatingLaw` IS LAW, MUST BE LOADED EVERY WAVE
+(Added 2026-08-13 after an agent worked a full day not knowing this repo existed.)
+
+`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.OperatingLaw\` is the estate's operating-law repo (operator 2026-08-03: "the LAW that every wave and pass must call it"). A wave that did not read this pack has not started.
+- START HERE: `...\Kritical.OperatingLaw\THE-LAW-EVERY-WAVE-MUST-CALL-THIS.md`.
+- Also in it: `estate\CLAUDE.md` (propagated global rules) · `vault\CLAUDE-LAW0.md` · `registers\SCHEDULED-TASKS.md` (estate scheduled-task register — 15 tasks, 11 FAILING as of 2026-08-03) · `registers\STALLED-SWARM-PARK-REGISTER-*` · `manuals\` · `skills\shopify-dev-law\`.
+- Its own top-two warnings: (1) the shop provides the credential end-to-end — "operator must regenerate the tokens" is always wrong; (2) your skills may not be loaded — on thegrid-claude, `CLAUDE_CONFIG_DIR` points elsewhere and estate skills (incl. `shopify-dev-law` = Law 0) are not loadable; run `...\Kritical.OperatingLaw\tools\Sync-KritSkillsToConfigHome.ps1` and confirm in-session (a "SYNCED" print is necessary, not sufficient).
+
+## THE ENVIRONMENT / SERVICE / PORT PLAN — CANONICAL, DO NOT RE-DERIVE
+(Added 2026-08-13; already existed, an agent nearly rebuilt it. Authority: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.AISupervisor.NodeJS\CLAUDE.md` — 6-service SCM graph, operator-confirmed. Environments: `Kritical-ShopifyVault\CLAUDE.md` LAW 0(c).)
+
+ALL DEV RUNS ON THE W365 BOX — off Stacktrace (operator 2026-08-13). Stacktrace is orchestration/agent workstation only, hosts no environment. Any older line saying "DEV runs locally on stacktrace, ports 4320-4324" is SUPERSEDED — those ports are DEV on the box. Nothing about DEV may depend on the laptop being on.
+
+The three environments are separate — never muddle them, never share a credential, port, DB, storage account, or app registration across them.
+
+### DEV (build+prove) — W365 box `CPC-Joshu-5919S`, not stacktrace
+- Surfaces/services: 4320–4324 SCM graph, on the box, bound `127.0.0.1`, reachable from stacktrace over Tailscale only (`100.94.243.73`).
+- Engine/pwsh: the box. Shopify org: `208204138` (joshua.finley).
+- Never touches prod data, storage, or the prod Shopify org.
+
+### TEST (prove shipping surface) — cloud + box
+- App surface: `func-kritical-app-test` — Azure Functions Linux Consumption, no local port.
+- Shopify app: `Kritical Vault - Testing`, client_id `c7be452e…`, app `403232555009`, org `208204138`. Second set: PROD-org test app `261ae89d…` (app `410066026497`, org `218255268`) also points here.
+- Engine/pwsh: W365 box. Storage/leases: `stkriticalapptest` / `ShopifyAccessLeasesTest`.
+- Stores: `kritical-1234`, `kritical-9765`, `clone-kriticalrestoretesting27jul2026-0812am`.
+
+### PROD (sell) — cloud + box
+- App surface: `func-kritical-app` — Azure Functions Linux Consumption, no local port.
+- Shopify app: `Kritical Vault`, client_id `fd1e406f…`, app `403160858625`, org `208204138`; segregated non-commission set `6d9adef2…` (app `410065698817`, org `218255268`, pax8tod365 identity).
+- Engine/pwsh: W365 box. Storage/leases: `stkriticalappprod` / `ShopifyAccessLeasesProd`.
+- Store: `kriticalptyltd`. Never restore INTO prod without explicit operator authorization.
+
+Azure Functions Linux Consumption has no pwsh and cannot have one — every engine op (backup, restore, clone, licence) runs on the box, every environment. The QUEUE is the only production transport to the box (runner polls outbound); WinRM (HTTPS 5986, not 5985) and SSH (53124) are tailnet-only admin/diagnostic paths for an engineer, never a product mechanism.
+
+ALL DATABASES OFF STACKTRACE TOO — on the W365 box (operator 2026-08-13). `KriticalBrain` (+`_Dev`/`_Test`/`_Prod`) and every `KritLens_<repo>` raw-corpus DB belong on the box, not the laptop's `.\SQLEXPRESS`. Stacktrace hosts no DB, environment, or service. Cross-machine access is Tailscale-scoped; SQL must listen on loopback/Tailscale, never `0.0.0.0` (see live defect below). Re-homing is tracked work, not done — treat "Lens SQL is on SQLEXPRESS locally" as legacy.
+
+Canonical ports — machine-readable authority: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.NET.ServiceControlManager\src\service-registry.json` (VERIFIED 2026-08-13). All bound `127.0.0.1`, never `0.0.0.0`. Edit the registry, not prose.
+| Port | Registered service |
+|---|---|
+| 4320 | `KriticalNodeJSWebServer-Master` — SCM control plane (REST+MCP+metrics, bearer-authed, native .NET) |
+| 4321 | `KriticalNodeJSWebServer-SupervisorAPI-4321` — SUPERVISOR, never start/restart/drive |
+| 4322 | `KriticalNodeJSWebServer-VaultBackend-4322` |
+| 4323 | `KriticalNodeJSWebServer-BackupShell-4323` (code comments call it "vault-frontend" — registry/code naming conflict, unresolved) |
+| 4324 | `KriticalNodeJSWebServer-ConnectorAdmin-4324` |
+| 4330 | `KriticalMSShowcase-ControlPlane` |
+| 4610 | `KriticalGreatWhiteEngineeringSystem-MCP-4610` — ES MCP server |
+| — | `KriticalNodeJSWaveRunner-SupervisorLoop` (no port) — SUPERVISOR, never start |
+Running but unregistered — register or they collide: 4325 Vault queue-runner health (`HEALTH_PORT`) · 4331 MSShowcase portal · 4350 Kritical-ShopifyVault app (`VAULT_APP_PORT`) · 4612 AgentBridge MCP · 4199 SCX agentic shim · 4611 ES MCP over SSH tunnel.
+
+### Every service has three instances — DEV, TEST, PROD. Contract already exists, do not re-derive.
+(Operator 2026-08-13: "every last service now has a dev and test and prod instance ... entirely defined." Corrected same day 22:00 AEST — an agent invented a `base/+100/+200` scheme while the real, built, tested, committed contract already existed; that invention deleted.)
+
+Authority — machine-readable, schema-validated, Pester-proven (9/9, planted-negative): `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\config\vault-two-host-service-port-contract.json` · module `...\scripts\deploy\KritVaultTwoHostServicePortContract.psm1` · tests `...\Test-VaultTwoHostServicePortContract.Tests.ps1` · lane doc `...\docs\lanes\two-host-service-port-contract-20260811\README.md`. Committed `80ef739` (2026-08-11), carried through `ed32a18` (PR #26). Edit the JSON, not this prose.
+
+Allocation (six services × three environments):
+| Service | DEV | TEST | PROD |
+|---|---|---|---|
+| master (SCM control plane) | 4320 | 35020 | 56020 |
+| supervisor-api — NEVER START | 4321 | 35021 | 56021 |
+| vault-backend | 4322 | 35022 | 56022 |
+| backup-shell | 4323 | 35023 | 56023 |
+| connector-admin | 4324 | 35024 | 56024 |
+| licence-authority | 4325 | 35025 | 56025 |
+- `listenerPolicy` per entry: `owned-healthy` (named ownerService must hold it) or `must-be-free`.
+- DEV `exposeOnTailscale:false`; TEST/PROD `exposeOnTailscale:true`.
+- RESOLVED 2026-08-13: contract declares host `CPC-Joshu-5919S` (W365 box) for dev/test/prod, not Stacktrace — closes the prior STACKTRACE-vs-W365 conflict. Stacktrace appears in the contract's `hosts` block only as `role: "orchestration-workstation"` — no environment, expectedServices, or DB. Port families unchanged (DEV 4320-4325 / TEST 35020-35025 / PROD 56020-56025) — only host moved. Pester suite updated in lockstep, re-proven 10/10 GREEN against the new host, including a dedicated test asserting every environment binds to `CPC-Joshu-5919S` not `STACKTRACE`.
+- CONFIG CHANGE ONLY — NOT YET APPLIED ON THE BOX. Ground truth 2026-08-13: box has ZERO of the six-service SCM graph installed (`C:\ProgramData\Kritical\scm\` doesn't exist there — only Stacktrace has the real `kritical-scm.exe` package); only ONE of eight named services (`KriticalNodeJSService-VaultQueueRunner`) registered on the box. Re-homing DEV/TEST/PROD to the box needs a genuine install step — tracked, not done — before `Install`/`Set`/`Repair -Apply` can run there.
+
+NEVER APPLIED — ports are genuinely stealable right now. `-Apply` never run on either machine (no `Kritical-Vault-*` firewall rules, no `C:\ProgramData\Kritical\rollback` receipts). Measured 2026-08-13: Stacktrace's TCP dynamic range is 1024-64511, so DEV 4320-4325 and PROD 56020-56025 sit inside it and can be taken at boot. TEST 35020-35025 is only accidentally covered by a non-contract exclusion (`35013-35112`, shape suggests Hyper-V/Docker NAT) — not our protection, can evaporate. W365's dynamic floor is 49152, so 4xxx is incidentally safe there. Reserve with `netsh interface ipv4 add excludedportrange protocol=tcp` (module does this one port at a time, writes an immutable rollback receipt). `-Apply` is deliberately local-only (refused remotely).
+
+Known collisions / contested ports (unresolved):
+- 4326 claimed TWICE, two unaware lanes: `Kritical.NodeJS.EstateConsole\src\server.js:19` (2026-07-13) and `Kritical-ShopifyVault\docs\DESIGN-VAULT-MCP-SERVER-20260809.md:42` (`VAULT_MCP_PORT`).
+- 4325 contested: contract calls it `licence-authority` (designed, never built) vs live `KriticalNodeJSService-VaultQueueRunner` — estate's own design doc records this unresolved.
+- 4323 naming drift: registry says `BackupShell`, running code calls itself `VaultShell`/"Vault frontend" — one port, three names.
+
+Also registered (SCM allow-list): 4330 MSShowcase control plane · 4610 ES MCP. Running but unregistered: 4325 queue-runner health · 4331 MSShowcase portal · 4350 Vault app · 4612 AgentBridge MCP · 4199 SCX shim · 4611 ES MCP over SSH tunnel.
+
+- Instances are fully separate: own port, config, credentials, DB, storage account — never shared, never "same service with a flag."
+- Applies to services either agent (Claude or Codex/ChatGPT) stood up on either box. Ad-hoc services collide — found one unregistered? Add it to the contract, never leave it squatting.
+- Enforcement: a gate failing when a service binds outside its allocation or lacks an instance. The contract's own Pester suite is the model (proven RED before GREEN).
+
+Live ground-truth defects (measured 2026-08-13, fix before trusting the plan):
+- Redis listening on `0.0.0.0:6379` on stacktrace — not loopback, not in any plan. Exposure risk.
+- SQL Server on the W365 box listens on `0.0.0.0:49473` (dynamic, IPAll), no Tailscale-scoped firewall rule — currently unreachable only because the Public-profile default-deny blocks it; neither secured-by-design nor usable. Precedent for the fix: commit `316067b` rebound the MCP server to 127.0.0.1 explicitly.
+- `4322`/`4323`/`4324` registered but STOPPED (never started since boot).
+Rule: a new service does not pick a port — it is allocated one here, binds loopback, is registered. Anything binding `0.0.0.0` is a finding, not a style choice (RULE ZERO-C).
+
+## KEEP THE LAW TERSE — PROFANITY STRIPPED PROGRAMMATICALLY, MEANING NOT
+(Operator 2026-08-13: "to save tokens we should programmatically strip the swearing from claude.mds ... in the ps.toolkit.")
+
+These files reload every turn in every repo (95+ copies) — every wasted word is paid for repeatedly. Profanity in quoted operator directives carries emphasis, no information — removed by tool, never by hand: `Kritical.PS.Toolkit` → `Invoke-KritDocProfanityStrip`.
+- Meaning and intent preserved — the directive still says what he decided and why; only the expletive drops. Never paraphrase, soften, or summarise his actual instruction.
+- Strip the source, then re-broadcast: edit `C:\Users\joshl\.claude\CLAUDE.md` and each repo's own authored sections, then re-run the propagator. Never hand-edit generated blocks.
+- Never touch `docs\human\` (hand-authored) or anything FROZEN/SUPERSEDED/ARCHIVED, or `Github-SecretsOutsideOfGitRepos`.
+- Every run keeps a reversible archive of originals + a receipt (what changed, tokens saved).
+
+## PRESERVATION IS NOT DISPOSITION — SAVE IT, THEN DECIDE IT. NEVER ABANDON IT.
+(Operator 2026-08-13: preserve branches when needed to save data, but don't abandon — mark archive/merge/whatever the disposition was.)
+
+Saving and DECIDING are different jobs; stopping after saving is its own failure mode. A `preserve/*`, `salvage/*`, `rescue/*`, `wip/*` branch pushed "so nothing is lost" and never revisited is deferred confusion, not safety. Dozens already exist estate-wide and nobody can say which hold live work.
+
+Every preserved artefact gets a DISPOSITION, recorded in the same pass that preserves it:
+| Disposition | Means | Action |
+|---|---|---|
+| MERGE | content still wanted | merge to canonical branch (operator decision if diverged) |
+| ARCHIVE | superseded, keep history | tag (`archive/<name>-<date>`), record why + what superseded it, may then be removed from active list |
+| SUPERSEDED-SAFE-TO-DROP | content provably already on canonical branch | prove via `git cherry`/`git log --cherry-mark`, record the proof |
+| UNDECIDED | genuinely needs the operator | VALID entry — write down the specific question |
+- Disposition lives in the repo's own status authority, never only a chat reply.
+- Never delete a branch to "tidy up" — disposition is a decision record, not licence to prune. ARCHIVE = tag-and-record, not remove.
+- Order fixed: PRESERVE FIRST, DECIDE SECOND. A pending decision never delays getting bytes safe; getting bytes safe never substitutes for the decision.
+
+## THREE DETECTORS THAT LIED — EARNED 2026-08-13. PROVE THE DETECTOR RAN BEFORE BELIEVING IT.
+All three produced confident wrong answers within hours of each other. An empty result is evidence the detector produced nothing, not evidence of absence.
+
+1. RETRACTED 2026-08-14 — the propagator was fine; MY VERIFICATION was the broken detector. Claimed all night `Update-KritRepoSwarmTrackingBlock.ps1` reported "95 file(s) written" and wrote nothing, told the operator not to trust any repo's CLAUDE.md. FALSE — re-verified with a path-safe search: content present in 88 files, broadcast landed. Actual defect: `grep -l "phrase" $(cat filelist)` word-splits on spaces, and every path in this estate contains them (`C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\...`) — paths shattered at `OneDrive`, ` - `, `Kritical`, `Pty`, `Ltd`, grep matched nothing, 0 was misread as "broadcast failed" and escalated into the law itself. Rule: every path in this estate contains spaces — any shell construct that word-splits an unquoted path returns a silent false negative (`$(cat list)`, unquoted `$var`, bare `for f in $(...)`); use ripgrep-backed Grep, `rg --files-from`, or quote every expansion. A 0-result from a space-containing path is a broken query until proven otherwise. Meta-lesson: before believing a detector says something is broken, prove the detector ran correctly — applied to the propagator, the box's git, the reparse points, but not to my own grep. Verify a negative result the same way as a positive one; a broadcast is proven at the destination, never by the sender, but the destination check must itself be sound.
+
+2. A hollow OneDrive placeholder read as a destroyed repo, twice mis-diagnosed. `Github\Kritical.Lens.Toolkit` and `Github\Kritical.SCXCode` show `Mode: l----`, `Attributes: Directory, ReparsePoint`, contain only a dehydrated `.git\index`, `.LinkType`/`.Target` are null. A scan called them destroyed and told the operator his estate was wiped — they are OneDrive Cloud-Files PLACEHOLDER directories, neither corrupted nor NTFS junctions. Discriminator is the raw reparse tag, not `Get-Item`: `fsutil reparsepoint query "<path>"` → `0x9000*01a` = OneDrive placeholder (`0x9000e01a` in-sync, `0x9000601a` not-fully-synced); `0xA0000003` = real junction, `0xA000000C` = symlink (non-null `.Target`). A null Target on a ReparsePoint is ambiguous — resolve the tag, never assume; the tag alone doesn't prove brokenness either (a control folder carried the identical rare tag with 9 healthy children — only a content check decides). Measured estate-wide: 53,100 reparse points, 52,921 ordinary OneDrive placeholders, 179 genuine NTFS junctions (178 healthy), 87 git worktree/submodule `.git`-as-file constructs (60 submodules — the whole `Kritical.Lens\components\*` tree — all resolving). Genuinely broken estate-wide: 3. Lens is a submodule superproject — real content lives at `Kritical.Lens\components\<kind>\<name>` (Toolkit 283 files under `data-infra`, SCXCode 464 files under `external-lineage`); a top-level `Github\<name>` dir of the same name is often just a hollow placeholder — check the submodule path before panicking.
+
+3. Git silently refusing every command on the W365 box. A sweep of 266 repos returned ZERO hits — git refused every call with "dubious ownership" (repos owned by `AzureAD\JoshuaFinley`, running as `vault-service`). The scan looked clean; git had never run. Fix: `git config --global --add safe.directory '*'` for that account. Any git-based conclusion about the box made before that fix is a false negative — re-run it.
+Genuinely broken and worth fixing (found by the census): `KRTPax8ToShopifyConnector\scripts\shopify-brain` → `Github\ShopifyBrain` — dangling junction, target doesn't exist. `KRTPax8ToShopifyConnector\scripts\scxcode` resolves but points at the hollow placeholder.
+
+## TRACK THE BABBLE AGAINST THE ARCHITECTURE — PROGRAMMATICALLY, START AND END OF EVERY TURN
+(Operator 2026-08-13: talk to the ES at start and end of turn, tracking any of the agent's babble against the architecture and design, programmatically.)
+
+Talking to the ES at start and end of every turn is not optional narration — every claim the agent makes in a turn is checked, BY CODE, against the architecture/design held in the ES.
+- ES is where ALL design/architecture is read from — not memory, last summary, or sibling lane. Read design from ES → write code matching its stated requirements → check the built result against it before the turn ends.
+- The check is mechanical, not self-reported — an agent grading its own output is the failure mode this replaces. Interception design (hooks that inject per message, deny per tool call): `...\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-DEVIATION-INTERCEPTION-DESIGN-20260813.md`.
+- Proven pattern already working: `guard_bash.py` (blocks destructive git) and the repo-lease guard (refuses a commit without `KRIT_LANE_ID`) both stopped real deviations by REFUSING the action. Every deviation class gets a rule of that shape, never a paragraph asking the agent to remember.
+
+## Why this rule exists — the measured failure
+The ES has been asked for, for days, repeatedly reported delivered while structurally incapable. Each proven by an adversarial refuter, not guessed:
+- Write path is dead: `create_task` returns `cannot pull with rebase: You have unstaged changes` — `pullLatest()` rebases against a dirty tree; `persist.mjs`'s own comment admits this blocks writes "almost always in this repo."
+- Evidence rule has an open back door: `close_task` correctly refuses to close without `evidenceRef`; `update_task {"status":"done"}` closes with none.
+- Code pushed a full day before the process that would serve it: `tools/list` served 7 tools while source declared 13. Writing and pushing code is not shipping it.
+- ~~An orphaned lease bricks all writes — `acquireRepoLease` never checks holder liveness~~ FIXED, verified 2026-08-21, this claim is now STALE. Defect D7 closed: `acquireRepoLease` (`mcp-server\src\ledger.mjs`) checks PID + process start time (Windows reuses PIDs) and reclaims an orphan automatically, logging `RECLAIMING ORPHANED LEASE`. Regression suite `mcp-server\test\repo-lease-liveness-reclaim.test.mjs` runs 4/4 GREEN with two negative controls (does not reclaim from a genuinely-live holder; does not reclaim on a malformed PID — fails closed). The PowerShell lease self-heals too, independently: `Enter-KritRepoLease` warns and reclaims an expired lease, proven against a planted 82.7-hour-expired dead-holder lease. Two separate lease implementations, both reclaimable.
+- Turn-receipt tool fabricated a measurement: `durationMinutes` was `Math.round(Math.random() * 60)`, system never run once.
+- SessionStart hook reports "server unreachable" against a live, reachable server and injects nothing.
+
+Pattern: a thing never checked before and never verified after gets reported done and is not.
+
+## What this means operationally
+- A turn that did not check the ES is not finished, regardless of output.
+- The check must be structural, not remembered — hooks/gates/connectors are the mechanism, but a hook that lies is worse than no hook; every mechanism ships with its own proof it goes RED.
+- Read-write, not read-only — a system of record you cannot write to is a report; `create_task`/`update_task`/`close_task` must work end to end against the LIVE server, not sandbox-only.
+- Live defect register: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\WRITE-PATH-DEFECTS-AND-FIXES-20260813.md`, `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\TURN-RECEIPT-DEFECTS-20260813.md`.
+
+---
+
+## Verbatim source — RULE MINUS-1.75 (THE ES FORCES BEHAVIOUR IN CODE, NOT INFERENCE)
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# RULE MINUS-1.75 — THE ES FORCES BEHAVIOUR IN CODE VIA THE AGENT'S OWN INTEGRATION POINTS. NOT INFERENCE.
+(Operator 2026-08-13. End-state of RULE MINUS-TWO: stop relying on the agent to remember — make the ES force it programmatically through connectors/plugins/hooks/MCP/SDK/APIs, not tokens.)
+
+Every mandatory behaviour in this file — RULE MINUS-TWO before/after checks, the delegation contract, the gates, the repo lease, reading the docs, using the SCM — must ultimately be ENFORCED BY THE ENGINEERING SYSTEM IN PROGRAMMATIC CODE, driven through the agent's own integration points, not inference, tokens, or interpretation of any kind. Every "documented but forgotten" failure (SCM, ES check, token architecture) proves prompt-and-hope does not hold. The fix is never a louder prompt; it is code that forces the behaviour.
+
+## MANDATORY when touching ANY integration point (connector/plugin/hook/MCP/SDK/API)
+1. Enumerate before you use — Lens-map the integration point's real surface (cheap Haiku agents cataloguing every method/tool/hook/event Claude AND ChatGPT expose). Never guess; check what's already mapped (plugin-template/connector-adoption work exists) and extend it (RULE ZERO).
+2. Force it programmatically, don't prompt-and-hope — if a behaviour can be driven by the ES via an API/hook/connector, wire it that way. A prompt the agent may ignore is the last resort.
+3. The SCM is the model of this done right ([[scm-service-control-manager-delegated]] — bearer-authed REST+MCP control-plane the ES drives by API). Every new integration follows that shape: real API, real auth, real allow-list, real code.
+4. Record it in the ES as business-as-code (contract/skill/template), never as a chat message.
+
+## THE PROGRAMME (design first, then build — captured, not lost)
+Lens over Claude's AND ChatGPT's complete API/integration surface → catalog in the ES → the ES programmatically drives the agents and forces the RULE MINUS-TWO behaviours in code. Skill: `C:\Users\joshl\.claude\skills\es-integration-programmatic-drive\SKILL.md`. Design+programme: `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.GreatWhite.Control.EngineeringSystem\docs\ES-PROGRAMMATIC-DRIVE-INTEGRATION-POINTS-DESIGN-20260813.md`. Until built, this section is the standing reminder.
+
+---
+
+## Verbatim source — THE API MAPPER ALREADY EXISTS
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# THE API MAPPER ALREADY EXISTS — REST AND GRAPHQL. NEVER HAND-ROLL AN API CLIENT, DIFF OR VALIDATOR AGAIN.
+(Operator 2026-08-01, after an assistant spent a session hand-diagnosing a Shopify API version drift while a complete, tested toolkit for exactly that sat unused in Lens, and then wrongly told the operator REST coverage did not exist.)
+
+Location (one folder): `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\components\data-infra\Kritical.Lens.Toolkit\api-mapper\`. Docs: `README-API-MAPPER.md` in that folder — read before touching any API.
+
+| Capability | Tool |
+|---|---|
+| Detect whether an API is REST or GraphQL | `krit-api-kind-detect.mjs` |
+| GraphQL: version-to-version schema diff, BREAKING/DEPRECATION/ADDITIVE | `krit-graphql-schema-diff.mjs` |
+| GraphQL: validate one real query against a schema, field by field | `krit-graphql-query-validate.mjs` |
+| GraphQL: generate a PowerShell client from a schema | `krit-graphql-to-psclient.mjs` |
+| REST: OpenAPI spec-to-spec diff | `krit-openapi-spec-diff.mjs` |
+| REST: validate a real call against a spec | `krit-openapi-call-validate.mjs` |
+| REST: convert a Google-style Discovery doc to OpenAPI | `krit-discovery-to-openapi.mjs` |
+| Propose the actual remediation changes programmatically | `krit-remediation-proposer.mjs` |
+| Validate transforms | `krit-transform-validate.mjs` |
+| Service registry + PowerShell wrapper | `krit-api-registry.json`, `Kritical.Lens.ApiMapper.psm1` |
+
+Every tool has a `.test.mjs` beside it, `fixtures/` carries baseline/safe/breaking pairs — proven to go both RED and GREEN. `krit-graphql-schema-diff.mjs` and `krit-openapi-spec-diff.mjs` run fully offline against saved introspection/spec JSON, both support `--fail-on-breaking` (exit 1) — real gates. Wire them.
+
+Applies to every API, forever — Shopify, Pax8, D365 BC, Microsoft Graph, and every new one. Before writing a hand-rolled API client, version check, schema comparison, call validator, or "what changed" script: this folder already does it. Extend and register a new service (`Register-KritApiService`/`New-KritApiClient -Service <name>`); do not re-derive.
+
+VERSION DRIFT IS A MEASURED, RECURRING DEFECT CLASS. Measured 2026-08-01 in Kritical-ShopifyVault (`F-APIVER-001`): `app/shopify.app.toml` declared `2026-01` while 25 hardcoded literals in live JS said `2026-04`, and the PowerShell engine tracked a third value — three sources of truth, none agreeing, none gated. Any product talking to a versioned API needs ONE source of truth for its version plus a committed gate that fails when declared and used version disagree.
+
+Known limit: these tools diff SPECS and SCHEMAS. A dynamic live-route prober for a REST service that publishes no spec is separate, un-built (tracked in `Kritical-ShopifyVault\docs\OPERATOR-REQUIREMENTS-TRACEABILITY-20260729.md`). Do not claim probe coverage that doesn't exist — but do not claim REST is uncovered either: OpenAPI diff/validate/generate exist and are tested.
+
+---
+
+## Verbatim source — THE TURN CONTRACT
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# THE TURN CONTRACT — run these, every turn, in this order. Verified to exist 2026-08-01.
+
+`$L = "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens"`
+
+## START of every turn
+
+STEP ZERO — RE-READ THE RULES BEFORE YOU DO ANYTHING ELSE. EVERY TURN, NOT JUST AT SESSION START. Re-read `C:\Users\joshl\.claude\CLAUDE.md` AND the current repo's own `CLAUDE.md`/`AGENTS.md` at the start of every single turn. Loading once at session start is NOT compliance — context drifts, turns compact, rules read hours ago stop being applied. Measured 2026-08-01: an assistant with both files fully in context still failed to run the commands below unprompted, violated LAW 4 in nearly every reply of a long session. Having read it is not the same as following it.
+
+LAW 4 IS THE MOST-BROKEN RULE IN THIS ESTATE. THE OPERATOR IS NOT IN A REPO. A relative path like `docs/FOO.md` or a relative markdown link does not open or display for him — meaningless. Every file reference in every reply must be a FULL ABSOLUTE PATH, copy-pasteable, e.g. `C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical-ShopifyVault\docs\MASTER-STATUS.md`. This overrides any harness default asking for workspace-relative markdown links. Check every path in a reply is absolute; if quoting a document, also give the fully-qualified path, not just its name.
+
+ALWAYS CHECK THE SHOPIFY DOCUMENTATION, no matter what you think you know (operator, 2026-08-02). Use `shopify-mcp` docs tools — `learn_shopify_api` first (returns the `conversationId` every other Shopify tool requires), then `search_docs_chunks`. Earned 2026-08-02: every merchant tab in the embedded app was dead a full session because `app-bridge.js` carried `defer`. Reasoning from first principles got the mechanism roughly right, confidence badly wrong; docs search grounded it — four official pages, plain tag, neither `defer` nor `async`. But hold the line on what docs actually prove: they showed the canonical form; no page forbids `defer` in words, and claiming otherwise was an overreach retracted mid-fix. Docs tell the sanctioned shape, not always the prohibition — cite the page, quote the form, mark INFERRED if that's what it is.
+
+IF THE RULES FROM THE SHOPIFY.DEV SITE SAY IT, IT IS LAW (operator, 2026-08-03). Outranks reasoning, priors, architecture preferences, any lane's opinion including mine. A shopify.dev requirement is not an input to weigh, it is the answer — do not argue, look for an exception, or "balance" it against a preferred design. The only honest reply to "is this allowed?" is the sentence shopify.dev uses.
+- Applies to App Store requirements, API docs, and the changelog alike. `learn_shopify_api` → `search_docs_chunks` is the route; `shopify doc fetch --url <page>` is the route to the App Store self-review requirement list (Shopify forbids fetching that page any other way).
+- Corollary — does NOT turn silence into prohibition, not a loosening: what the site SAYS is law, what it doesn't mention is unaddressed, marked `INFERRED`, never asserted as a rule. Conflating the two produced the `app-bridge.js` `defer` overreach retracted mid-fix — four official pages showed the plain tag with neither `defer` nor `async` (real, canonical form), but claiming a page *forbade* `defer` in words was false.
+- Measured 2026-08-03, working correctly: requirement 2.3.1 states verbatim "Your app must not request the manual entry of a myshopify.com URL or a shop's domain during the installation or configuration flow" (`https://shopify.dev/docs/apps/launch/shopify-app-store/app-store-requirements`) — a prohibition in words, law, no inference — why the manual install form was removed and PROD redeployed.
+
+THE SHOPIFY REFERENCE SET IS STANDING, NOT A LOOKUP — reference it designing any part of any Shopify codebase, every time (operator 2026-08-02: handed over deliberately; consulting only when reminded is the failure).
+
+1 — THE SKILLS (`C:\Users\joshl\.claude\skills\`). Load the relevant one BEFORE acting:
+| Skill | Load before |
+|---|---|
+| `kritical-vault-deploy-order` | ANY deploy/republish/"push to test"/"push to prod" — strict dev→test→prod order and gates before prod. Measured 2026-08-02: a test deploy ran ad-hoc without loading this. |
+| `kritical-vault-deploy` | any deploy/rollback/"app is down" on `func-kritical-app`. Hard rule: never hand-roll a SAS — from a real 2026-07-29 production outage. |
+| `shopify-cli-auth-bumper` | any `shopify` CLI command hitting an interactive prompt. Hard rule: never run `shopify auth logout`. |
+| `shopify-preview-store-lifecycle` | needing a real disposable dev store. Real flags; honest limit: no store can be deleted programmatically. |
+
+2 — THE DOCS, via `shopify-mcp` plugin (`claude-plugins-official/shopify`, installed): `learn_shopify_api` FIRST, then `search_docs_chunks`, `validate_graphql_codeblocks`, `validate_component_codeblocks`, `validate_theme`.
+
+3 — THE BASE TEMPLATES. One repo holds all three, vendored: `https://github.com/Sir-J-AU/Kritical.Shopify.AppTemplate.git`
+| Template | Path | Status |
+|---|---|---|
+| React Router | `templates\react-router-template` | Shopify's CURRENT recommendation — React Router v7, TS, Prisma |
+| Remix | `templates\remix-template` | previous generation |
+| Node/Express | `templates\node-template` | framework-light JS |
+Do not edit the vendored copies — its README says run `npm init @shopify/app@latest -- --template <name>` instead. Known gap: repo records no upstream URL/commit SHA for any of the three, no `.gitmodules` — no mechanical way to know if the vendored template is behind Shopify's. Treat template currency as UNKNOWN, never fresh. Full map: `Kritical-ShopifyVault\docs\APP-TEMPLATE-AND-BROWSER-TOOLING-MAP-20260731.md`.
+
+Before designing ANY Shopify surface — auth, webhooks, billing, embedding, session tokens — check what the template does and what the docs sanction; first-principles reasoning has been wrong here before (the `defer` incident).
+
+```
+node "$L\scripts\Get-KritSwarmLedger.mjs"                  # what is running / stalled — never from memory
+node "$L\scripts\Get-KritAgentForensics.mjs" --unreturned   # what dead agents WROTE. Run FIRST after any restart
+node "$L\scripts\Get-KritGitLossLedger.mjs"                 # uncommitted / unpushed / detached / no-remote
+pwsh "$L\scripts\Build-KritLensComponentIndex.ps1"          # regenerate before quoting ANY count
+```
+
+## DURING — before building or claiming absence
+Read the index and the repo's own `docs/`, `README*`, `AGENTS.md`, `CLAUDE.md`. See RULE ZERO. Fan out per the FAN-OUT RULES below: one swarm, appended phases, Haiku bulk / Sonnet gate+refute / Opus steer, an adversarial refuter on every claim.
+
+## END of every turn that touched code
+```
+pwsh "$L\scripts\Invoke-KritLensFullPipeline.ps1"           # the real pipeline (7 stages)
+pwsh "$L\scripts\Invoke-KritEndOfTurnGate.ps1"              # GATE1/2/3 + JSON verdict — FAIL CLOSED
+pwsh "$L\scripts\Test-KritLensCorpusFreshness.ps1"          # raw corpus vs HEAD, exits non-zero on staleness
+pwsh "$L\scripts\Test-KritLensSemanticGraphFreshness.ps1"   # the semantic graph, separately
+pwsh "$L\scripts\Invoke-KritLens3Gate.ps1"                  # verified exit contract
+```
+Deep mining + SQL: `Invoke-KritShopifyVaultDeepMine.ps1`, `Import-KritProvenanceIndexToSql.ps1`, and the `Kritical.Lens.SqlMiner` component (`components/data-infra/`).
+
+ANALYZER OUTPUT THAT NEVER REACHES SQL IS NOT INGESTION — a sweep once ran green while writing zero rows to all 179 tables. Confirm rows landed in `KriticalBrain` (`lens.*`) and `KritLens_<repo>` for the raw corpus. Scope every query by repo + `status='ok'`, NEVER `MAX(run_id)` (silently answers about a different repo — once read a class of 3 as 31). Semantic tables carry no commit column — provenance in `lens.v_ingestion_run_current`/`lens.v_repo_health`, join through those.
+
+THESE ARE NOT GATES — zero exit statements, report success unconditionally: `Invoke-KritEstateWideLensSweep` · `Invoke-KritAstSweepEstate` · `Test-KritAstSweepRecall`. Never wire where failure must propagate; never cite their green.
+
+RE-VERIFIED + EXTENDED 2026-08-02 17:55 AEST (+10:00), VERIFIED-BY-EXECUTION (grepped `exit`/`throw`/`$LASTEXITCODE`/`[Environment]::Exit` across all six, plus `git log --diff-filter=A` for lineage). Claim above holds but was incomplete both directions:
+- They are PREDECESSORS, not successors — all three added 2026-07-26, untouched since. `scripts\Invoke-KriticalLensEstateSweep.ps1` added 2026-08-01 (5 days later) IS a real gate: `exit 1` at lines 117/120, self-described "THE canonical Lens entry point, as a script/gate (fail-closed exit code)," a thin shim whose header explains why the module function must not call `exit` in a caller's runspace, with its own exit-code-contract test file. The newer, near-identically-named script supersedes the older `Invoke-KritEstateWideLensSweep`. Do not "fix" the 2026-07-26 trio — prefer the 2026-08-01 shim.
+- `Invoke-KritLensFullPipeline.ps1` belongs in the same category, nobody noticed — zero `exit` statements, exactly ONE `throw` (line 430, narrow "splitter not found" setup guard). Header says the verdict receipt's `.Ok` is `$false` if any stage failed, but that verdict never reaches the process exit code — `pwsh -File Invoke-KritLensFullPipeline.ps1` exits 0 even when `.Ok` is false. Its receipt is the contract, its exit code is not. Read `<OutputDir>\full-pipeline-verdict-<utc>.json`, check `.Ok`.
+- Genuinely fail-closed: `Import-KritProvenanceIndexToSql.ps1` — 7+ `throw "FAIL-CLOSED: …"` guards (uncaught `throw` under `pwsh -File` yields exit 1).
+- Spread of the stale reference: `Invoke-KritEstateWideLensSweep` still named in the propagated block across 10+ `AGENTS.md`/`CLAUDE.md` files (every component repo) — generated from this file, so correct here and re-propagate, never hand-edit the copies.
+
+THE LENS LOOP IS NOT RUNNING — corrected 2026-08-01. `sc query KriticalLensLoop` → the service EXISTS and IS REGISTERED, STATE=STOPPED (`STATE : 1 STOPPED`, `WIN32_EXIT_CODE: 1077` = never started since boot). The prior claim ("service does not exist") was WRONG, refuted twice independently the same day — do not repeat. `Invoke-KritLensLoopService.ps1` and `Install-KritLensLoopService.ps1` exist in `$L\scripts\`, service IS installed via the latter but never started — nothing keeps Lens fresh automatically, every "Lens is current" assumption is unfounded until the end-of-turn gate is actually run by hand. Starting it needs the operator's typed ack + a rehearsal (never Automatic without both) — see `Kritical.Lens\docs\LENS-LOOP-SERVICE-DECISION-20260801.md` for the parked decision (cost, concurrency-lock gap, what starting it would do).
+
+Propagating these rules: `$L\scripts\Update-KritRepoSwarmTrackingBlock.ps1` and `Update-KritRepoAgentsLensSection.ps1` inject/refresh the block across every repo — run after changing anything here, or repos silently drift.
+
+`LENS: NOT RUN — <reason>` must appear in the same breath as any result where the above did not run. Silence reads as "it was checked."
+
+---
+
+## Verbatim source — THE DELEGATION CONTRACT
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# THE DELEGATION CONTRACT — TEST FIRST, WRITTEN BY HAIKU, PROVEN BY SONNET, GATED BY OPUS
+(HARD RULE. Operator 2026-08-01. Applies to EVERY swarm, no exceptions.)
+
+The orchestrator does not do the work — it gates the work. Writing bulk text, applying a known fix, or grinding through a list is a Haiku's job on an Opus budget, done worse because nothing independent then checks it.
+
+## The pipeline — in this order, every track
+| # | Who | Does | Must be true before the next step |
+|---|---|---|---|
+| 1 | Haiku | Writes the CHECK/TEST FIRST — before any implementation. Delivers it as the first artefact of the track, not the last. | The test exists and is runnable |
+| 2 | Sonnet | Owns whether that check is CORRECT. Verifies it actually tests the claimed thing and proves it goes RED on a planted defect. | The test is proven to fail when it should |
+| 3 | Haiku | The bulk grind — all manual/mechanical work, all bulk text, applying the now-specified fix | The work is done and the test passes |
+| 4 | Sonnet | Adversarial refutation, pinned, high effort, briefed to REFUTE and default to refuted when uncertain | Independent attack survived |
+| 5 | Opus | Gates. Reads the diff, re-runs the gate, decides. Owns correctness of the whole. | — |
+
+Step 1 before step 3 is the whole point — a test written after the implementation is written to pass it. A test written first and independently proven RED by a different tier is the only kind that means anything. This estate has shipped: a 4/4 green suite that never loaded the module under test; a suite reporting 18/0 that was really 18 passed/3 silently skipped; a `vault-dispatch.ps1` fix with zero test files referencing it.
+
+Sonnet is ACCOUNTABLE for the checks, not just a reviewer — if a check was wrong, that's Sonnet's failure, not Haiku's.
+
+## Tier assignment — EXPLICIT on every track, never inherited
+| Tier | Work |
+|---|---|
+| Haiku | ALL manual grind, bulk text, scanning/inventorying/collecting output, applying a known fix with a known shape, and writing the tests/checks first |
+| Sonnet | Correctness of the checks · all interpretation · EVERY adversarial refutation (pinned, `effort: 'high'`) |
+| Opus | Orchestrate, steer, GATE, decide. Never bulk work |
+| Local (LM Studio) | Haiku-tier substitute ONLY — never a gate verdict, never a refutation |
+
+Inheritance is silent and drifts — measured 2026-08-01: 50 of 53 tracks ran on OPUS purely because `model` was unset, including pure mechanical scanning. Set `model` on every track.
+
+## Non-negotiables
+- Adversarial by default — never one verifier, never a self-report accepted. Refuters already caught a real false-green and two broken HEADs on this program.
+- A gate never shown to go RED is decoration — every check ships with its negative test.
+- A low detector count means the detector missed it, not that the thing is absent.
+- Every finding gets a stable ID + version stamp in the repo's `docs/FINDINGS-REGISTER.md` (`F-<WAVE>-<nnn>`, first-seen version, `OPEN|FIXED|REJECTED|REGRESSED`, fixed-in version). Rows never deleted — a reappearance reads as a REGRESSION of a known ID, not a new find.
+- Comment provenance — hand-derived context in code is prefixed `USER/CONTEXT DOCUMENTATION - NOT GENERATED BY LENS`. Lens-derived facts cite their query. An unlabelled comment reads as machine-verified when it isn't.
+
+---
+
+## Verbatim source — RULE ZERO-B
+
+*(copied byte-for-byte from the authority above so this copy cannot drift from it)*
+
+# RULE ZERO-B — NEVER SPAWN AN AGENT THAT IS NOT PROGRAMMATICALLY TRACKED (HARD RULE)
+
+Operator 2026-08-01, after ~176 agents across ~7 concurrent swarms died with nobody able to say what they had done, written, or left half-finished.
+
+Before dispatching ANY agent or swarm, and at the END of every turn that ran one, run the ledger — never memory:
+```
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritSwarmLedger.mjs"
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Get-KritAgentForensics.mjs" --unreturned
+node "C:\Users\joshl\OneDrive - Kritical Pty Ltd\Github\Kritical.Lens\scripts\Export-KritSwarmJournalFindings.mjs" --out <dir>
+```
+
+RUN `Get-KritAgentForensics.mjs --unreturned` FIRST AFTER ANY RESTART, CRASH OR SESSION LIMIT — before re-running any lane. It is the only thing that tells you what a dead agent actually WROTE (the ledger says whether an agent returned; forensics says what it left on disk). Measured 2026-08-01: 1,670 agents, 173 never returned, 36 of those had written real files — test suites and deploy scripts sitting on disk while every status surface reported them incomplete. Re-running a lane on the assumption "it never finished so nothing happened" duplicates or silently clobbers work.
+
+Memory is not tracking — a remembered swarm count was measured wrong by 4× (believed ~15 running; actually 4 of 57, 153 agents started and never returned).
+
+For every agent, answer from disk, not recall: is it still running · what was it asked to do · which files did it WRITE · which did it NOT · did it commit · did it return a result at all.
+
+A MISSING RESULT IS NOT A MISSING OUTCOME. A `StructuredOutput` failure and a session-limit kill both emit no result line whatsoever — verified on `wf_731e7b0d-ecc` (harness reported `agents_empty_result=1`; journal held 15 `started`, 14 `result`). A lost report is indistinguishable from an agent still thinking — the agent almost certainly did the work. Check `git status` and its `agent-<id>.jsonl` transcript before re-running.
+
+Gate agents run LAST, so a session limit strips the VERIFICATION layer off every workflow while the production layer completes. Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs 6/7 ✓ then gates 0/14 ✗ at zero tokens. The estate accumulates finished-but-unverified work — worse than unfinished because it looks done.
+
+"Built" does not mean "safe" — persist and push before the next step: tonight a whole component had no git, ten docs were untracked, a 623-insertion commit was stranded on a detached HEAD, 1,492 agent results lived only inside journal files.
+
+## FAN-OUT RULES — the shape of a swarm (operator directives, 2026-08-01)
+
+ONE SWARM AT A TIME. Keep it alive by APPENDING PHASES, never launching a second. Each new `Workflow` call costs the operator an approval; editing the script file and resuming with `{scriptPath, resumeFromRunId}` costs nothing, replays completed agents from cache free. Four parallel workflows ran early 2026-08-01 — the mistake that forced the operator to keep approving instead of sleeping.
+
+MODEL MIX — assign explicitly, inheritance is silent and drifts. Measured 2026-08-01: 50 of 53 tracks ran on OPUS purely because tracks inherit the session model when `model` is unset, including pure mechanical scanning — slower, more expensive, no accuracy gain.
+
+| Tier | Work |
+|---|---|
+| Haiku | bulk and mechanical — scanning, inventorying, applying known fixes, collecting output |
+| Sonnet | everything interpretive, and EVERY adversarial refutation (pin it, high effort) |
+| Opus | the orchestrator: steer, verify, decide. Reserve for a track only where reasoning genuinely warrants it, set EXPLICITLY, never by default |
+
+EVERY CLAIM GETS AN ADVERSARIAL REFUTER, briefed to REFUTE and default to refuted when uncertain — never one verifier, never a self-report accepted. Earns its cost: 2026-08-01 refuters refuted a trust-ledger round with 3 hard defects, caught a real false-green, caught the orchestrator breaking HEAD twice.
+
+GATE AGENTS RUN LAST, SO A SESSION LIMIT STRIPS THE VERIFICATION LAYER OFF EVERY WORKFLOW WHILE THE PRODUCTION LAYER COMPLETES. Measured repeatedly: builds 3/3 ✓ then gates 0/6 ✗; runs 6/7 ✓ then gates 0/14 ✗ at zero tokens — finished-but-unverified work looks done. Assume this has happened and check.
+
+Width: up to 75 concurrent is pre-authorised, but the harness caps concurrency near 16 and phases run sequentially, so real width is ~10. Do not chase width — chase not losing what runs.
+
+Never leave a swarm to die quietly — keep a final task open, append the next phase into it, close deliberately when genuinely done.
+
+<!-- END KRITICAL-SWARM-TRACKING -->
