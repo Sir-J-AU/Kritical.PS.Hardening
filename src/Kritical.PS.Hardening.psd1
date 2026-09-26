@@ -1,6 +1,6 @@
 @{
     RootModule        = 'Kritical.PS.Hardening.psm1'
-    ModuleVersion     = '1.0.1'
+    ModuleVersion     = '1.1.0'
     GUID              = 'd4e5f6a7-8b9c-4d1e-9f2a-3b4c5d6e7f80'
     Author            = 'Joshua Finley'
     CompanyName       = 'Kritical Pty Ltd'
@@ -24,7 +24,11 @@
         'Get-KriticalHardenModuleStatus',
         'Test-KriticalHardenCompliance',
         'New-KriticalHardenReport',
-        'Get-KriticalHardenBanner'
+        'Get-KriticalHardenBanner',
+        'Set-KritCredential',
+        'Get-KritCredential',
+        'Remove-KritCredential',
+        'Get-KritCredentialList'
     )
     CmdletsToExport   = @()
     VariablesToExport = @()
@@ -32,12 +36,21 @@
 
     PrivateData = @{
         PSData = @{
-            Tags         = @('Kritical','Hardening','Security','HotCakeX','HardeningKitty','MicrosoftSecurityComplianceToolkit','LGPO','DSC','CIS','STIG','Windows','MSP','Automation')
+            Tags         = @('Kritical','Hardening','Security','HotCakeX','HardeningKitty','MicrosoftSecurityComplianceToolkit','LGPO','DSC','CIS','STIG','Windows','MSP','Automation','DPAPI','CredentialStore')
             LicenseUri   = 'https://kritical.net/legal/license'
             ProjectUri   = 'https://github.com/Sir-J-AU/Kritical.PS.Hardening'
             IconUri      = 'https://kritical.net/assets/horizontal_logo.png'
             ExternalModuleDependencies = @('Kritical.PS.OmniFramework')
             ReleaseNotes = @'
+1.1.0 - Reusable encrypted credential store.
+  * Set-KritCredential / Get-KritCredential / Remove-KritCredential / Get-KritCredentialList
+    - a per-user, DPAPI(CurrentUser)-encrypted secret store keyed by Name. No separate AES
+    key to protect: DPAPI's OS-managed per-user master key IS the protection. Defence-in-
+    depth NTFS ACL lockdown on the store folder (current identity + SYSTEM only). Fails
+    closed on an absent/corrupted/wrong-account entry rather than ever returning a
+    fabricated credential. See README-HUMAN.md ("Credential store") for the full,
+    honest threat model.
+
 1.0.1 - Resilience fix (matches Kritical.PS.OmniFramework 1.0.2 pattern).
   * Moved Kritical.PS.OmniFramework out of RequiredModules into
     PSData.ExternalModuleDependencies. PowerShell hard-imports
