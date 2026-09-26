@@ -9,9 +9,9 @@
 | | |
 |---|---|
 | **Module** | `Kritical.PS.Hardening` |
-| **Version** | 1.0.1 |
+| **Version** | 1.1.0 |
 | **Requires** | PowerShell **5.1+** — `Desktop` **and** `Core` |
-| **Public surface** | **6 functions** |
+| **Public surface** | **10 functions** |
 | **Posture** | **Audit-only** in v1.0.x — no destructive apply path ships yet |
 | **Built on** | `Kritical.PS.OmniFramework` (sister/foundation module) |
 | **Wraps** | HotCakeX Harden-Windows-Security-Module · scipag HardeningKitty · MS Security Compliance Toolkit · DSC AuditPolicy/SecurityPolicy |
@@ -37,7 +37,7 @@ stale PSFramework AppDomain collision in a transitive dep used to cascade into a
 by the consuming functions (degrading gracefully when an older version is AppDomain-locked),
 while `Install-Module` still pulls it transitively from PSGallery.
 
-## Function map (6 public)
+## Function map (10 public)
 
 | Function | Does |
 |---|---|
@@ -47,6 +47,10 @@ while `Install-Module` still pulls it transitively from PSGallery.
 | `Test-KriticalHardenCompliance` | Runs **every installed audit tool**, normalises findings into a single `PSCustomObject` set + JSON. |
 | `New-KriticalHardenReport` | Kritical-branded **HTML + Excel** report via OmniFramework. |
 | `Get-KriticalHardenBanner` | Canonical Kritical brand banner (hardening-tagged). |
+| `Set-KritCredential` | Store a secret (PSCredential or SecureString) under a Name, DPAPI(CurrentUser)-encrypted. |
+| `Get-KritCredential` | Retrieve a stored secret as a PSCredential or SecureString. Fails closed. |
+| `Remove-KritCredential` | Delete a stored secret. Idempotent. |
+| `Get-KritCredentialList` | List stored Names/metadata without decrypting anything. |
 
 ### Typical flow
 
@@ -57,6 +61,68 @@ Install-KriticalHardenModules               # ensure HotCakeX + HardeningKitty p
 $findings = Test-KriticalHardenCompliance   # run every probe → normalised object set + JSON
 New-KriticalHardenReport -Findings $findings -OutFile .\reports\harden.html
 ```
+
+## Credential store (reusable, DPAPI-encrypted)
+
+A small, general-purpose secret store, independent of the hardening/reporting functions above.
+Any script or service on the box can call it to stop hitting "how do I not hardcode this
+password" every time a new unattended task needs a credential.
+
+```powershell
+# Store once (interactively, by a human — never by an agent typing a secret into chat)
+Set-KritCredential -Name 'w365-portal' -Credential (Get-Credential)
+Set-KritCredential -Name 'es-mcp-git-push-pat' -SecureString (Read-Host -AsSecureString 'PAT') -UserName 'es-mcp-system'
+
+# Retrieve later, non-interactively, by the SAME Windows account on the SAME machine
+$cred  = Get-KritCredential -Name 'w365-portal'                 # -> PSCredential (UserName was stored)
+$token = Get-KritCredential -Name 'es-mcp-git-push-pat'         # -> SecureString (no UserName forced with -AsSecureString)
+
+Get-KritCredentialList                                          # what's stored, no decryption
+Remove-KritCredential -Name 'w365-portal' -WhatIf                # idempotent; -WhatIf supported everywhere it writes
+```
+
+**How it's protected.** Windows DPAPI
+(`System.Security.Cryptography.ProtectedData`, `DataProtectionScope.CurrentUser`) — there is
+**no separate AES key** sitting anywhere; the OS-managed, per-user DPAPI master key *is* the
+protection, which is deliberate (an AES key stored beside its own ciphertext is not
+encryption). Entries live at `%LOCALAPPDATA%\Kritical\CredentialStore\<Name>.kritcred.json` as
+`{ name, userName (not secret), protectedBase64 (DPAPI ciphertext), createdUtc, updatedUtc,
+createdBy, machine }` — the JSON never contains the plaintext secret. As defence-in-depth on
+top of DPAPI, the store folder's NTFS ACL is reset (inheritance broken, inherited ACEs
+stripped) and rebuilt with `FullControl` granted **only** to the calling Windows identity plus
+the built-in `SYSTEM` principal (`S-1-5-18`) — never `Everyone`, `Users`, or `Authenticated
+Users`. `Name` is restricted to `[A-Za-z0-9][A-Za-z0-9_.-]{0,127}` to block path traversal.
+
+**Honest threat model — what this does NOT protect against:**
+
+- **Same-user-same-machine is the whole boundary.** DPAPI `CurrentUser` scope ties the
+  decryption key to *that Windows account on that machine*. Any other process running **as
+  that same account** — a scheduled task, another script, malware, another interactive
+  session — can call `Get-KritCredential` itself and get the plaintext back. This store does
+  not, and cannot, distinguish "this legitimate caller" from "anything else running as you."
+- **Not portable.** Copy the `.kritcred.json` file to another machine, or a different user
+  profile on the same machine, and it is permanently undecryptable there — DPAPI intentionally
+  will not unwrap it. That is a confidentiality feature, not a bug, but it means: no
+  cross-machine backup/restore of secrets without re-entering them.
+- **A local Administrator (or SYSTEM, with sufficient rights) can, with known offline
+  techniques, extract another user's DPAPI master key material.** The NTFS ACL lockdown above
+  raises the bar (an admin has to go around the file ACL, not just read the file) but does not
+  make this impossible for someone who already has that level of access to the box.
+- **The plaintext exists briefly in process memory** during `Set-KritCredential` /
+  `Get-KritCredential` (an unmanaged buffer, explicitly zeroed and freed immediately after
+  use — see `src/Private/_KritCredentialStore.ps1`). A live memory-scraper running as the same
+  user during that narrow window is not defended against.
+- **DPAPI is Windows-only.** There is no macOS/Linux fallback; this is scoped to the estate's
+  Windows boxes, matching the module's existing Windows-only posture.
+
+**Tests** (`tests/Unit/CredentialStore.Tests.ps1`, all synthetic fixture values, isolated to a
+temp `%LOCALAPPDATA%` for the run): round-trip for both `PSCredential` and bare `SecureString`;
+an absent Name fails closed (errors, returns nothing); the on-disk JSON is grepped for the
+plaintext secret and asserted absent; a **planted RED case** — deliberately corrupting the
+stored ciphertext — is asserted to fail closed rather than decrypt into a plausible wrong
+secret; path-traversal Names are rejected; `-WhatIf` performs no write; `Remove-KritCredential`
+is idempotent; and the store directory's ACL is asserted to exclude `Everyone`/`Users`/
+`Authenticated Users` and include only the calling identity.
 
 ## Standards / provenance
 

@@ -1,10 +1,11 @@
 {
   "schema": "kritical-readme-ai/v1",
   "generatedUtc": "2026-07-16",
-  "generatedFrom": ["src/Kritical.PS.Hardening.psd1 (incl ReleaseNotes)", "src/Public/*.ps1", "src/Private/_Banner.ps1"],
+  "lastHandUpdatedUtc": "2026-08-18",
+  "generatedFrom": ["src/Kritical.PS.Hardening.psd1 (incl ReleaseNotes)", "src/Public/*.ps1", "src/Private/_Banner.ps1", "src/Private/_KritCredentialStore.ps1"],
   "repo": {
     "name": "Kritical.PS.Hardening",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "guid": "d4e5f6a7-8b9c-4d1e-9f2a-3b4c5d6e7f80",
     "family": "Kritical.PS",
     "author": "Joshua Finley",
@@ -16,9 +17,17 @@
     "builtOn": "Kritical.PS.OmniFramework",
     "wrapsExternal": ["HotCakeX/Harden-Windows-Security-Module", "scipag/HardeningKitty", "Microsoft Security Compliance Toolkit", "DSC AuditPolicy/SecurityPolicy"],
     "externalModuleDependencies": ["Kritical.PS.OmniFramework"],
-    "tags": ["Kritical", "Hardening", "Security", "HotCakeX", "HardeningKitty", "MicrosoftSecurityComplianceToolkit", "LGPO", "DSC", "CIS", "STIG", "Windows", "MSP", "Automation"]
+    "tags": ["Kritical", "Hardening", "Security", "HotCakeX", "HardeningKitty", "MicrosoftSecurityComplianceToolkit", "LGPO", "DSC", "CIS", "STIG", "Windows", "MSP", "Automation", "DPAPI", "CredentialStore"]
   },
   "keyDesignDecisions": {
+    "credentialStore": {
+      "statement": "v1.1.0 added a reusable per-user secret store: Set/Get/Remove/Get-KritCredentialList.",
+      "protection": "Windows DPAPI (System.Security.Cryptography.ProtectedData, DataProtectionScope.CurrentUser) only -- no separate AES key exists to protect.",
+      "defenceInDepth": "store folder NTFS ACL reset to (current identity + SYSTEM S-1-5-18) only; Name restricted to a path-traversal-safe pattern.",
+      "failsClosed": "absent/wrong-account/tampered entries raise Write-Error and return nothing -- never a fabricated credential.",
+      "honestLimit": "same-Windows-account-same-machine is the whole boundary -- any process running as that account can decrypt it too; not portable across machines/profiles by design.",
+      "seeAlso": "README-HUMAN.md \"Credential store\" section for the full threat model"
+    },
     "auditOnly": {
       "statement": "v1.0.x runs probes and reports only; no machine changes.",
       "deferredToV110": ["Invoke-KriticalHardenApply", "Restore-KriticalHardenSnapshot", "Start-KriticalHardenWatcher"],
@@ -36,13 +45,18 @@
     { "name": "Get-KriticalHardenModuleStatus", "does": "report which underlying hardening tools/modules installed + versions" },
     { "name": "Test-KriticalHardenCompliance", "does": "run every installed audit tool, normalise findings into single PSCustomObject set + JSON" },
     { "name": "New-KriticalHardenReport", "does": "Kritical-branded HTML + Excel report via OmniFramework" },
-    { "name": "Get-KriticalHardenBanner", "does": "canonical Kritical brand banner (hardening-tagged)" }
+    { "name": "Get-KriticalHardenBanner", "does": "canonical Kritical brand banner (hardening-tagged)" },
+    { "name": "Set-KritCredential", "does": "store a secret (PSCredential or SecureString) under a Name, DPAPI(CurrentUser)-encrypted, no separate AES key" },
+    { "name": "Get-KritCredential", "does": "retrieve a stored secret as PSCredential or SecureString; fails closed on absent/wrong-account/corrupted entries" },
+    { "name": "Remove-KritCredential", "does": "delete a stored secret; idempotent" },
+    { "name": "Get-KritCredentialList", "does": "list stored Names + metadata without decrypting" }
   ],
   "privateApi": [
-    { "name": "_Banner", "file": "src/Private/_Banner.ps1", "role": "banner internals" }
+    { "name": "_Banner", "file": "src/Private/_Banner.ps1", "role": "banner internals" },
+    { "name": "_KritCredentialStore", "file": "src/Private/_KritCredentialStore.ps1", "role": "DPAPI protect/unprotect, store path + name validation, defence-in-depth ACL lockdown" }
   ],
-  "exportCount": 6,
-  "publicFileCount": 4,
+  "exportCount": 10,
+  "publicFileCount": 5,
   "typicalFlow": ["Test-KriticalHardenPrereqs", "Install-KriticalHardenModules", "Test-KriticalHardenCompliance", "New-KriticalHardenReport"],
   "standards": ["CIS", "STIG", "LGPO", "DSC"],
   "roadmap": {
