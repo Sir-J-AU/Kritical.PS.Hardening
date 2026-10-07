@@ -1,0 +1,59 @@
+{
+  "schema": "kritical-ps-hardening/edition-rules/v1",
+  "recordedUtc": "2026-10-07T21:10:00Z",
+  "source": "Edition facts copied from the EES-OPEN-N research (OSS-CANDIDATES.md section F), which quotes Microsoft Learn. Nothing here is from memory. Where the source says UNKNOWN or contested the label is kept and NOT decided.",
+  "targetEditions": [ "Pro", "Enterprise" ],
+  "proStatusValues": {
+    "NOT-AVAILABLE": "Microsoft Learn states the feature is not available on Windows Pro. A failing finding becomes NOT-APPLICABLE-EDITION on a Pro target.",
+    "CONTESTED": "Microsoft Learn contradicts itself. Label kept as CONTESTED; the outcome is NOT changed.",
+    "UNKNOWN": "Not established. Label kept as UNKNOWN; the outcome is NOT changed.",
+    "AVAILABLE": "Microsoft Learn states the feature is available on Windows Pro."
+  },
+  "rules": [
+    {
+      "ruleId": "ED-CREDENTIAL-GUARD",
+      "namePatterns": [ "*Credential Guard*" ],
+      "proStatus": "NOT-AVAILABLE",
+      "requiresEdition": "Enterprise",
+      "basis": "VERIFIED-FROM-MICROSOFT-LEARN",
+      "evidenceUrl": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/#windows-edition-and-licensing-requirements",
+      "note": "Learn: Pro = No, Enterprise = Yes, Education = Yes; entitled by Windows Enterprise E3/E5 and Education A3/A5, not Pro. Learn also notes Pro devices that previously ran it can retain it (known-issues page): a PASSING finding is therefore never relabelled."
+    },
+    {
+      "ruleId": "ED-PERSONAL-DATA-ENCRYPTION",
+      "namePatterns": [ "*Personal Data Encryption*" ],
+      "proStatus": "NOT-AVAILABLE",
+      "requiresEdition": "Enterprise",
+      "basis": "VERIFIED-FROM-MICROSOFT-LEARN",
+      "evidenceUrl": "https://learn.microsoft.com/windows/security/licensing-and-edition-requirements",
+      "note": "Learn edition table: Personal Data Encryption = No for Windows Pro."
+    },
+    {
+      "ruleId": "ED-ZERO-TRUST-DNS",
+      "namePatterns": [ "*Zero Trust DNS*" ],
+      "proStatus": "NOT-AVAILABLE",
+      "requiresEdition": "Enterprise",
+      "basis": "VERIFIED-FROM-MICROSOFT-LEARN",
+      "evidenceUrl": "https://learn.microsoft.com/windows/security/licensing-and-edition-requirements",
+      "note": "Learn edition table: Zero Trust DNS = No for Windows Pro."
+    },
+    {
+      "ruleId": "ED-ALWAYS-ON-VPN-DEVICE-TUNNEL",
+      "namePatterns": [ "*device tunnel*" ],
+      "proStatus": "NOT-AVAILABLE",
+      "requiresEdition": "Enterprise",
+      "basis": "VERIFIED-FROM-MICROSOFT-LEARN",
+      "evidenceUrl": "https://learn.microsoft.com/windows/security/licensing-and-edition-requirements",
+      "note": "Learn edition table: Always On VPN device tunnel = No for Windows Pro."
+    },
+    {
+      "ruleId": "ED-APPLOCKER",
+      "namePatterns": [ "*AppLocker*" ],
+      "proStatus": "CONTESTED",
+      "requiresEdition": null,
+      "basis": "CONTESTED-IN-MICROSOFT-LEARN",
+      "evidenceUrl": "https://learn.microsoft.com/windows/security/application-security/application-control/app-control-for-business/feature-availability",
+      "note": "Learn contradicts itself. The edition tab and the AppLocker CSP page say Pro is supported; the licensing tab says No for Windows Pro (Yes for Enterprise E3); the Enterprise E3 in CSP page lists AppLocker management as not found in Windows Pro; the feature-availability page says AppLocker policies are supported on all editions of Windows 10 2004+ with KB5024351 and via MDM on all editions. Kept as CONTESTED. Not decided here."
+    }
+  ]
+}

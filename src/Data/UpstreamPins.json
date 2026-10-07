@@ -1,0 +1,45 @@
+{
+  "schema": "kritical-ps-hardening/upstream-pins/v1",
+  "recordedUtc": "2026-10-07T20:55:39Z",
+  "recordedBy": "tools/Update-KriticalHardenUpstreamPins.ps1",
+  "tools": {
+    "HardeningKitty": {
+      "source": "github-release",
+      "repo": "scipag/HardeningKitty",
+      "releaseTag": "v.0.9.4",
+      "releasePublishedUtc": "2026-07-21T05:09:20Z",
+      "releaseUrl": "https://github.com/scipag/HardeningKitty/releases/tag/v.0.9.4",
+      "commitSha": "da0976073caad006c48b2478588c2f7fa572ab46",
+      "assetKind": "source-archive",
+      "assetName": "v.0.9.4.zip (source archive)",
+      "archiveUrl": "https://api.github.com/repos/scipag/HardeningKitty/zipball/v.0.9.4",
+      "archiveSizeBytes": 1287066,
+      "archiveSha256": "4A4DA6931D121D097E97D14B2CEE37EFA9A17CBD2DBFA210EE699F7F72687BA3",
+      "moduleVersion": "0.9.4",
+      "licence": {
+        "spdx": "MIT",
+        "file": "LICENSE",
+        "holder": "Copyright (c) 2020 scip ag"
+      },
+      "establishedBy": {
+        "tag": "VERIFIED-FROM-API (GitHub REST releases/latest)",
+        "archiveSha256": "VERIFIED-BY-EXECUTION (downloaded twice, identical bytes, hashed locally)",
+        "licence": "VERIFIED-FROM-REPO (LICENSE file in the archive and licence API agree)"
+      },
+      "notAvailableOnPSGallery": true
+    },
+    "Harden-Windows-Security-Module": {
+      "source": "psgallery",
+      "requiredVersion": "0.7.6",
+      "publishedUtc": "2025-09-01T21:56:17Z",
+      "licence": {
+        "spdx": "MIT",
+        "repo": "HotCakeX/Harden-Windows-Security"
+      },
+      "establishedBy": {
+        "version": "VERIFIED-FROM-API (Find-Module PSGallery)"
+      },
+      "notes": "The PowerShell module is a frozen artefact: the upstream repository now ships Microsoft Store apps, not this module. Pinned, not endorsed as the maintained product."
+    }
+  }
+}
