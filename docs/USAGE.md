@@ -57,6 +57,19 @@ Status check any time:
 Get-KriticalHardenModuleStatus | Format-Table
 ```
 
+Pinned upstreams (1.2.0). The versions are not literals in the code; they live in
+`src\Data\UpstreamPins.json`, written by `tools\Update-KriticalHardenUpstreamPins.ps1`:
+
+- **HardeningKitty is not on PSGallery.** The installer downloads the pinned scipag/HardeningKitty
+  GitHub release archive, recomputes its SHA-256, and compares it with the recorded hash. A mismatch
+  fails closed (`INSTALL-FAILED`, detail `HASH-MISMATCH`): nothing is extracted or installed. On a match it
+  is copied to `<user module path>\HardeningKitty\<version>`.
+- **HotCakeX Harden-Windows-Security-Module** is installed from PSGallery with `-RequiredVersion` from the pin
+  (0.7.6, a frozen artefact: the upstream repository now ships Store apps instead).
+- An already-installed module is never replaced. `Get-KriticalHardenModuleStatus` and the installer rows show
+  `PinnedVersion` and `PinMatch` so drift is visible.
+- Licences are in `THIRD-PARTY-NOTICES.md`. To re-pin, run the tool, review the diff, commit.
+
 ---
 
 ## Run the compliance probe
@@ -85,6 +98,33 @@ Findings      : @( ...247 PSCustomObjects with Source/Category/Control/Outcome/D
 Platform      : @{Family=Windows; DistroId=windows; Version=10.0.26200; Architecture=Arm64; IsAdmin=True; ...}
 ```
 
+Framework IDs and edition (1.2.0). Every finding now also carries:
+
+| Field | Meaning |
+| --- | --- |
+| `FrameworkIds` | Requirement IDs exactly as published in the Kritical-MSShowcase `catalog\framework-mappings\*.json` (for example `CISWIN11-L1-03`). `UNMAPPED` when no curated rule justifies a mapping: never a guess. |
+| `MappingStatus` / `MappingRule` / `MappingReason` | `MAPPED` or `UNMAPPED`, the rule that fired, and why a finding is unmapped. |
+| `FindingId` / `FindingList` | HardeningKitty finding-list ID and the list it belongs to. |
+| `EditionStatus` | See `-TargetEdition` below. |
+| `RawOutcome` | The tool's own verdict before any edition relabelling. |
+
+The mapping covers the HardeningKitty Windows 11 CIS (21H2-24H2) and Microsoft baseline (21H2-25H2) machine
+lists, plus a handful of HotCakeX categories. HardeningKitty's own default list
+(`finding_list_0x6d69636b_machine`) is not covered, so pass `-HardeningKittyList` with a full path to one of the
+Windows 11 lists to get framework IDs. Mapping rules and their justifications are in
+`src\Data\FrameworkMapping.json` (regenerate with `tools\New-KriticalHardenFrameworkMapping.ps1`).
+
+```powershell
+# EES runs Windows 11 Pro; the CIS Windows 11 lists are the Enterprise benchmark.
+$r = Test-KriticalHardenCompliance -TargetEdition Pro -HardeningKittyList 'C:\...\lists\finding_list_cis_microsoft_windows_11_enterprise_24h2_machine.csv'
+$r.Findings | Where-Object EditionStatus -eq 'NOT-APPLICABLE-EDITION'   # e.g. Credential Guard: not on Pro
+```
+
+`-TargetEdition Pro|Enterprise`: `NOT-APPLICABLE-EDITION` is used only where Microsoft Learn says the feature is not
+on Pro, and only a failing finding is relabelled (`Outcome = NotApplicable`); a passing one stays `Pass`.
+`CONTESTED` (for example AppLocker on Pro, where Learn contradicts itself) and `UNKNOWN` are carried through and the
+outcome is not changed. `UNASSESSED` means no edition fact is recorded. Without `-TargetEdition` every finding is
+`NOT-EVALUATED` and nothing is relabelled. Rules and evidence URLs: `src\Data\EditionRules.json`.
 ---
 
 ## Render branded report

@@ -14,6 +14,15 @@ function Test-KriticalHardenCompliance {
           - Detail         (free-form)
           - Recommendation (short text)
           - Severity       (Critical | Warning | Info)
+        added in 1.2.0 (the fields above are unchanged):
+          - FindingId      (HardeningKitty finding-list ID; $null for HotCakeX)
+          - FindingList    (HardeningKitty finding list the ID belongs to)
+          - RawOutcome     (the tool's own verdict, before any edition relabelling)
+          - FrameworkIds   (framework requirement IDs from src\Data\FrameworkMapping.json,
+                            exactly as published in the Kritical-MSShowcase catalog; the single
+                            value 'UNMAPPED' when no curated rule justifies a mapping)
+          - MappingStatus  (MAPPED | UNMAPPED), MappingRule, MappingReason
+          - EditionStatus  (see -TargetEdition), EditionRule, EditionNote
 
         Plus an aggregate score per source.
 
@@ -21,23 +30,40 @@ function Test-KriticalHardenCompliance {
         Per-probe timeout. Default 300 (5 min).
 
     .PARAMETER HardeningKittyList
-        Which HardeningKitty finding list to apply. Default: 'finding_list_0x6d69636b_machine.csv' (Windows 11 23H2 baseline).
-        Pass 'all' to run every shipped list (much longer).
+        Which HardeningKitty finding list to apply. When omitted HardeningKitty uses its own default
+        list (finding_list_0x6d69636b_machine.csv), which the framework mapping does NOT cover, so those
+        findings come back UNMAPPED. Pass the full path of a Windows 11 list (CIS or Microsoft baseline)
+        to get framework IDs. Pass 'all' to run every shipped list (much longer).
+
+    .PARAMETER TargetEdition
+        Pro | Enterprise. When given, each finding gets an EditionStatus:
+          APPLICABLE              - target is Enterprise, or a rule says Pro has the feature
+          NOT-APPLICABLE-EDITION  - Microsoft Learn says the feature is not on Pro (for example
+                                    Credential Guard). A FAILING finding is relabelled Outcome =
+                                    'NotApplicable' (never Fail); RawOutcome keeps the tool's verdict.
+                                    A passing finding is left as Pass.
+          CONTESTED / UNKNOWN     - the evidence is contested or missing (for example AppLocker on
+                                    Pro). The label is carried; the Outcome is NOT changed.
+          UNASSESSED              - Pro target and no edition fact recorded for this finding.
+        Without -TargetEdition every finding is NOT-EVALUATED and no Outcome is changed.
+        The CIS Windows 11 finding lists are the Enterprise benchmark; EES runs Windows 11 Pro.
 
     .EXAMPLE
         Test-KriticalHardenCompliance
-        $r = Test-KriticalHardenCompliance -Quiet
+        $r = Test-KriticalHardenCompliance -Quiet -TargetEdition Pro
         New-KriticalHardenReport -ComplianceResult $r -OutDir C:\drop\harden
 
     .NOTES
         Author: Joshua Finley - Kritical Pty Ltd
-        Audit-only in v1.0.0. Apply path lands in v1.1.0.
+        Audit-only. Apply path lands in a later version.
     #>
     [CmdletBinding()]
     [OutputType([pscustomobject])]
     param(
         [int]    $MaxProbeSeconds = 300,
         [string] $HardeningKittyList,
+        [ValidateSet('Pro', 'Enterprise')]
+        [string] $TargetEdition,
         [switch] $SkipHotCakeX,
         [switch] $SkipHardeningKitty,
         [switch] $Quiet,
@@ -47,8 +73,10 @@ function Test-KriticalHardenCompliance {
         Write-KriticalHardenBanner -Title 'Compliance Probe (audit-only)' -Compact
     }
 
-    $findings = [System.Collections.Generic.List[pscustomobject]]::new()
+    $raw = [System.Collections.Generic.List[pscustomobject]]::new()
     $sourceSummary = [System.Collections.Generic.List[pscustomobject]]::new()
+    $pins = $null
+    try { $pins = Get-KriticalHardenUpstreamPin } catch { Write-Verbose "pin file unavailable: $($_.Exception.Message)" }
 
     # ---- Source 1: HotCakeX Confirm-SystemCompliance ----
     if (-not $SkipHotCakeX.IsPresent) {
@@ -68,23 +96,15 @@ function Test-KriticalHardenCompliance {
                         # probe warnings/errors survive in the audit trail (surfaced via -Verbose).
                         $jobOutput = Receive-Job -Job $job -ErrorAction SilentlyContinue 2>&1
                         if ($jobOutput) { $jobOutput | ForEach-Object { Write-Verbose "HotCakeX job: $_" } }
-                        # HotCakeX writes a CSV alongside; parse if present
-                        $csv = Get-ChildItem -LiteralPath (Get-Location) -Filter 'Compliance-Check-*.csv' -ErrorAction SilentlyContinue |
+                        # HotCakeX writes a CSV alongside; parse if present. Module source (tag 0.7.5.1)
+                        # names it "Compliance Check Output <date>.CSV"; older notes said Compliance-Check-*.csv.
+                        $csv = Get-ChildItem -LiteralPath (Get-Location) -File -ErrorAction SilentlyContinue |
+                               Where-Object { $_.Name -like 'Compliance-Check-*.csv' -or $_.Name -like 'Compliance Check Output*.csv' } |
                                Sort-Object LastWriteTime -Descending | Select-Object -First 1
                         if ($csv) {
-                            $rows = Import-Csv -LiteralPath $csv.FullName
-                            foreach ($r in $rows) {
-                                $findings.Add([pscustomobject]@{
-                                    Source         = 'HotCakeX'
-                                    Category       = ($r.PSObject.Properties['Category'].Value)
-                                    Control        = ($r.PSObject.Properties['Name'].Value)
-                                    Outcome        = if ($r.PSObject.Properties['Compliant'].Value -eq 'True') { 'Pass' } else { 'Fail' }
-                                    Detail         = ($r.PSObject.Properties['Value'].Value)
-                                    Recommendation = ''
-                                    Severity       = if ($r.PSObject.Properties['Compliant'].Value -eq 'True') { 'Info' } else { 'Warning' }
-                                })
-                            }
-                            $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Tool=$hc.Name; Version=$hc.Version; Findings=$rows.Count; CsvPath=$csv.FullName })
+                            $rows = @(Import-Csv -LiteralPath $csv.FullName)
+                            foreach ($r in $rows) { $raw.Add((ConvertFrom-KriticalHardenHotCakeXRow -Row $r)) }
+                            $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Tool=$hc.Name; Version=$hc.Version; Findings=$rows.Count; CsvPath=$csv.FullName; PinnedVersion=(Get-KriticalHardenPinnedVersion -Pins $pins -ModuleName 'Harden-Windows-Security-Module'); PinMatch=([string]$hc.Version -eq [string](Get-KriticalHardenPinnedVersion -Pins $pins -ModuleName 'Harden-Windows-Security-Module')) })
                         } else {
                             $sourceSummary.Add([pscustomobject]@{ Source='HotCakeX'; Tool=$hc.Name; Version=$hc.Version; Findings=0; CsvPath=$null; Note='no CSV emitted' })
                         }
@@ -129,24 +149,11 @@ function Test-KriticalHardenCompliance {
                         $csv = Get-ChildItem -LiteralPath (Get-Location) -Filter 'hardeningkitty_report_*.csv' -ErrorAction SilentlyContinue |
                                Sort-Object LastWriteTime -Descending | Select-Object -First 1
                         if ($csv) {
-                            $rows = Import-Csv -LiteralPath $csv.FullName
-                            foreach ($r in $rows) {
-                                $outcome = switch (($r.PSObject.Properties['Result'].Value)) {
-                                    'Passed'  { 'Pass' }
-                                    'Failed'  { 'Fail' }
-                                    default   { 'Information' }
-                                }
-                                $findings.Add([pscustomobject]@{
-                                    Source         = 'HardeningKitty'
-                                    Category       = ($r.PSObject.Properties['Category'].Value)
-                                    Control        = ($r.PSObject.Properties['Name'].Value)
-                                    Outcome        = $outcome
-                                    Detail         = ($r.PSObject.Properties['Result'].Value) + ' / Expected=' + ($r.PSObject.Properties['RecommendedValue'].Value)
-                                    Recommendation = ($r.PSObject.Properties['RecommendedValue'].Value)
-                                    Severity       = ($r.PSObject.Properties['Severity'].Value)
-                                })
-                            }
-                            $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Tool=$hk.Name; Version=$hk.Version; Findings=$rows.Count; CsvPath=$csv.FullName })
+                            $listName = Get-KriticalHardenHardeningKittyListName -RequestedList $HardeningKittyList -ReportFileName $csv.Name
+                            $rows = @(Import-Csv -LiteralPath $csv.FullName)
+                            foreach ($r in $rows) { $raw.Add((ConvertFrom-KriticalHardenHardeningKittyRow -Row $r -ListName $listName)) }
+                            $hkPinned = Get-KriticalHardenPinnedVersion -Pins $pins -ModuleName 'HardeningKitty'
+                            $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Tool=$hk.Name; Version=$hk.Version; Findings=$rows.Count; CsvPath=$csv.FullName; FindingList=$listName; PinnedVersion=$hkPinned; PinMatch=([string]$hk.Version -eq [string]$hkPinned) })
                         } else {
                             $sourceSummary.Add([pscustomobject]@{ Source='HardeningKitty'; Tool=$hk.Name; Version=$hk.Version; Findings=0; CsvPath=$null; Note='no CSV emitted' })
                         }
@@ -166,10 +173,24 @@ function Test-KriticalHardenCompliance {
         }
     }
 
+    # ---- Enrichment: framework IDs + edition status ----
+    $mappingData = Get-KriticalHardenMappingData
+    if ($mappingData.DataStatus -ne 'OK') { Write-Warning ("Framework mapping data {0}: {1}. Every finding will be UNMAPPED." -f $mappingData.DataStatus, $mappingData.Detail) }
+    $editionRules = $null
+    if ($TargetEdition) { $editionRules = Get-KriticalHardenEditionRule }   # throws: a missing rule file must not look like "no edition issues"
+    $findings = [System.Collections.Generic.List[pscustomobject]]::new()
+    foreach ($f in $raw) {
+        $findings.Add((Add-KriticalHardenFindingEnrichment -Finding $f -MappingData $mappingData -EditionRules $editionRules -TargetEdition $TargetEdition))
+    }
+
     # Aggregate
     $byOutcome = $findings | Group-Object Outcome | ForEach-Object {
         [pscustomobject]@{ Outcome=$_.Name; Count=$_.Count }
     }
+    $byEdition = $findings | Group-Object EditionStatus | ForEach-Object {
+        [pscustomobject]@{ EditionStatus=$_.Name; Count=$_.Count }
+    }
+    $mappedCount = @($findings | Where-Object { $_.MappingStatus -eq 'MAPPED' }).Count
 
     $platform = $null
     if (Get-Command Get-KritPlatform -ErrorAction SilentlyContinue) { $platform = Get-KritPlatform }
@@ -180,12 +201,21 @@ function Test-KriticalHardenCompliance {
         SourceSummary   = @($sourceSummary)
         Findings        = @($findings)
         Platform        = $platform
+        TargetEdition   = $(if ($TargetEdition) { $TargetEdition } else { $null })
+        ByEditionStatus = @($byEdition)
+        Mapping         = [pscustomobject]@{
+            DataStatus    = $mappingData.DataStatus
+            RuleCount     = $mappingData.RuleCount
+            CatalogCommit = $mappingData.CatalogCommit
+            Mapped        = $mappedCount
+            Unmapped      = ($findings.Count - $mappedCount)
+        }
     }
 
     if (-not $Quiet.IsPresent) {
         Write-Host ''
         Write-Host "=== Compliance probe complete ===" -ForegroundColor Yellow
-        Write-Host ("Findings: $($findings.Count)")
+        Write-Host ("Findings: $($findings.Count)  (framework-mapped: $mappedCount, unmapped: $($findings.Count - $mappedCount))")
         $byOutcome | Format-Table -AutoSize | Out-String | Write-Host
         $sourceSummary | Format-Table -AutoSize | Out-String | Write-Host
     }

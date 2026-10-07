@@ -121,8 +121,8 @@ Output lands at `%LOCALAPPDATA%\Kritical\Kritical.PS.Hardening\reports\<utc>\` w
 | --- | --- |
 | `Test-KriticalHardenPrereqs` | 7-gate prereq probe (P1 Windows / P2 PSVersion ≥ 7.4 / P3 Admin / P4 Defender / P5 TPM / P6 SecureBoot / P7 WinRM) |
 | `Get-KriticalHardenModuleStatus` | Read-only: which OSS hardening modules are installed + loaded |
-| `Install-KriticalHardenModules` | Idempotent installer for HotCakeX + HardeningKitty + DSC family + PSScriptAnalyzer; `-OnlyCore` / `-NoInstall` |
-| `Test-KriticalHardenCompliance` | Runs every installed probe (HotCakeX `Confirm-SystemCompliance` + HardeningKitty `Invoke-HardeningKitty -Mode Audit`); normalises findings into a single PSCustomObject set with `Source / Category / Control / Outcome / Detail / Recommendation / Severity` |
+| `Install-KriticalHardenModules` | Idempotent installer for HotCakeX + HardeningKitty + DSC family + PSScriptAnalyzer; `-OnlyCore` / `-NoInstall`. Versions pinned in `src\Data\UpstreamPins.json`; HardeningKitty (not on PSGallery) comes from a pinned GitHub release, SHA-256 verified, fail closed |
+| `Test-KriticalHardenCompliance` | Runs every installed probe (HotCakeX `Confirm-SystemCompliance` + HardeningKitty `Invoke-HardeningKitty -Mode Audit`); normalises findings into a single PSCustomObject set with `Source / Category / Control / Outcome / Detail / Recommendation / Severity` plus `FrameworkIds` (or `UNMAPPED`), `MappingStatus`, `EditionStatus` and `RawOutcome`; `-TargetEdition Pro|Enterprise` labels findings that need a higher edition `NOT-APPLICABLE-EDITION` instead of Fail |
 | `New-KriticalHardenReport` | Renders HTML + Excel + JSON via Kritical.PS.OmniFramework; falls back to minimal-HTML / JSON-only when OmniFramework not loaded |
 | `Get-KriticalHardenBanner` | Brand banner reader (prefers Kritical.PS.OmniFramework's Get-KritBanner) |
 

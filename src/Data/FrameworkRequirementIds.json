@@ -1,0 +1,1303 @@
+{
+  "schema": "kritical-ps-hardening/framework-requirement-ids/v1",
+  "note": "Snapshot of requirementId + shortTitle from Kritical-MSShowcase catalog\\framework-mappings\\*.json. Used to prove a mapped ID exists; never edit by hand.",
+  "catalog": {
+    "repo": "Sir-J-AU/Kritical-MSShowcase",
+    "commit": "032de6d9fc62dd4e38751ae1ea3558af717450ea",
+    "readOnlyCheckout": "C:\\NoOneDrive\\worktrees\\gate-ees-main-20261008\\catalog\\framework-mappings"
+  },
+  "frameworks": {
+    "E8": {
+      "file": "acsc-e8.json",
+      "frameworkName": "ACSC Essential Eight Maturity Model",
+      "requirements": [
+        {
+          "requirementId": "E8-PA-ML1-01",
+          "shortTitle": "Automated asset discovery at least fortnightly"
+        },
+        {
+          "requirementId": "E8-PA-ML1-02",
+          "shortTitle": "Vulnerability scanner with current database"
+        },
+        {
+          "requirementId": "E8-PA-ML1-03",
+          "shortTitle": "Daily scan of online services"
+        },
+        {
+          "requirementId": "E8-PA-ML1-04",
+          "shortTitle": "Weekly scan of office suites, browsers, email clients, PDF software, security products"
+        },
+        {
+          "requirementId": "E8-PA-ML1-05",
+          "shortTitle": "Critical online-service patches within 48 hours"
+        },
+        {
+          "requirementId": "E8-PA-ML1-06",
+          "shortTitle": "Non-critical online-service patches within two weeks"
+        },
+        {
+          "requirementId": "E8-PA-ML1-07",
+          "shortTitle": "Office suite, browser, email, PDF, security product patches within two weeks"
+        },
+        {
+          "requirementId": "E8-PA-ML1-08",
+          "shortTitle": "Unsupported online services removed"
+        },
+        {
+          "requirementId": "E8-PA-ML1-09",
+          "shortTitle": "Unsupported office suites, browsers, email, PDF, security products removed"
+        },
+        {
+          "requirementId": "E8-PO-ML1-01",
+          "shortTitle": "Automated asset discovery at least fortnightly"
+        },
+        {
+          "requirementId": "E8-PO-ML1-02",
+          "shortTitle": "Vulnerability scanner with current database"
+        },
+        {
+          "requirementId": "E8-PO-ML1-03",
+          "shortTitle": "Daily scan of internet-facing server and network device OS"
+        },
+        {
+          "requirementId": "E8-PO-ML1-04",
+          "shortTitle": "Fortnightly scan of workstation and internal server OS"
+        },
+        {
+          "requirementId": "E8-PO-ML1-05",
+          "shortTitle": "Critical OS patches (internet-facing) within 48 hours"
+        },
+        {
+          "requirementId": "E8-PO-ML1-06",
+          "shortTitle": "Non-critical OS patches (internet-facing) within two weeks"
+        },
+        {
+          "requirementId": "E8-PO-ML1-07",
+          "shortTitle": "Workstation and internal server OS patches within one month"
+        },
+        {
+          "requirementId": "E8-PO-ML1-08",
+          "shortTitle": "Unsupported operating systems replaced"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-01",
+          "shortTitle": "MFA for users of the organisation online services holding sensitive data"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-02",
+          "shortTitle": "MFA for users of third-party online services holding sensitive data"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-03",
+          "shortTitle": "MFA for third-party services with non-sensitive data where available"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-04",
+          "shortTitle": "MFA for users of the organisation customer-facing services with sensitive data"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-05",
+          "shortTitle": "MFA for users of third-party customer services with sensitive data"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-06",
+          "shortTitle": "MFA for customers of online customer services with sensitive data"
+        },
+        {
+          "requirementId": "E8-MFA-ML1-07",
+          "shortTitle": "MFA built from two distinct factor types"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-01",
+          "shortTitle": "Privileged access requests validated on first request"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-02",
+          "shortTitle": "Dedicated privileged accounts used only for privileged duties"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-03",
+          "shortTitle": "Privileged accounts blocked from internet, email and web"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-04",
+          "shortTitle": "Privileged accounts with online access strictly limited"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-05",
+          "shortTitle": "Separate privileged and unprivileged operating environments"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-06",
+          "shortTitle": "Unprivileged accounts cannot log on to privileged environments"
+        },
+        {
+          "requirementId": "E8-RAP-ML1-07",
+          "shortTitle": "Privileged accounts cannot log on to unprivileged environments"
+        },
+        {
+          "requirementId": "E8-AC-ML1-01",
+          "shortTitle": "Application control on workstations"
+        },
+        {
+          "requirementId": "E8-AC-ML1-02",
+          "shortTitle": "Application control covers user profiles and temporary folders"
+        },
+        {
+          "requirementId": "E8-AC-ML1-03",
+          "shortTitle": "Execution limited to an approved set of executables, libraries, scripts and installers"
+        },
+        {
+          "requirementId": "E8-MAC-ML1-01",
+          "shortTitle": "Office macros disabled for users without a business need"
+        },
+        {
+          "requirementId": "E8-MAC-ML1-02",
+          "shortTitle": "Office macros from the internet blocked"
+        },
+        {
+          "requirementId": "E8-MAC-ML1-03",
+          "shortTitle": "Office macro antivirus scanning enabled"
+        },
+        {
+          "requirementId": "E8-MAC-ML1-04",
+          "shortTitle": "Users cannot change Office macro security settings"
+        },
+        {
+          "requirementId": "E8-UAH-ML1-01",
+          "shortTitle": "Internet Explorer 11 disabled or removed"
+        },
+        {
+          "requirementId": "E8-UAH-ML1-02",
+          "shortTitle": "Browsers do not process Java from the internet"
+        },
+        {
+          "requirementId": "E8-UAH-ML1-03",
+          "shortTitle": "Browsers do not process web advertisements"
+        },
+        {
+          "requirementId": "E8-UAH-ML1-04",
+          "shortTitle": "Users cannot change browser security settings"
+        },
+        {
+          "requirementId": "E8-BK-ML1-01",
+          "shortTitle": "Backups performed and retained to business need"
+        },
+        {
+          "requirementId": "E8-BK-ML1-02",
+          "shortTitle": "Backups synchronised to a common point in time"
+        },
+        {
+          "requirementId": "E8-BK-ML1-03",
+          "shortTitle": "Backups kept secure and resilient"
+        },
+        {
+          "requirementId": "E8-BK-ML1-04",
+          "shortTitle": "Restoration tested in disaster recovery exercises"
+        },
+        {
+          "requirementId": "E8-BK-ML1-05",
+          "shortTitle": "Unprivileged accounts cannot access others backups"
+        },
+        {
+          "requirementId": "E8-BK-ML1-06",
+          "shortTitle": "Unprivileged accounts cannot modify or delete backups"
+        },
+        {
+          "requirementId": "E8-PA-ML2-01",
+          "shortTitle": "Fortnightly scan of other applications"
+        },
+        {
+          "requirementId": "E8-PA-ML2-02",
+          "shortTitle": "Other-application patches within one month"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-01",
+          "shortTitle": "MFA for privileged users of systems"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-02",
+          "shortTitle": "MFA for unprivileged users of systems"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-03",
+          "shortTitle": "Phishing-resistant MFA for online services"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-04",
+          "shortTitle": "Phishing-resistant option offered to customers"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-05",
+          "shortTitle": "Phishing-resistant MFA for systems"
+        },
+        {
+          "requirementId": "E8-MFA-ML2-06",
+          "shortTitle": "MFA events centrally logged"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-01",
+          "shortTitle": "Privileged access disabled after 12 months unless revalidated"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-02",
+          "shortTitle": "Privileged access disabled after 45 days of inactivity"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-03",
+          "shortTitle": "Privileged environments not virtualised inside unprivileged ones"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-04",
+          "shortTitle": "Administration through jump servers"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-05",
+          "shortTitle": "Break-glass, local admin and service account credentials long, unique and managed"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-06",
+          "shortTitle": "Privileged access events centrally logged"
+        },
+        {
+          "requirementId": "E8-RAP-ML2-07",
+          "shortTitle": "Privileged account and group changes centrally logged"
+        },
+        {
+          "requirementId": "E8-AC-ML2-01",
+          "shortTitle": "Application control on internet-facing servers"
+        },
+        {
+          "requirementId": "E8-AC-ML2-02",
+          "shortTitle": "Application control beyond profiles and temp folders"
+        },
+        {
+          "requirementId": "E8-AC-ML2-03",
+          "shortTitle": "Vendor recommended application blocklist applied"
+        },
+        {
+          "requirementId": "E8-AC-ML2-04",
+          "shortTitle": "Application control rules validated at least annually"
+        },
+        {
+          "requirementId": "E8-AC-ML2-05",
+          "shortTitle": "Allowed and blocked application events centrally logged"
+        },
+        {
+          "requirementId": "E8-MAC-ML2-01",
+          "shortTitle": "Office macros blocked from Win32 API calls"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-01",
+          "shortTitle": "Browsers hardened to ASD and vendor guidance"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-02",
+          "shortTitle": "Office blocked from creating child processes"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-03",
+          "shortTitle": "Office blocked from creating executable content"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-04",
+          "shortTitle": "Office blocked from injecting code into other processes"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-05",
+          "shortTitle": "Office OLE package activation prevented"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-06",
+          "shortTitle": "Office suites hardened to ASD and vendor guidance"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-07",
+          "shortTitle": "Users cannot change Office security settings"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-08",
+          "shortTitle": "PDF software blocked from creating child processes"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-09",
+          "shortTitle": "PDF software hardened to ASD and vendor guidance"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-10",
+          "shortTitle": "Users cannot change PDF software security settings"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-11",
+          "shortTitle": "PowerShell module, script block and transcription events centrally logged"
+        },
+        {
+          "requirementId": "E8-UAH-ML2-12",
+          "shortTitle": "Command-line process creation events centrally logged"
+        },
+        {
+          "requirementId": "E8-BK-ML2-01",
+          "shortTitle": "Privileged accounts (not backup admins) cannot access others backups"
+        },
+        {
+          "requirementId": "E8-BK-ML2-02",
+          "shortTitle": "Privileged accounts (not backup admins) cannot modify or delete backups"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-01",
+          "shortTitle": "Event logs protected from modification and deletion"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-02",
+          "shortTitle": "Internet-facing server logs analysed in a timely manner"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-03",
+          "shortTitle": "Cyber security events analysed to identify incidents"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-04",
+          "shortTitle": "Incidents reported to the CISO or delegate promptly"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-05",
+          "shortTitle": "Incidents reported to ASD promptly"
+        },
+        {
+          "requirementId": "E8-LOG-ML2-06",
+          "shortTitle": "Incident response plan enacted on identification"
+        }
+      ]
+    },
+    "ISM": {
+      "file": "acsc-ism.json",
+      "frameworkName": "ACSC Information Security Manual (controls in the Essential Eight ML1 and ML2 baseline profiles)",
+      "requirements": [
+        {
+          "requirementId": "ISM-0123",
+          "shortTitle": "Managing cyber security incidents: Reporting cyber security incidents"
+        },
+        {
+          "requirementId": "ISM-0140",
+          "shortTitle": "Managing cyber security incidents: Reporting cyber security incidents to ASD"
+        },
+        {
+          "requirementId": "ISM-1819",
+          "shortTitle": "Responding to cyber security incidents: Enacting cyber security incident response plans"
+        },
+        {
+          "requirementId": "ISM-1654",
+          "shortTitle": "Operating system hardening: Hardening operating system configurations"
+        },
+        {
+          "requirementId": "ISM-0843",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1490",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1870",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1871",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1657",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1544",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1582",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1660",
+          "shortTitle": "Operating system hardening: Application control"
+        },
+        {
+          "requirementId": "ISM-1889",
+          "shortTitle": "Operating system hardening: Command Shell"
+        },
+        {
+          "requirementId": "ISM-1623",
+          "shortTitle": "Operating system hardening: PowerShell"
+        },
+        {
+          "requirementId": "ISM-1859",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1667",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1668",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1669",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1542",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1823",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1671",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1488",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1672",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1673",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1489",
+          "shortTitle": "User application hardening: Office productivity suites"
+        },
+        {
+          "requirementId": "ISM-1670",
+          "shortTitle": "User application hardening: Portable Document Format applications"
+        },
+        {
+          "requirementId": "ISM-1860",
+          "shortTitle": "User application hardening: Portable Document Format applications"
+        },
+        {
+          "requirementId": "ISM-1824",
+          "shortTitle": "User application hardening: Portable Document Format applications"
+        },
+        {
+          "requirementId": "ISM-1486",
+          "shortTitle": "User application hardening: Web browsers"
+        },
+        {
+          "requirementId": "ISM-1485",
+          "shortTitle": "User application hardening: Web browsers"
+        },
+        {
+          "requirementId": "ISM-1412",
+          "shortTitle": "User application hardening: Web browsers"
+        },
+        {
+          "requirementId": "ISM-1585",
+          "shortTitle": "User application hardening: Web browsers"
+        },
+        {
+          "requirementId": "ISM-1507",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-1175",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-1883",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-0445",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-1509",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-1650",
+          "shortTitle": "Identity and access management: Privileged access to systems"
+        },
+        {
+          "requirementId": "ISM-1648",
+          "shortTitle": "Identity and access management: Suspension of access to systems"
+        },
+        {
+          "requirementId": "ISM-1647",
+          "shortTitle": "Identity and access management: Suspension of access to systems"
+        },
+        {
+          "requirementId": "ISM-1504",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1679",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1680",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1892",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1893",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1681",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1173",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-0974",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1401",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1872",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1873",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1682",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1683",
+          "shortTitle": "Identity and access management: Multi-factor authentication"
+        },
+        {
+          "requirementId": "ISM-1685",
+          "shortTitle": "Credential management: Setting credentials for built-in Administrator accounts, break glass accounts, local administrator accounts and service accounts"
+        },
+        {
+          "requirementId": "ISM-1380",
+          "shortTitle": "System administration: Separate privileged operating environments"
+        },
+        {
+          "requirementId": "ISM-1687",
+          "shortTitle": "System administration: Separate privileged operating environments"
+        },
+        {
+          "requirementId": "ISM-1688",
+          "shortTitle": "System administration: Separate privileged operating environments"
+        },
+        {
+          "requirementId": "ISM-1689",
+          "shortTitle": "System administration: Separate privileged operating environments"
+        },
+        {
+          "requirementId": "ISM-1387",
+          "shortTitle": "System administration: Administrative infrastructure"
+        },
+        {
+          "requirementId": "ISM-1876",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1690",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1691",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1693",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1877",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1694",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1695",
+          "shortTitle": "System maintenance: Mitigating known vulnerabilities"
+        },
+        {
+          "requirementId": "ISM-1905",
+          "shortTitle": "System maintenance: Cessation of support"
+        },
+        {
+          "requirementId": "ISM-1704",
+          "shortTitle": "System maintenance: Cessation of support"
+        },
+        {
+          "requirementId": "ISM-1501",
+          "shortTitle": "System maintenance: Cessation of support"
+        },
+        {
+          "requirementId": "ISM-1511",
+          "shortTitle": "Data backup and restoration: Performing and retaining backups"
+        },
+        {
+          "requirementId": "ISM-1810",
+          "shortTitle": "Data backup and restoration: Performing and retaining backups"
+        },
+        {
+          "requirementId": "ISM-1811",
+          "shortTitle": "Data backup and restoration: Performing and retaining backups"
+        },
+        {
+          "requirementId": "ISM-1812",
+          "shortTitle": "Data backup and restoration: Backup access"
+        },
+        {
+          "requirementId": "ISM-1705",
+          "shortTitle": "Data backup and restoration: Backup access"
+        },
+        {
+          "requirementId": "ISM-1814",
+          "shortTitle": "Data backup and restoration: Backup modification and deletion"
+        },
+        {
+          "requirementId": "ISM-1707",
+          "shortTitle": "Data backup and restoration: Backup modification and deletion"
+        },
+        {
+          "requirementId": "ISM-1515",
+          "shortTitle": "Data backup and restoration: Testing restoration of backups"
+        },
+        {
+          "requirementId": "ISM-1815",
+          "shortTitle": "Security monitoring: Centralised event logging facility"
+        },
+        {
+          "requirementId": "ISM-1906",
+          "shortTitle": "Security monitoring: Event log monitoring"
+        },
+        {
+          "requirementId": "ISM-1228",
+          "shortTitle": "Security monitoring: Event log monitoring"
+        },
+        {
+          "requirementId": "ISM-1807",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1808",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1698",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1699",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1700",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1701",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        },
+        {
+          "requirementId": "ISM-1702",
+          "shortTitle": "Security assessments: Vulnerability scanning"
+        }
+      ]
+    },
+    "CIS-GWS-L1": {
+      "file": "cis-benchmark-google-workspace-l1.json",
+      "frameworkName": "CIS Google Workspace Benchmark - Level 1",
+      "requirements": [
+        {
+          "requirementId": "CISGWS-L1-01",
+          "shortTitle": "2-Step Verification enforced for all users"
+        },
+        {
+          "requirementId": "CISGWS-L1-02",
+          "shortTitle": "Phishing-resistant 2SV for administrators"
+        },
+        {
+          "requirementId": "CISGWS-L1-03",
+          "shortTitle": "Limit number of super administrators"
+        },
+        {
+          "requirementId": "CISGWS-L1-04",
+          "shortTitle": "Super administrators use dedicated accounts"
+        },
+        {
+          "requirementId": "CISGWS-L1-05",
+          "shortTitle": "Minimum password length and strength"
+        },
+        {
+          "requirementId": "CISGWS-L1-06",
+          "shortTitle": "Password reuse and expiry settings"
+        },
+        {
+          "requirementId": "CISGWS-L1-07",
+          "shortTitle": "Session length for web and Google Cloud"
+        },
+        {
+          "requirementId": "CISGWS-L1-08",
+          "shortTitle": "Drive external sharing restricted"
+        },
+        {
+          "requirementId": "CISGWS-L1-09",
+          "shortTitle": "Drive link-sharing defaults restricted"
+        },
+        {
+          "requirementId": "CISGWS-L1-10",
+          "shortTitle": "Gmail SPF, DKIM and DMARC configured"
+        },
+        {
+          "requirementId": "CISGWS-L1-11",
+          "shortTitle": "Gmail attachment and link protection"
+        },
+        {
+          "requirementId": "CISGWS-L1-12",
+          "shortTitle": "Gmail automatic forwarding disabled"
+        },
+        {
+          "requirementId": "CISGWS-L1-13",
+          "shortTitle": "Third-party app access controlled"
+        },
+        {
+          "requirementId": "CISGWS-L1-14",
+          "shortTitle": "Less secure app and legacy access disabled"
+        },
+        {
+          "requirementId": "CISGWS-L1-15",
+          "shortTitle": "Audit logging and security alerting enabled"
+        },
+        {
+          "requirementId": "CISGWS-L1-16",
+          "shortTitle": "Calendar external sharing limited"
+        },
+        {
+          "requirementId": "CISGWS-L1-17",
+          "shortTitle": "Mobile device management and screen lock"
+        },
+        {
+          "requirementId": "CISGWS-L1-18",
+          "shortTitle": "Chat/Meet external access limited"
+        },
+        {
+          "requirementId": "CISGWS-L1-19",
+          "shortTitle": "Marketplace apps allowlisted"
+        },
+        {
+          "requirementId": "CISGWS-L1-20",
+          "shortTitle": "Account recovery options controlled"
+        },
+        {
+          "requirementId": "CISGWS-L1-21",
+          "shortTitle": "Takeout / data export controlled"
+        }
+      ]
+    },
+    "CIS-INTUNE-L1": {
+      "file": "cis-benchmark-intune-l1.json",
+      "frameworkName": "CIS Microsoft Intune for Windows Benchmark - Level 1",
+      "requirements": [
+        {
+          "requirementId": "CISINTUNE-L1-01",
+          "shortTitle": "Compliance policy requires BitLocker"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-02",
+          "shortTitle": "Compliance policy requires Defender / antivirus"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-03",
+          "shortTitle": "Compliance policy minimum OS version"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-04",
+          "shortTitle": "Non-compliant devices marked and acted on"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-05",
+          "shortTitle": "Enrolment restrictions for personal devices"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-06",
+          "shortTitle": "Windows Update rings configured"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-07",
+          "shortTitle": "Endpoint security baseline applied"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-08",
+          "shortTitle": "Local administrator password management (LAPS)"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-09",
+          "shortTitle": "App protection policies for mobile"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-10",
+          "shortTitle": "Device password requirements"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-11",
+          "shortTitle": "Windows Hello for Business configured"
+        },
+        {
+          "requirementId": "CISINTUNE-L1-12",
+          "shortTitle": "Devices enrolled and inventoried"
+        }
+      ]
+    },
+    "CIS-M365-L1": {
+      "file": "cis-benchmark-m365-l1.json",
+      "frameworkName": "CIS Microsoft 365 Foundations Benchmark - Level 1",
+      "requirements": [
+        {
+          "requirementId": "CISM365-L1-01",
+          "shortTitle": "MFA required for all users"
+        },
+        {
+          "requirementId": "CISM365-L1-02",
+          "shortTitle": "MFA required for administrators"
+        },
+        {
+          "requirementId": "CISM365-L1-03",
+          "shortTitle": "Legacy authentication blocked"
+        },
+        {
+          "requirementId": "CISM365-L1-04",
+          "shortTitle": "Few cloud-only global administrators"
+        },
+        {
+          "requirementId": "CISM365-L1-05",
+          "shortTitle": "Administrators use separate accounts without mail licences"
+        },
+        {
+          "requirementId": "CISM365-L1-06",
+          "shortTitle": "Password never-expire / banned password policy"
+        },
+        {
+          "requirementId": "CISM365-L1-07",
+          "shortTitle": "Unified audit log enabled"
+        },
+        {
+          "requirementId": "CISM365-L1-08",
+          "shortTitle": "Mailbox auditing on"
+        },
+        {
+          "requirementId": "CISM365-L1-09",
+          "shortTitle": "External mail forwarding blocked"
+        },
+        {
+          "requirementId": "CISM365-L1-10",
+          "shortTitle": "SPF, DKIM and DMARC configured"
+        },
+        {
+          "requirementId": "CISM365-L1-11",
+          "shortTitle": "Safe Links and Safe Attachments"
+        },
+        {
+          "requirementId": "CISM365-L1-12",
+          "shortTitle": "Anti-phishing and anti-malware policies"
+        },
+        {
+          "requirementId": "CISM365-L1-13",
+          "shortTitle": "Modern authentication enabled"
+        },
+        {
+          "requirementId": "CISM365-L1-14",
+          "shortTitle": "SharePoint external sharing limited"
+        },
+        {
+          "requirementId": "CISM365-L1-15",
+          "shortTitle": "Guest user restrictions"
+        },
+        {
+          "requirementId": "CISM365-L1-16",
+          "shortTitle": "Teams external access limited"
+        },
+        {
+          "requirementId": "CISM365-L1-17",
+          "shortTitle": "User consent to apps restricted"
+        },
+        {
+          "requirementId": "CISM365-L1-18",
+          "shortTitle": "Self-service password reset configured"
+        },
+        {
+          "requirementId": "CISM365-L1-19",
+          "shortTitle": "Conditional Access baseline policies"
+        },
+        {
+          "requirementId": "CISM365-L1-20",
+          "shortTitle": "Security defaults or equivalent enabled"
+        }
+      ]
+    },
+    "CIS-WIN11-L1": {
+      "file": "cis-benchmark-windows11-l1.json",
+      "frameworkName": "CIS Microsoft Windows 11 Enterprise Benchmark - Level 1",
+      "requirements": [
+        {
+          "requirementId": "CISWIN11-L1-01",
+          "shortTitle": "BitLocker drive encryption"
+        },
+        {
+          "requirementId": "CISWIN11-L1-02",
+          "shortTitle": "Password length and complexity"
+        },
+        {
+          "requirementId": "CISWIN11-L1-03",
+          "shortTitle": "Account lockout policy"
+        },
+        {
+          "requirementId": "CISWIN11-L1-04",
+          "shortTitle": "Defender antivirus real-time protection"
+        },
+        {
+          "requirementId": "CISWIN11-L1-05",
+          "shortTitle": "Windows Firewall on for all profiles"
+        },
+        {
+          "requirementId": "CISWIN11-L1-06",
+          "shortTitle": "SmartScreen enabled"
+        },
+        {
+          "requirementId": "CISWIN11-L1-07",
+          "shortTitle": "Screen lock inactivity limit"
+        },
+        {
+          "requirementId": "CISWIN11-L1-08",
+          "shortTitle": "User Account Control enforced"
+        },
+        {
+          "requirementId": "CISWIN11-L1-09",
+          "shortTitle": "Autorun/autoplay disabled"
+        },
+        {
+          "requirementId": "CISWIN11-L1-10",
+          "shortTitle": "SMBv1 disabled"
+        },
+        {
+          "requirementId": "CISWIN11-L1-11",
+          "shortTitle": "Guest account disabled"
+        },
+        {
+          "requirementId": "CISWIN11-L1-12",
+          "shortTitle": "Security audit policy configured"
+        },
+        {
+          "requirementId": "CISWIN11-L1-13",
+          "shortTitle": "Automatic Windows updates"
+        },
+        {
+          "requirementId": "CISWIN11-L1-14",
+          "shortTitle": "Remote Desktop requires NLA"
+        },
+        {
+          "requirementId": "CISWIN11-L1-15",
+          "shortTitle": "LLMNR and NetBIOS name resolution disabled"
+        },
+        {
+          "requirementId": "CISWIN11-L1-16",
+          "shortTitle": "PowerShell script block logging"
+        }
+      ]
+    },
+    "CIS-V8-IG1": {
+      "file": "cis-controls-v8-ig1.json",
+      "frameworkName": "CIS Critical Security Controls v8 - Implementation Group 1",
+      "requirements": [
+        {
+          "requirementId": "CISV8-1.1",
+          "shortTitle": "Establish and maintain enterprise asset inventory"
+        },
+        {
+          "requirementId": "CISV8-1.2",
+          "shortTitle": "Address unauthorised assets"
+        },
+        {
+          "requirementId": "CISV8-2.1",
+          "shortTitle": "Establish and maintain software inventory"
+        },
+        {
+          "requirementId": "CISV8-2.2",
+          "shortTitle": "Ensure authorised software is supported"
+        },
+        {
+          "requirementId": "CISV8-2.3",
+          "shortTitle": "Address unauthorised software"
+        },
+        {
+          "requirementId": "CISV8-3.1",
+          "shortTitle": "Establish data management process"
+        },
+        {
+          "requirementId": "CISV8-3.2",
+          "shortTitle": "Establish data inventory"
+        },
+        {
+          "requirementId": "CISV8-3.3",
+          "shortTitle": "Configure data access control lists"
+        },
+        {
+          "requirementId": "CISV8-3.4",
+          "shortTitle": "Enforce data retention"
+        },
+        {
+          "requirementId": "CISV8-3.5",
+          "shortTitle": "Securely dispose of data"
+        },
+        {
+          "requirementId": "CISV8-3.6",
+          "shortTitle": "Encrypt data on end-user devices"
+        },
+        {
+          "requirementId": "CISV8-4.1",
+          "shortTitle": "Secure configuration process for assets and software"
+        },
+        {
+          "requirementId": "CISV8-4.2",
+          "shortTitle": "Secure configuration process for network infrastructure"
+        },
+        {
+          "requirementId": "CISV8-4.3",
+          "shortTitle": "Automatic session locking"
+        },
+        {
+          "requirementId": "CISV8-4.4",
+          "shortTitle": "Firewall on servers"
+        },
+        {
+          "requirementId": "CISV8-4.5",
+          "shortTitle": "Firewall on end-user devices"
+        },
+        {
+          "requirementId": "CISV8-4.6",
+          "shortTitle": "Securely manage assets and software"
+        },
+        {
+          "requirementId": "CISV8-4.7",
+          "shortTitle": "Manage default accounts"
+        },
+        {
+          "requirementId": "CISV8-5.1",
+          "shortTitle": "Inventory of accounts"
+        },
+        {
+          "requirementId": "CISV8-5.2",
+          "shortTitle": "Use unique passwords"
+        },
+        {
+          "requirementId": "CISV8-5.3",
+          "shortTitle": "Disable dormant accounts"
+        },
+        {
+          "requirementId": "CISV8-5.4",
+          "shortTitle": "Dedicated administrator accounts"
+        },
+        {
+          "requirementId": "CISV8-6.1",
+          "shortTitle": "Access granting process"
+        },
+        {
+          "requirementId": "CISV8-6.2",
+          "shortTitle": "Access revoking process"
+        },
+        {
+          "requirementId": "CISV8-6.3",
+          "shortTitle": "MFA for externally-exposed applications"
+        },
+        {
+          "requirementId": "CISV8-6.4",
+          "shortTitle": "MFA for remote network access"
+        },
+        {
+          "requirementId": "CISV8-6.5",
+          "shortTitle": "MFA for administrative access"
+        },
+        {
+          "requirementId": "CISV8-7.1",
+          "shortTitle": "Vulnerability management process"
+        },
+        {
+          "requirementId": "CISV8-7.2",
+          "shortTitle": "Remediation process"
+        },
+        {
+          "requirementId": "CISV8-7.3",
+          "shortTitle": "Automated OS patch management"
+        },
+        {
+          "requirementId": "CISV8-7.4",
+          "shortTitle": "Automated application patch management"
+        },
+        {
+          "requirementId": "CISV8-8.1",
+          "shortTitle": "Audit log management process"
+        },
+        {
+          "requirementId": "CISV8-8.2",
+          "shortTitle": "Collect audit logs"
+        },
+        {
+          "requirementId": "CISV8-8.3",
+          "shortTitle": "Adequate audit log storage"
+        },
+        {
+          "requirementId": "CISV8-9.1",
+          "shortTitle": "Only supported browsers and email clients"
+        },
+        {
+          "requirementId": "CISV8-9.2",
+          "shortTitle": "DNS filtering services"
+        },
+        {
+          "requirementId": "CISV8-10.1",
+          "shortTitle": "Deploy and maintain anti-malware"
+        },
+        {
+          "requirementId": "CISV8-10.2",
+          "shortTitle": "Automatic anti-malware signature updates"
+        },
+        {
+          "requirementId": "CISV8-10.3",
+          "shortTitle": "Disable autorun for removable media"
+        },
+        {
+          "requirementId": "CISV8-11.1",
+          "shortTitle": "Data recovery process"
+        },
+        {
+          "requirementId": "CISV8-11.2",
+          "shortTitle": "Automated backups"
+        },
+        {
+          "requirementId": "CISV8-11.3",
+          "shortTitle": "Protect recovery data"
+        },
+        {
+          "requirementId": "CISV8-11.4",
+          "shortTitle": "Isolated instance of recovery data"
+        },
+        {
+          "requirementId": "CISV8-12.1",
+          "shortTitle": "Network infrastructure kept up to date"
+        },
+        {
+          "requirementId": "CISV8-14.1",
+          "shortTitle": "Security awareness programme"
+        },
+        {
+          "requirementId": "CISV8-14.2",
+          "shortTitle": "Train to recognise social engineering"
+        },
+        {
+          "requirementId": "CISV8-14.3",
+          "shortTitle": "Authentication best-practice training"
+        },
+        {
+          "requirementId": "CISV8-14.4",
+          "shortTitle": "Data handling training"
+        },
+        {
+          "requirementId": "CISV8-14.5",
+          "shortTitle": "Causes of unintentional data exposure"
+        },
+        {
+          "requirementId": "CISV8-14.6",
+          "shortTitle": "Recognise and report incidents"
+        },
+        {
+          "requirementId": "CISV8-14.7",
+          "shortTitle": "Missing security updates"
+        },
+        {
+          "requirementId": "CISV8-14.8",
+          "shortTitle": "Dangers of insecure networks"
+        },
+        {
+          "requirementId": "CISV8-15.1",
+          "shortTitle": "Inventory of service providers"
+        },
+        {
+          "requirementId": "CISV8-17.1",
+          "shortTitle": "Designate incident handling personnel"
+        },
+        {
+          "requirementId": "CISV8-17.2",
+          "shortTitle": "Contact information for reporting incidents"
+        },
+        {
+          "requirementId": "CISV8-17.3",
+          "shortTitle": "Enterprise process for reporting incidents"
+        }
+      ]
+    },
+    "SMB1001-BRONZE": {
+      "file": "smb1001-bronze.json",
+      "frameworkName": "SMB1001 Bronze (Dynamic Standards International)",
+      "requirements": [
+        {
+          "requirementId": "SMB1001-BRONZE-T01",
+          "shortTitle": "Engage technical support / IT provider"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T02",
+          "shortTitle": "Firewall protection"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T03",
+          "shortTitle": "Endpoint / antivirus protection"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T04",
+          "shortTitle": "Software and device updates (patching)"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T05",
+          "shortTitle": "Multi-factor authentication on key accounts"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T06",
+          "shortTitle": "Unique passphrases / password hygiene"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T07",
+          "shortTitle": "Separate administrator accounts from daily accounts"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T08",
+          "shortTitle": "Data backups"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T09",
+          "shortTitle": "Secure email settings"
+        },
+        {
+          "requirementId": "SMB1001-BRONZE-T10",
+          "shortTitle": "Staff security awareness"
+        }
+      ]
+    }
+  }
+}

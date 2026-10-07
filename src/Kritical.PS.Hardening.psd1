@@ -1,6 +1,6 @@
 @{
     RootModule        = 'Kritical.PS.Hardening.psm1'
-    ModuleVersion     = '1.1.0'
+    ModuleVersion     = '1.2.0'
     GUID              = 'd4e5f6a7-8b9c-4d1e-9f2a-3b4c5d6e7f80'
     Author            = 'Joshua Finley'
     CompanyName       = 'Kritical Pty Ltd'
@@ -42,6 +42,16 @@
             IconUri      = 'https://kritical.net/assets/horizontal_logo.png'
             ExternalModuleDependencies = @('Kritical.PS.OmniFramework')
             ReleaseNotes = @'
+1.2.0 - Pins, verified HardeningKitty install, framework IDs, edition awareness (still audit-only).
+  * HardeningKitty is NOT on PSGallery: Install-KriticalHardenModules now installs it from a pinned
+    scipag/HardeningKitty GitHub release, verifying the archive SHA-256 against src\Data\UpstreamPins.json
+    and failing closed on a mismatch. HotCakeX is pinned to an exact PSGallery version.
+  * THIRD-PARTY-NOTICES.md added (MIT licences of the upstream tools).
+  * Test-KriticalHardenCompliance: findings gain FrameworkIds (or UNMAPPED), MappingStatus, FindingId,
+    FindingList, RawOutcome, EditionStatus; new -TargetEdition Pro|Enterprise. Existing fields unchanged.
+  * Fixed: HardeningKitty report parsing read non-existent columns (outcome could never be Pass/Fail);
+    HotCakeX CSV file-name glob widened.
+
 1.1.0 - Reusable encrypted credential store.
   * Set-KritCredential / Get-KritCredential / Remove-KritCredential / Get-KritCredentialList
     - a per-user, DPAPI(CurrentUser)-encrypted secret store keyed by Name. No separate AES

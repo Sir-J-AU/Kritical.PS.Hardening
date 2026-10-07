@@ -1,0 +1,1352 @@
+{
+  "schema": "kritical-ps-hardening/framework-mapping/v1",
+  "generatedUtc": "2026-10-07T20:57:22Z",
+  "generatedBy": "tools/New-KriticalHardenFrameworkMapping.ps1",
+  "policy": "A finding is mapped ONLY when its own title (or category title) names the same setting family as the requirement title. Everything else is UNMAPPED at run time. Requirement IDs are copied exactly from the catalog snapshot in FrameworkRequirementIds.json.",
+  "hardeningKitty": {
+    "pinnedTag": "v.0.9.4",
+    "archiveSha256": "4A4DA6931D121D097E97D14B2CEE37EFA9A17CBD2DBFA210EE699F7F72687BA3",
+    "listsScanned": [
+      {
+        "list": "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine",
+        "rows": 585
+      },
+      {
+        "list": "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine",
+        "rows": 613
+      },
+      {
+        "list": "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine",
+        "rows": 621
+      },
+      {
+        "list": "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine",
+        "rows": 647
+      },
+      {
+        "list": "finding_list_msft_security_baseline_windows_11_21h2_machine",
+        "rows": 378
+      },
+      {
+        "list": "finding_list_msft_security_baseline_windows_11_22h2_machine",
+        "rows": 396
+      },
+      {
+        "list": "finding_list_msft_security_baseline_windows_11_23h2_machine",
+        "rows": 407
+      },
+      {
+        "list": "finding_list_msft_security_baseline_windows_11_24h2_machine",
+        "rows": 437
+      },
+      {
+        "list": "finding_list_msft_security_baseline_windows_11_25h2_machine",
+        "rows": 438
+      }
+    ]
+  },
+  "hotCakeX": {
+    "categorySource": "ComplianceCategories enum, module source tag Hardening-Module-v.0.7.5.1 (READ-FROM-SOURCE)"
+  },
+  "hardeningKittyRules": [
+    {
+      "ruleId": "HK-BITLOCKER",
+      "match": {
+        "type": "namePrefix",
+        "value": "BitLocker Drive Encryption:"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-01"
+      ],
+      "justification": "Finding titles are BitLocker Drive Encryption policy settings; requirement title is \"BitLocker drive encryption\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.11.1.1",
+          "18.9.11.1.2",
+          "18.9.11.1.3",
+          "18.9.11.1.4",
+          "18.9.11.1.5",
+          "18.9.11.1.6",
+          "18.9.11.1.7",
+          "18.9.11.1.8",
+          "18.9.11.1.9",
+          "18.9.11.1.10",
+          "18.9.11.1.11",
+          "18.9.11.1.12",
+          "18.9.11.1.13",
+          "18.9.11.2.1",
+          "18.9.11.2.2",
+          "18.9.11.2.3",
+          "18.9.11.2.4",
+          "18.9.11.2.5",
+          "18.9.11.2.6",
+          "18.9.11.2.7",
+          "18.9.11.2.8",
+          "18.9.11.2.9",
+          "18.9.11.2.10",
+          "18.9.11.2.11",
+          "18.9.11.2.12",
+          "18.9.11.2.13",
+          "18.9.11.2.14",
+          "18.9.11.3.1",
+          "18.9.11.3.2",
+          "18.9.11.3.3",
+          "18.9.11.3.4",
+          "18.9.11.3.5",
+          "18.9.11.3.6",
+          "18.9.11.3.7",
+          "18.9.11.3.8",
+          "18.9.11.3.9",
+          "18.9.11.3.10",
+          "18.9.11.3.11",
+          "18.9.11.3.12",
+          "18.9.11.3.13",
+          "18.9.11.3.14",
+          "18.9.11.3.15",
+          "18.9.11.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.9.1.1",
+          "18.10.9.1.2",
+          "18.10.9.1.3",
+          "18.10.9.1.4",
+          "18.10.9.1.5",
+          "18.10.9.1.6",
+          "18.10.9.1.7",
+          "18.10.9.1.8",
+          "18.10.9.1.9",
+          "18.10.9.1.10",
+          "18.10.9.1.11",
+          "18.10.9.1.12",
+          "18.10.9.1.13",
+          "18.10.9.2.1",
+          "18.10.9.2.2",
+          "18.10.9.2.3",
+          "18.10.9.2.4",
+          "18.10.9.2.5",
+          "18.10.9.2.6",
+          "18.10.9.2.7",
+          "18.10.9.2.8",
+          "18.10.9.2.9",
+          "18.10.9.2.10",
+          "18.10.9.2.11",
+          "18.10.9.2.12",
+          "18.10.9.2.13",
+          "18.10.9.2.14",
+          "18.10.9.3.1",
+          "18.10.9.3.2",
+          "18.10.9.3.3",
+          "18.10.9.3.4",
+          "18.10.9.3.5",
+          "18.10.9.3.6",
+          "18.10.9.3.7",
+          "18.10.9.3.8",
+          "18.10.9.3.9",
+          "18.10.9.3.10",
+          "18.10.9.3.11",
+          "18.10.9.3.12",
+          "18.10.9.3.13",
+          "18.10.9.3.14",
+          "18.10.9.3.15",
+          "18.10.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.9.1.1",
+          "18.10.9.1.2",
+          "18.10.9.1.3",
+          "18.10.9.1.4",
+          "18.10.9.1.5",
+          "18.10.9.1.6",
+          "18.10.9.1.7",
+          "18.10.9.1.8",
+          "18.10.9.1.9",
+          "18.10.9.1.10",
+          "18.10.9.1.11",
+          "18.10.9.1.12",
+          "18.10.9.1.13",
+          "18.10.9.2.1",
+          "18.10.9.2.2",
+          "18.10.9.2.3",
+          "18.10.9.2.4",
+          "18.10.9.2.5",
+          "18.10.9.2.6",
+          "18.10.9.2.7",
+          "18.10.9.2.8",
+          "18.10.9.2.9",
+          "18.10.9.2.10",
+          "18.10.9.2.11",
+          "18.10.9.2.12",
+          "18.10.9.2.13",
+          "18.10.9.2.14",
+          "18.10.9.2.15",
+          "18.10.9.2.16",
+          "18.10.9.2.17",
+          "18.10.9.2.18",
+          "18.10.9.3.1",
+          "18.10.9.3.2",
+          "18.10.9.3.3",
+          "18.10.9.3.4",
+          "18.10.9.3.5",
+          "18.10.9.3.6",
+          "18.10.9.3.7",
+          "18.10.9.3.8",
+          "18.10.9.3.9",
+          "18.10.9.3.10",
+          "18.10.9.3.11",
+          "18.10.9.3.12",
+          "18.10.9.3.13",
+          "18.10.9.3.14",
+          "18.10.9.3.15",
+          "18.10.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.10.1.1",
+          "18.10.10.1.2",
+          "18.10.10.1.3",
+          "18.10.10.1.4",
+          "18.10.10.1.5",
+          "18.10.10.1.6",
+          "18.10.10.1.7",
+          "18.10.10.1.8",
+          "18.10.10.1.9",
+          "18.10.10.1.10",
+          "18.10.10.1.11",
+          "18.10.10.1.12",
+          "18.10.10.1.13",
+          "18.10.10.2.1",
+          "18.10.10.2.2",
+          "18.10.10.2.3",
+          "18.10.10.2.4",
+          "18.10.10.2.5",
+          "18.10.10.2.6",
+          "18.10.10.2.7",
+          "18.10.10.2.8",
+          "18.10.10.2.9",
+          "18.10.10.2.10",
+          "18.10.10.2.11",
+          "18.10.10.2.12",
+          "18.10.10.2.13",
+          "18.10.10.2.14",
+          "18.10.10.3.1",
+          "18.10.10.3.2",
+          "18.10.10.3.3",
+          "18.10.10.3.4",
+          "18.10.10.3.5",
+          "18.10.10.3.6",
+          "18.10.10.3.7",
+          "18.10.10.3.8",
+          "18.10.10.3.9",
+          "18.10.10.3.10",
+          "18.10.10.3.11",
+          "18.10.10.3.12",
+          "18.10.10.3.13",
+          "18.10.10.3.14",
+          "18.10.10.3.15",
+          "18.10.10.4"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10756",
+          "10757",
+          "10758",
+          "10759"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10756",
+          "10757",
+          "10758",
+          "10759"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10756",
+          "10757",
+          "10758",
+          "10759"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10756",
+          "10757",
+          "10758",
+          "10759"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10756",
+          "10757",
+          "10758",
+          "10759"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-PWD-LENGTH-COMPLEXITY",
+      "match": {
+        "type": "name",
+        "value": [
+          "Minimum password length",
+          "Password must meet complexity requirements"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-02"
+      ],
+      "justification": "Finding titles are the minimum password length and password complexity policies; requirement title is \"Password length and complexity\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "1.1.4",
+          "1.1.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "1.1.4",
+          "1.1.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "1.1.4",
+          "1.1.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "1.1.4",
+          "1.1.5"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10101",
+          "10102"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10101",
+          "10102"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10101",
+          "10102"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10101",
+          "10102"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10101",
+          "10102"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-LOCKOUT",
+      "match": {
+        "type": "name",
+        "value": [
+          "Account lockout duration",
+          "Account lockout threshold",
+          "Reset account lockout counter",
+          "Allow Administrator account lockout"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-03"
+      ],
+      "justification": "Finding titles are account lockout policy settings; requirement title is \"Account lockout policy\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "1.2.1",
+          "1.2.2",
+          "1.2.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "1.2.1",
+          "1.2.2",
+          "1.2.3",
+          "1.2.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "1.2.1",
+          "1.2.2",
+          "1.2.3",
+          "1.2.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "1.2.1",
+          "1.2.2",
+          "1.2.3",
+          "1.2.4"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10000",
+          "10001",
+          "10002"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10000",
+          "10001",
+          "10003",
+          "10002"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10000",
+          "10001",
+          "10003",
+          "10002"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10000",
+          "10001",
+          "10003",
+          "10002"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10000",
+          "10001",
+          "10003",
+          "10002"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-DEFENDER-RTP",
+      "match": {
+        "type": "namePrefix",
+        "value": "Microsoft Defender Antivirus: Real-time Protection:"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-04"
+      ],
+      "justification": "Finding titles sit under Microsoft Defender Antivirus Real-time Protection; requirement title is \"Defender antivirus real-time protection\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.47.9.1",
+          "18.9.47.9.2",
+          "18.9.47.9.3",
+          "18.9.47.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.43.10.1",
+          "18.10.43.10.2",
+          "18.10.43.10.3",
+          "18.10.43.10.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.42.10.1",
+          "18.10.42.10.2",
+          "18.10.42.10.3",
+          "18.10.42.10.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.43.10.1",
+          "18.10.43.10.2",
+          "18.10.43.10.3",
+          "18.10.43.10.4",
+          "18.10.43.10.5"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "11013",
+          "11014",
+          "11015",
+          "11031"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "11013",
+          "11014",
+          "11015",
+          "11031"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "11064",
+          "11065",
+          "11013",
+          "11014",
+          "11015",
+          "11067",
+          "11031"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "11064",
+          "11036",
+          "11065",
+          "11013",
+          "11014",
+          "11015",
+          "11067",
+          "11031"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "11064",
+          "11036",
+          "11065",
+          "11013",
+          "11014",
+          "11015",
+          "11067",
+          "11031"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-FIREWALL-ENABLE",
+      "match": {
+        "type": "namePrefix",
+        "value": "EnableFirewall ("
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-05"
+      ],
+      "justification": "Finding titles are the per-profile EnableFirewall state; requirement title is \"Windows Firewall on for all profiles\". Logging, notification and inbound/outbound rows are deliberately NOT mapped.",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "9.1.1",
+          "9.2.1",
+          "9.3.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "9.1.1",
+          "9.2.1",
+          "9.3.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "9.1.1",
+          "9.2.1",
+          "9.3.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "9.1.1",
+          "9.2.1",
+          "9.3.1"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10501",
+          "10515",
+          "10529"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10501",
+          "10515",
+          "10529"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10501",
+          "10515",
+          "10529"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10501",
+          "10515",
+          "10529"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10501",
+          "10515",
+          "10529"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-SMARTSCREEN",
+      "match": {
+        "type": "name",
+        "value": [
+          "File Explorer: Configure Windows Defender SmartScreen",
+          "File Explorer: Configure Windows Defender SmartScreen to warn and prevent bypass",
+          "Windows Defender SmartScreen: Service Enabled"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-06"
+      ],
+      "justification": "Finding titles enable Windows Defender SmartScreen; requirement title is \"SmartScreen enabled\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.85.1.1.1",
+          "18.9.85.1.1.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.76.1.4",
+          "18.10.76.2.1.1",
+          "18.10.76.2.1.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.75.1.5",
+          "18.10.75.2.1.1",
+          "18.10.75.2.1.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.76.1.5",
+          "18.10.76.2.1.1",
+          "18.10.76.2.1.2"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10766",
+          "10767"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10766",
+          "10767",
+          "11043",
+          "10951",
+          "10954"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10766",
+          "10767",
+          "11043",
+          "10951",
+          "10954"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10766",
+          "10767",
+          "11043",
+          "10951",
+          "10954"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10766",
+          "10767",
+          "11043",
+          "10951",
+          "10954"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-SCREEN-LOCK",
+      "match": {
+        "type": "name",
+        "value": [
+          "Interactive logon: Machine inactivity limit"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-07",
+        "CISV8-4.3"
+      ],
+      "justification": "Finding title is the machine inactivity (lock) limit; requirement titles are \"Screen lock inactivity limit\" and \"Automatic session locking\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "2.3.7.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "2.3.7.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "2.3.7.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "2.3.7.4"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10208"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10208"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10208"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10208"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10208"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-UAC",
+      "match": {
+        "type": "namePrefix",
+        "value": "User Account Control:"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-08"
+      ],
+      "justification": "Finding titles are User Account Control policy settings; requirement title is \"User Account Control enforced\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "2.3.17.1",
+          "2.3.17.2",
+          "2.3.17.3",
+          "2.3.17.4",
+          "2.3.17.5",
+          "2.3.17.6",
+          "2.3.17.7",
+          "2.3.17.8"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "2.3.17.1",
+          "2.3.17.2",
+          "2.3.17.3",
+          "2.3.17.4",
+          "2.3.17.5",
+          "2.3.17.6",
+          "2.3.17.7",
+          "2.3.17.8"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "2.3.17.1",
+          "2.3.17.2",
+          "2.3.17.3",
+          "2.3.17.4",
+          "2.3.17.5",
+          "2.3.17.6",
+          "2.3.17.7",
+          "2.3.17.8"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "2.3.17.1",
+          "2.3.17.2",
+          "2.3.17.3",
+          "2.3.17.4",
+          "2.3.17.5",
+          "2.3.17.6",
+          "2.3.17.7",
+          "2.3.17.8"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10225",
+          "10226",
+          "10227",
+          "10228",
+          "10229",
+          "10230",
+          "10231"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10225",
+          "10226",
+          "10227",
+          "10228",
+          "10229",
+          "10230",
+          "10231"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10225",
+          "10226",
+          "10227",
+          "10228",
+          "10229",
+          "10230",
+          "10231"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10225",
+          "10226",
+          "10232",
+          "10227",
+          "10233",
+          "10228",
+          "10229",
+          "10230",
+          "10231"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10225",
+          "10226",
+          "10232",
+          "10227",
+          "10233",
+          "10228",
+          "10229",
+          "10230",
+          "10231"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-AUTOPLAY",
+      "match": {
+        "type": "namePrefix",
+        "value": "AutoPlay Policies:"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-09",
+        "CISV8-10.3"
+      ],
+      "justification": "Finding titles are AutoPlay/AutoRun policies; requirement titles are \"Autorun/autoplay disabled\" and \"Disable autorun for removable media\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.8.1",
+          "18.9.8.2",
+          "18.9.8.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.7.1",
+          "18.10.7.2",
+          "18.10.7.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.7.1",
+          "18.10.7.2",
+          "18.10.7.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.8.1",
+          "18.10.8.2",
+          "18.10.8.3"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10752",
+          "10753",
+          "10754"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10752",
+          "10753",
+          "10754"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10752",
+          "10753",
+          "10754"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10752",
+          "10753",
+          "10754"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10752",
+          "10753",
+          "10754"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-SMB1",
+      "match": {
+        "type": "name",
+        "value": [
+          "Configure SMB v1 client driver",
+          "Configure SMB v1 server"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-10"
+      ],
+      "justification": "Finding titles configure SMB v1; requirement title is \"SMBv1 disabled\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.3.2",
+          "18.3.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.4.3",
+          "18.4.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.4.3",
+          "18.4.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.4.2",
+          "18.4.3"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10621",
+          "10622"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10621",
+          "10622"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10621",
+          "10622"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10621",
+          "10622"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10621",
+          "10622"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-GUEST",
+      "match": {
+        "type": "name",
+        "value": [
+          "Accounts: Guest account status"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-11",
+        "CISV8-4.7"
+      ],
+      "justification": "Finding title is the built-in Guest account status; requirement titles are \"Guest account disabled\" and \"Manage default accounts\" (Guest is a default account).",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "2.3.1.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "2.3.1.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "2.3.1.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "2.3.1.1"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-AUDIT-POLICY",
+      "match": {
+        "type": "category",
+        "value": "Advanced Audit Policy Configuration"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-12"
+      ],
+      "justification": "Category title is Advanced Audit Policy Configuration; requirement title is \"Security audit policy configured\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "17.1.1",
+          "17.2.1",
+          "17.2.2",
+          "17.2.3",
+          "17.3.1",
+          "17.3.2",
+          "17.5.1",
+          "17.5.2",
+          "17.5.3",
+          "17.5.4",
+          "17.5.5",
+          "17.5.6",
+          "17.6.1",
+          "17.6.2",
+          "17.6.3",
+          "17.6.4",
+          "17.7.1",
+          "17.7.2",
+          "17.7.3",
+          "17.7.4",
+          "17.7.5",
+          "17.8.1",
+          "17.9.1",
+          "17.9.2",
+          "17.9.3",
+          "17.9.4",
+          "17.9.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "17.1.1",
+          "17.2.1",
+          "17.2.2",
+          "17.2.3",
+          "17.3.1",
+          "17.3.2",
+          "17.5.1",
+          "17.5.2",
+          "17.5.3",
+          "17.5.4",
+          "17.5.5",
+          "17.5.6",
+          "17.6.1",
+          "17.6.2",
+          "17.6.3",
+          "17.6.4",
+          "17.7.1",
+          "17.7.2",
+          "17.7.3",
+          "17.7.4",
+          "17.7.5",
+          "17.8.1",
+          "17.9.1",
+          "17.9.2",
+          "17.9.3",
+          "17.9.4",
+          "17.9.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "17.1.1",
+          "17.2.1",
+          "17.2.2",
+          "17.2.3",
+          "17.3.1",
+          "17.3.2",
+          "17.5.1",
+          "17.5.2",
+          "17.5.3",
+          "17.5.4",
+          "17.5.5",
+          "17.5.6",
+          "17.6.1",
+          "17.6.2",
+          "17.6.3",
+          "17.6.4",
+          "17.7.1",
+          "17.7.2",
+          "17.7.3",
+          "17.7.4",
+          "17.7.5",
+          "17.8.1",
+          "17.9.1",
+          "17.9.2",
+          "17.9.3",
+          "17.9.4",
+          "17.9.5"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "17.1.1",
+          "17.2.1",
+          "17.2.2",
+          "17.2.3",
+          "17.3.1",
+          "17.3.2",
+          "17.5.1",
+          "17.5.2",
+          "17.5.3",
+          "17.5.4",
+          "17.5.5",
+          "17.5.6",
+          "17.6.1",
+          "17.6.2",
+          "17.6.3",
+          "17.6.4",
+          "17.7.1",
+          "17.7.2",
+          "17.7.3",
+          "17.7.4",
+          "17.7.5",
+          "17.8.1",
+          "17.9.1",
+          "17.9.2",
+          "17.9.3",
+          "17.9.4",
+          "17.9.5"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10400",
+          "10401",
+          "10402",
+          "10403",
+          "10404",
+          "10405",
+          "10406",
+          "10407",
+          "10408",
+          "10409",
+          "10410",
+          "10411",
+          "10412",
+          "10413",
+          "10414",
+          "10415",
+          "10416",
+          "10417",
+          "10418",
+          "10419",
+          "10420",
+          "10421",
+          "10422"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10400",
+          "10401",
+          "10402",
+          "10403",
+          "10404",
+          "10405",
+          "10406",
+          "10407",
+          "10408",
+          "10409",
+          "10410",
+          "10411",
+          "10412",
+          "10413",
+          "10414",
+          "10415",
+          "10416",
+          "10417",
+          "10418",
+          "10419",
+          "10420",
+          "10421",
+          "10422"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10400",
+          "10401",
+          "10402",
+          "10403",
+          "10404",
+          "10405",
+          "10406",
+          "10407",
+          "10408",
+          "10409",
+          "10410",
+          "10411",
+          "10412",
+          "10413",
+          "10414",
+          "10415",
+          "10416",
+          "10417",
+          "10418",
+          "10419",
+          "10420",
+          "10421",
+          "10422"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10400",
+          "10401",
+          "10402",
+          "10403",
+          "10404",
+          "10405",
+          "10406",
+          "10407",
+          "10408",
+          "10409",
+          "10410",
+          "10411",
+          "10412",
+          "10413",
+          "10414",
+          "10415",
+          "10416",
+          "10417",
+          "10418",
+          "10419",
+          "10420",
+          "10421",
+          "10422"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10400",
+          "10401",
+          "10402",
+          "10403",
+          "10404",
+          "10405",
+          "10406",
+          "10407",
+          "10408",
+          "10409",
+          "10410",
+          "10411",
+          "10412",
+          "10413",
+          "10414",
+          "10415",
+          "10416",
+          "10417",
+          "10418",
+          "10419",
+          "10420",
+          "10421",
+          "10422"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-AUTO-UPDATES",
+      "match": {
+        "type": "name",
+        "value": [
+          "Windows Update: Manage end user experience: Configure Automatic Updates"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-13"
+      ],
+      "justification": "Finding title is Configure Automatic Updates; requirement title is \"Automatic Windows updates\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.108.2.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.93.2.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.92.2.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.93.2.1"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-RDP-NLA",
+      "match": {
+        "type": "name",
+        "value": [
+          "Remote Desktop Session Host: Security: Require user authentication for remote connections by using Network Level Authentication"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-14"
+      ],
+      "justification": "Finding title requires Network Level Authentication for remote connections; requirement title is \"Remote Desktop requires NLA\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.65.3.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.57.3.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.56.3.9.4"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.57.3.9.4"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-LLMNR-NETBIOS",
+      "match": {
+        "type": "name",
+        "value": [
+          "DNS Client: Turn off multicast name resolution (LLMNR)",
+          "DNS Client: Configure NetBIOS settings",
+          "NetBT NodeType configuration"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-15"
+      ],
+      "justification": "Finding titles control LLMNR and NetBIOS name resolution; requirement title is \"LLMNR and NetBIOS name resolution disabled\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.3.6",
+          "18.5.4.2"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.4.6",
+          "18.6.4.2",
+          "18.6.4.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.4.7",
+          "18.6.4.2",
+          "18.6.4.3"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.4.6",
+          "18.6.4.2",
+          "18.6.4.4"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "10624",
+          "10650"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "10624",
+          "10657",
+          "10650"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "10624",
+          "10657",
+          "10650"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "10624",
+          "10657",
+          "10650"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "10624",
+          "10657",
+          "10650"
+        ]
+      }
+    },
+    {
+      "ruleId": "HK-PS-SCRIPTBLOCK",
+      "match": {
+        "type": "name",
+        "value": [
+          "Windows PowerShell: Turn on PowerShell Script Block Logging",
+          "Windows PowerShell: Turn on PowerShell Script Block Logging (Invocation)"
+        ]
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-16"
+      ],
+      "justification": "Finding titles turn on PowerShell Script Block Logging; requirement title is \"PowerShell script block logging\".",
+      "ids": {
+        "finding_list_cis_microsoft_windows_11_enterprise_21h2_machine": [
+          "18.9.100.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_22h2_machine": [
+          "18.10.87.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_23h2_machine": [
+          "18.10.86.1"
+        ],
+        "finding_list_cis_microsoft_windows_11_enterprise_24h2_machine": [
+          "18.10.87.1"
+        ],
+        "finding_list_msft_security_baseline_windows_11_21h2_machine": [
+          "11005",
+          "11006"
+        ],
+        "finding_list_msft_security_baseline_windows_11_22h2_machine": [
+          "11005",
+          "11006"
+        ],
+        "finding_list_msft_security_baseline_windows_11_23h2_machine": [
+          "11005",
+          "11006"
+        ],
+        "finding_list_msft_security_baseline_windows_11_24h2_machine": [
+          "11005",
+          "11006"
+        ],
+        "finding_list_msft_security_baseline_windows_11_25h2_machine": [
+          "11005",
+          "11006"
+        ]
+      }
+    }
+  ],
+  "hotCakeXRules": [
+    {
+      "ruleId": "HC-FIREWALL-ENABLE",
+      "match": {
+        "category": "WindowsFirewall",
+        "namePrefix": "Enable Windows Firewall for"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-05"
+      ],
+      "justification": "Finding titles are \"Enable Windows Firewall for <profile> profile\"; requirement title is \"Windows Firewall on for all profiles\"."
+    },
+    {
+      "ruleId": "HC-BITLOCKER-OS",
+      "match": {
+        "category": "BitLockerSettings",
+        "name": "Secure OS Drive encryption"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-01"
+      ],
+      "justification": "Finding title is OS drive encryption; requirement title is \"BitLocker drive encryption\"."
+    },
+    {
+      "ruleId": "HC-UAC",
+      "match": {
+        "category": "UserAccountControl"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-08"
+      ],
+      "justification": "Category title is User Account Control; requirement title is \"User Account Control enforced\"."
+    },
+    {
+      "ruleId": "HC-AUTO-UPDATES",
+      "match": {
+        "category": "WindowsUpdateConfigurations",
+        "name": "Automatically download updates and install them on maintenance day"
+      },
+      "frameworkIds": [
+        "CISWIN11-L1-13"
+      ],
+      "justification": "Finding title is automatic update install; requirement title is \"Automatic Windows updates\"."
+    }
+  ]
+}

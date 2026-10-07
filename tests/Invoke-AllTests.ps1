@@ -17,11 +17,15 @@ if (-not $NoBanner.IsPresent) {
     Write-KriticalHardenBanner -Title 'Test Runner'
 }
 
-$pester = Get-Module Pester -ListAvailable | Sort-Object Version -Descending | Select-Object -First 1
-if (-not $pester -or $pester.Version.Major -lt 5) {
-    Install-Module Pester -MinimumVersion 5.5.0 -Force -SkipPublisherCheck -Scope CurrentUser
+# The suite is written for Pester 5.x (tested on 5.7.1). Pester 6 is installed on some machines and
+# breaks every test here, so select the highest 5.x explicitly instead of "highest installed".
+$pester = Get-Module Pester -ListAvailable | Where-Object { $_.Version.Major -eq 5 -and $_.Version -ge [version]'5.5.0' } |
+          Sort-Object Version -Descending | Select-Object -First 1
+if (-not $pester) {
+    Install-Module Pester -MinimumVersion 5.5.0 -MaximumVersion 5.99.99 -Force -SkipPublisherCheck -Scope CurrentUser
+    $pester = Get-Module Pester -ListAvailable | Where-Object { $_.Version.Major -eq 5 } | Sort-Object Version -Descending | Select-Object -First 1
 }
-Import-Module Pester -MinimumVersion 5.5.0 -Force
+Import-Module Pester -RequiredVersion $pester.Version -Force
 
 if (-not $OutputDir) { $OutputDir = Join-Path $env:LOCALAPPDATA 'Kritical\Kritical.PS.Hardening\test-output' }
 New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
