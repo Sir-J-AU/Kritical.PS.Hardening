@@ -96,9 +96,38 @@ try {
             else { $bad++; $lines.Add("RED  $($m.Id) NOT caught: $($m.Why) (failed=$($res.Failed); expected a failure matching '$($m.Expect)')") }
         } finally { Remove-Item -LiteralPath $copy -Recurse -Force -ErrorAction SilentlyContinue }
     }
+
+    # ---- Default runner regression: tests\Invoke-AllTests.ps1 with NO switches must exit 0 ----
+    # (Write-KriticalHardenBanner is private; the runner once called it from script scope and exited 1.)
+    function Invoke-RunnerCopy([bool] $PlantOldBannerCall) {
+        $tree = Join-Path ([IO.Path]::GetTempPath()) ('krit-harden-runner-tree-' + [guid]::NewGuid().ToString('N'))
+        try {
+            New-Item -ItemType Directory -Path $tree | Out-Null
+            Copy-Item -LiteralPath $srcRoot -Destination (Join-Path $tree 'src') -Recurse
+            Copy-Item -LiteralPath $here -Destination (Join-Path $tree 'tests') -Recurse
+            Copy-Item -LiteralPath (Join-Path $repo 'THIRD-PARTY-NOTICES.md') -Destination $tree
+            $rp = Join-Path $tree 'tests\Invoke-AllTests.ps1'
+            if ($PlantOldBannerCall) {
+                $t = [IO.File]::ReadAllText($rp)
+                $new = "& (Get-Module Kritical.PS.Hardening) { Write-KriticalHardenBanner -Title 'Test Runner' }"
+                if (-not $t.Contains($new)) { return [pscustomobject]@{ Rc = -1; Log = 'stale mutant: fixed banner line not found'; Stale = $true } }
+                [IO.File]::WriteAllText($rp, $t.Replace($new, "Write-KriticalHardenBanner -Title 'Test Runner'"))
+            }
+            $log = Join-Path $tree 'run.log'
+            & pwsh -NoProfile -File $rp -OutputDir (Join-Path $tree 'out') *> $log
+            $rc = $LASTEXITCODE
+            [pscustomobject]@{ Rc = $rc; Log = (Get-Content -LiteralPath $log -Raw); Stale = $false }
+        } finally { Remove-Item -LiteralPath $tree -Recurse -Force -ErrorAction SilentlyContinue }
+    }
+    $good = Invoke-RunnerCopy $false
+    if ($good.Rc -eq 0 -and $good.Log -match 'PASS\s*-\s*(\d+)\s*tests') { $lines.Add("ok   runner (no switches) exits 0: PASS - $($Matches[1]) tests") }
+    else { $bad++; $lines.Add("RED  runner (no switches) did not exit 0 with a PASS line (rc=$($good.Rc))") }
+    $old = Invoke-RunnerCopy $true
+    if (-not $old.Stale -and $old.Rc -ne 0 -and $old.Log -match 'Write-KriticalHardenBanner') { $lines.Add("ok   R01 caught: old script-scope banner call makes the default runner exit $($old.Rc)") }
+    else { $bad++; $lines.Add("RED  R01 NOT caught: old banner call (rc=$($old.Rc), stale=$($old.Stale))") }
 } finally { Remove-Item -LiteralPath $runner -Force -ErrorAction SilentlyContinue }
 
 $lines | ForEach-Object { $_ }
-if ($bad -eq 0) { "GREEN planted-defect proofs: measured $($mutants.Count) planted defects, $($mutants.Count) caught, pristine $($pristine.Passed)/$($pristine.Total) pass; not measured: defects outside these $($mutants.Count) mutants"; exit 0 }
+if ($bad -eq 0) { "GREEN planted-defect proofs: measured $($mutants.Count) planted defects + 1 default-runner regression, all caught, pristine $($pristine.Passed)/$($pristine.Total) pass; not measured: defects outside these $($mutants.Count) mutants"; exit 0 }
 "RED planted-defect proofs: $bad problem(s) of $($mutants.Count + 1) checks"
 exit 1

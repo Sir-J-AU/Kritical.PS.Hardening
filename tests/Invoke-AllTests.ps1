@@ -14,7 +14,8 @@ $repo = Split-Path -Parent $here
 Import-Module (Join-Path $repo 'src\Kritical.PS.Hardening.psm1') -Force
 
 if (-not $NoBanner.IsPresent) {
-    Write-KriticalHardenBanner -Title 'Test Runner'
+    # Write-KriticalHardenBanner is private (not exported): call it in module scope.
+    & (Get-Module Kritical.PS.Hardening) { Write-KriticalHardenBanner -Title 'Test Runner' }
 }
 
 # The suite is written for Pester 5.x (tested on 5.7.1). Pester 6 is installed on some machines and
