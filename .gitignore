@@ -26,3 +26,6 @@ dist/
 
 # Pester run artifact
 testResults.xml
+
+# Kritical repo lane-lease (see Kritical.PS.GitHub Enter-KritRepoLease) -- never commit
+.kritical-lane-lock.json
