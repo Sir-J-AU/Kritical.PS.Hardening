@@ -26,7 +26,7 @@ if (-not $pester) {
     Install-Module Pester -MinimumVersion 5.5.0 -MaximumVersion 5.99.99 -Force -SkipPublisherCheck -Scope CurrentUser
     $pester = Get-Module Pester -ListAvailable | Where-Object { $_.Version.Major -eq 5 } | Sort-Object Version -Descending | Select-Object -First 1
 }
-Import-Module Pester -RequiredVersion $pester.Version -Force
+Import-Module Pester -MinimumVersion $pester.Version -Force
 
 if (-not $OutputDir) { $OutputDir = Join-Path $env:LOCALAPPDATA 'Kritical\Kritical.PS.Hardening\test-output' }
 New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
