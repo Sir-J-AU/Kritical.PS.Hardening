@@ -34,7 +34,7 @@ if (-not $pesterVersion) { throw 'Pester 5.x is required' }
 $runner = Join-Path ([IO.Path]::GetTempPath()) ('krit-harden-runner-' + [guid]::NewGuid().ToString('N') + '.ps1')
 @'
 param([string]$Src, [string]$Out, [string]$Version, [string]$Path)
-Import-Module Pester -RequiredVersion $Version
+Import-Module Pester -MinimumVersion $Version
 if ($Src) { $env:KRIT_HARDEN_SRC = $Src }
 $c = New-PesterConfiguration
 $c.Run.Path = @($Path -split ';')
